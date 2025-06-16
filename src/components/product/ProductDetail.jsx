@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart } from "lucide-react";
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -123,14 +123,15 @@ export default function ProductDetail({setNumCartItems}) {
         .catch((err) => console.error(err.message));
     }
 
-    if (product?.id) { 
-      API.get("/wishlist/")
-        .then((res) => {
-          const isInWishlist = res.data.some((item) => item.product.id === product.id);
-          setInWishlist(isInWishlist);
-        })
-        .catch((err) => console.error(err.message));
-    }
+    if (product?.id && cart_code) {
+  API.get(`/wishlist/?cart_code=${cart_code}`)
+    .then((res) => {
+      const isInWishlist = res.data.some((item) => item.product.id === product.id);
+      setInWishlist(isInWishlist);
+    })
+    .catch((err) => console.error(err.message));
+}
+
   }, [product?.id, cart_code, selectedSize]);
 
   if (isLoading) return <Loader/>

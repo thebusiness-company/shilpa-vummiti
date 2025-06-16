@@ -1,3 +1,4 @@
+// Wishlist.jsx
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getWishlist, deleteWishlistItem, addToCart } from "../../hooks/wishlistApi";
 import { motion } from "framer-motion";
@@ -37,7 +38,7 @@ const Wishlist = () => {
   const addToCartMutation = useMutation({
     mutationFn: addToCart,
     onSuccess: () => {
-      toast.success("Added to cart successfully!")
+      toast.success("Added to cart successfully!");
     },
     onError: (error) => {
       if (error?.response?.data?.detail === "Already in cart") {
@@ -45,7 +46,7 @@ const Wishlist = () => {
       } else {
         toast.error("Something went wrong!");
       }
-    }
+    },
   });
 
   const removeFromWishlist = (productId) => {
@@ -57,7 +58,7 @@ const Wishlist = () => {
     addToCartMutation.mutate({ productId, cartCode });
   };
 
-  if (isLoading) return <Loader text="Loading Wishlist"/>;
+  if (isLoading) return <Loader text="Loading Wishlist" />;
 
   return (
     <div className="w-full min-h-screen flex flex-col items-center px-4 py-8 bg-white max-w-6xl mx-auto">
@@ -86,7 +87,7 @@ const Wishlist = () => {
 
               <div
                 onClick={() => handleAddToCart(product.id)}
-                className="absolute bottom-4 lg:bottom-22 right-[-2px] z-10"
+                className="absolute bottom-4 right-[-2px] z-10"
               >
                 <div className="relative w-10 h-10 group-hover:w-[110px] transition-all duration-300 overflow-hidden group-hover:bg-white rounded-full flex items-center justify-center px-2 cursor-pointer">
                   <RiShoppingBag4Line
