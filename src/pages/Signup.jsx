@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import img from "../assets/images/login.png";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/Logo.png";
 import API from "../api";
 
 // Password validation function
