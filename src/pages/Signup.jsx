@@ -1,0 +1,180 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import img from "../assets/images/login.png";
+import logo from "../assets/images/logo.png";
+import API from "../api";
+
+// Password validation function
+const validatePassword = (password) => {
+  const errors = [];
+  if (password.length < 8) errors.push("Password must be at least 8 characters.");
+  if (!/[A-Z]/.test(password)) errors.push("Include at least one uppercase letter.");
+  if (!/[a-z]/.test(password)) errors.push("Include at least one lowercase letter.");
+  if (!/[0-9]/.test(password)) errors.push("Include at least one number.");
+  if (!/[!@#$%^&*]/.test(password)) errors.push("Include at least one special character (!@#$%^&*).");
+
+  const commonPasswords = ["password", "12345678", "qwerty", "abc123"];
+  if (commonPasswords.includes(password.toLowerCase())) {
+    errors.push("Password is too common.");
+  }
+
+  return errors;
+};
+
+const Signup = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    mobile: "",
+    password: "",
+    password2: "",
+  });
+  const [error, setError] = useState("");
+  const [passwordErrors, setPasswordErrors] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setPasswordErrors([]);
+    setIsLoading(true);
+
+    const validationErrors = validatePassword(formData.password);
+    if (validationErrors.length > 0) {
+      setPasswordErrors(validationErrors);
+      setIsLoading(false);
+      return;
+    }
+
+    if (formData.password !== formData.password2) {
+      setError("Passwords do not match.");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      await API.post("user/register/", {
+        username: formData.username,
+        email: formData.email,
+        mobile: formData.mobile,
+        password: formData.password,
+        password2: formData.password2,
+      });
+      setFormData({ username: "", email: "", mobile: "", password: "", password2: "" });
+      navigate("/login");
+    } catch (err) {
+      const data = err.response?.data;
+      if (typeof data === "object") {
+        const messages = Object.values(data).flat(); // Flatten all error messages
+        setPasswordErrors(messages); // Reuse passwordErrors to display them
+      } else {
+        setError("An unexpected error occurred.");
+      }
+    }
+     finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen w-full bg-white flex flex-col md:flex-row">
+      {/* Left Section */}
+      <div className="w-full md:w-1/2 px-6 lg:py-12 py-6 flex flex-col items-start max-w-md mx-auto">
+        <img src={logo} alt="Logo" className="w-40" />
+
+        <div className="text-xs text-gray-700 mt-10 mb-6">
+          <a href="/login" className="underline mr-2">LOG IN</a> /
+          <a href="/signup" className="ml-2 underline font-bold text-black">SIGN UP</a>
+        </div>
+
+        {/* Errors */}
+        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
+        {passwordErrors.length > 0 && (
+          <ul className="text-red-600 text-xs list-disc list-inside mb-4">
+            {passwordErrors.map((err, i) => <li key={i}>{err}</li>)}
+          </ul>
+        )}
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="w-full">
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            placeholder="USER NAME"
+            required
+            className="w-full border-b border-gray-400 mb-4 pb-4 outline-none bg-transparent text-sm"
+          />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="EMAIL"
+            required
+            className="w-full border-b border-gray-400 mb-4 pb-4 outline-none bg-transparent text-sm"
+          />
+          <input
+            type="tel"
+            name="mobile"
+            value={formData.mobile}
+            onChange={handleChange}
+            placeholder="MOBILE NUMBER"
+            required
+            className="w-full border-b border-gray-400 mb-4 pb-4 outline-none bg-transparent text-sm"
+          />
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="PASSWORD"
+            required
+            className="w-full border-b border-gray-400 mb-4 pb-4 outline-none bg-transparent text-sm"
+          />
+          <input
+            type="password"
+            name="password2"
+            value={formData.password2}
+            onChange={handleChange}
+            placeholder="RE-ENTER PASSWORD"
+            required
+            className="w-full border-b border-gray-400 mb-4 pb-4 outline-none bg-transparent text-sm"
+          />
+
+          {/* Buttons */}
+          <div className="flex items-center justify-between mt-4">
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="border border-black px-12 py-2 text-sm hover:bg-black hover:text-white transition duration-200"
+            >
+              {isLoading ? "Signing up..." : "SIGN UP"}
+            </button>
+            <div className="text-xs text-gray-400">/</div>
+            <button
+              type="button"
+              className="border border-gray-400 px-6 py-2 text-sm flex items-center gap-2"
+              onClick={() => alert("Google signup not implemented")}
+            >
+              <span className="text-xs text-[#4285F4]">GOOGLE</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      {/* Right Section with Image */}
+      <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 py-1 lg:py-40">
+        <img src={img} alt="Signup" className="object-cover w-full max-h-[600px]" />
+      </div>
+    </div>
+  );
+};
+
+export default Signup;
