@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import img from "../assets/images/login.png";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/Logo.png";
 import { API, API_URL } from '../api';
 import { AuthContext } from "../components/context/AuthContext";
 import { useGoogleLogin } from "@react-oauth/google";
