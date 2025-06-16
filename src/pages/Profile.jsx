@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import img from "../assets/images/img.png";
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/Logo.png";
 import API from "../api";
 
 const ProfileUpdate = () => {
