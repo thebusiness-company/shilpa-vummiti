@@ -6,8 +6,10 @@ import compression from 'vite-plugin-compression';
 import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/',
   plugins: [react(),compression(),tailwindcss(),
   ],
+
   resolve: {
       alias: {
         "@": path.resolve(path.dirname(fileURLToPath(import.meta.url)), "src"),
