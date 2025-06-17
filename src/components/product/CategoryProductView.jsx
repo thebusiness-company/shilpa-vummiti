@@ -70,7 +70,7 @@ export default function CategoryProductView() {
                 className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500 ease-in-out"
               />
               <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-40 z-0" />
-                <div className="absolute bottom-0 left-0 w-full h-full bg-opacity-50 flex items-end justify-center">
+                <div className="absolute bottom-0 left-0 w-full h-full bg-opacity-50 flex items-end text-center justify-center">
                   <h2 className="text-xs md:text-xl lg:text-2xl font-semibold text-white tracking-wide mb-4 z-10">
                     {cat.name}
                   </h2>
@@ -98,11 +98,11 @@ export default function CategoryProductView() {
             ))}
           </div>
 
-          <div className="flex justify-between mt-6 text-[#183028]">
-            <button onClick={handleViewLess} className="underline text-2xl hover:text-blue-800">
+          <div className="flex justify-between mt-6 font-tenor text-[#183028]">
+            <button onClick={handleViewLess} className="underline text-xl font-tenor hover:text-blue-800">
               View Less
             </button>
-            <button onClick={handleViewMore} className="underline text-2xl hover:text-blue-800">
+            <button onClick={handleViewMore} className="underline text-xl hover:text-blue-800">
               View More
             </button>
           </div>

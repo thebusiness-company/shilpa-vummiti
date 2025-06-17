@@ -7,6 +7,14 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   base: '/',
+  theme: {
+    extend: {
+      fontFamily: {
+        tenor: ['"Tenor Sans"', 'sans-serif'],
+        palanquin: ['Palanquin', 'sans-serif'],
+      },
+    },
+  },
   plugins: [react(),compression(),tailwindcss(),
   ],
 
