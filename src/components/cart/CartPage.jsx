@@ -26,6 +26,7 @@ const CartPage = ({setNumCartItems}) => {
   const [paymentError, setPaymentError] = useState(null);
   const queryClient = useQueryClient();
   const navigate = useNavigate();
+  const access = localStorage.getItem("access");
 
   const [address, setAddress] = useState({
     orderedname: "",
@@ -90,6 +91,18 @@ const CartPage = ({setNumCartItems}) => {
   );
   const tax = subtotal * 0.18;
   const total = subtotal + tax;
+
+  const handleProcessPayment =()=>{
+    if(!access){
+      console.log("qqqqqqqqq")
+      toast.error("Please Login before proceeding to payment");
+      navigate("/login");
+    }
+    else{
+      console.log("aaaaaaaaaaaaa")
+      setShowAddressForm(true);
+    }
+  }
 
   const handleCheckout = async () => {
     setIsProcessingPayment(true);
@@ -406,7 +419,7 @@ const CartPage = ({setNumCartItems}) => {
           </div>
 
           <button 
-            onClick={() => setShowAddressForm(true)}
+            onClick={() => handleProcessPayment()}
             className="w-full bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] hover:text-white font-medium py-3 transition-all duration-300 flex items-center justify-center"
             disabled={cartItems.length === 0 || isProcessingPayment}
           >
@@ -525,7 +538,7 @@ const CartPage = ({setNumCartItems}) => {
           </div>
 
           <button 
-            onClick={() => setShowAddressForm(true)}
+            onClick={() => handleProcessPayment()}
             className="w-full bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] hover:text-white font-medium py-3 transition-all duration-300 flex items-center justify-center"
             disabled={cartItems.length === 0 || isProcessingPayment}
           >
