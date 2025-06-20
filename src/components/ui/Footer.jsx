@@ -54,15 +54,15 @@ const Footer = () => {
             </a>
 
           <div className="flex items-center space-x-3 mt-2">
-            <a href="#" className="hover:opacity-70 transition-opacity duration-300">
+            <a href="https://www.instagram.com/shilpavummiti/?hl=en" className="hover:opacity-70 transition-opacity duration-300">
               <FaInstagram size={16} />
             </a>
-            <a href="#" className="hover:opacity-70 transition-opacity duration-300">
+            <a href="https://www.facebook.com/shilpathestylist/" className="hover:opacity-70 transition-opacity duration-300">
               <FaFacebookF size={16} />
             </a>
-            <a href="#" className="hover:opacity-70 transition-opacity duration-300">
+            {/* <a href="#" className="hover:opacity-70 transition-opacity duration-300">
               <FaYoutube size={16} />
-            </a>
+            </a> */}
           </div>
 
           <Link to={'/terms'}><p className="mt-4 hover:opacity-70 transition-opacity duration-300 cursor-pointer">
