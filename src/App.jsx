@@ -22,6 +22,7 @@ import NotFound from './pages/NotFound';
 import OrderConfirmation from './components/cart/OrderComfirm';
 import ResetPassword from './pages/ResetPassword';
 import ForgotPassword from './pages/ForgetPassword';
+import OrderDetails from './components/order/OrderDetails';
 const App = () => {
   const[numCartItems, setNumCartItems] = useState(0);
   const cart_code = localStorage.getItem('cart_code');
@@ -59,6 +60,7 @@ const App = () => {
             <Route path='/authenticity' element={<Authenticity/>}/>
             <Route path="*" element={<NotFound/>}/>
             <Route path="/order-confirmation/:orderId" element={<OrderConfirmation />} />
+            <Route path='/my-orders' element={<OrderDetails/>} />
 
 
           </Route>

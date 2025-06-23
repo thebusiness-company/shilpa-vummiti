@@ -13,6 +13,10 @@ export default function Navbar({ NumCartItems }) {
   const buttonRef = useRef(null);
   const searchRef = useRef(null);
 
+  const [profileOpen, setProfileOpen] = useState();
+  const profileRef = useRef(null);
+  const profileButtonRef = useRef(null);
+
   console.log(NumCartItems)
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -32,17 +36,32 @@ export default function Navbar({ NumCartItems }) {
       ) {
         setSearchOpen(false);
       }
+      if(
+        profileOpen &&
+        profileRef.current &&
+        !profileRef.current.contains(event.target) &&
+        !profileButtonRef.current.contains(event.target)
+      ){
+        setProfileOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [menuOpen, searchOpen]);
+  }, [menuOpen, searchOpen, profileOpen]);
 
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
-  }, [menuOpen]);
+  // useEffect(() => {
+  //   document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
+  // }, [menuOpen]);
+
+  // useEffect(() => {
+  //   document.body.style.overflow = profileOpen ? 'hidden' : 'auto';
+  // }, [profileOpen]);
+
+
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const toggleSearch = () => setSearchOpen(!searchOpen);
+  const toggleProfile = () => setProfileOpen(!profileOpen);
 
   return (
     <header className="fixed top-0 w-full z-50 bg-[#F2F0EF] shadow-sm">
@@ -95,9 +114,31 @@ export default function Navbar({ NumCartItems }) {
             <a href="/wishlist"><button aria-label="Wishlist">
             <img src={heart} alt="Wishlist" className="h-6 cursor-pointer mx-auto"/>
             </button></a>
-            <a href="/profile"><button aria-label="User">
+
+            {/* <a href="/profile"><button aria-label="User">
               <img src={profile} alt="profile" className="h-6 cursor-pointer  mx-auto"/>
-            </button></a>
+            </button></a> */}
+
+        <div className='relative'>
+          <button ref={profileButtonRef} onClick={toggleProfile} aria-label='user'>
+              <img src={profile} alt="profile" className='h-6 cursor-pointer mx-auto' />
+          </button>
+
+         {/* Profile Dropdown */}
+          <div ref={profileRef} className={`bg-[#F2F0EF] absolute right-0 mt-6 w-36 shadow-md transition-all duration-300 ease-in-out z-10  ${profileOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+          <ul className="flex flex-col text-sm font-medium items-center justify-center p-2">
+            <li className=''>
+              <Link to="/profile" onClick={()=>setProfileOpen(false)} className="block px-4 py-2 hover:bg-gray-100">Profile</Link>
+            </li>
+            <li>
+              <Link to ="/my-orders" onClick={() => setMenuOpen(false)} className="block px-4 py-2 hover:bg-gray-100">Order Details</Link>
+            </li>
+            <li>
+              <button className="block px-4 py-2 hover:bg-gray-100">Logout</button>
+            </li>
+          </ul>
+                  </div>
+                </div>
           </div>
         </div>
 
@@ -119,12 +160,12 @@ export default function Navbar({ NumCartItems }) {
         <nav
           ref={menuRef}
           id="main-menu"
-          className={`absolute top-[72px] left-6 w-32 bg-white shadow-md border rounded-md text-left transition-all duration-300 ease-in-out ${
+          className={`bg-[#F2F0EF] absolute mt-0 left-6 w-28 shadow-md  text-left transition-all duration-300 ease-in-out ${
             menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
           }`}
           role="navigation"
         >
-          <ul className="flex flex-col text-sm font-medium">
+          <ul className="flex flex-col text-sm font-medium justify-center items-center text-left">
             <li>
               <Link to="/" onClick={() => setMenuOpen(false)} className="block px-4 py-2 hover:bg-gray-100">
                 Home
