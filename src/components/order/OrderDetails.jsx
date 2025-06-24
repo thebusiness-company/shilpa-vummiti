@@ -1,34 +1,41 @@
 import React,{useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import API, { API_URL } from "../../api";
 import Logo from "../../assets/images/Logo.png";
 import RazorPayLogo from "../../assets/images/RazorPayLogo.png";
-
-// import p1 from "../../assets/images/p1.png";
+import Loader from "../ui/Loader";
 
 const OrderDetails = () => {
     
     const [order,setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
+    // const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     useEffect(()=>{
         API.get(`my-orders/`)
         .then((res)=> {
-            setOrder(res.data)
+            setOrder(res.data);
             setLoading(false);
-            console.log(`Order details:  `,res.data);
-            
+            // console.log(`Order details:  `,res.data);  
         })
         .catch((error)=>{
-            setError("Failed to fetch order details:" + error.message);
-            setLoading(false);
+            //  setError("Invalid User:" + error.message);
             console.error("Error fetching order details: ",error );
+            if (error.response && error.response.status === 401) {
+                 navigate("/login");
+             }else{
+                console.error("Error in Orderdetails: "+ error.message);  
+            }
+             setLoading(false);
             
         })
-    },[])
+    },[navigate])
 
-    if(loading) return <p>Loading...</p>;
-    if (error) return  <p>{error}</p>;
+    if(loading) return (
+        <Loader />
+    );
+
     if (!order || order.length === 0)  return <p>No order found.</p>;
   
 return (
@@ -56,7 +63,7 @@ return (
              return (
             <div key={idx} className="mb-10 pb-6">
                      {/* Order Summary For Each order */}
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4 text-sm mb-8 lg:mt-10 lg:mb-10 bg-[#F2F0EF]">
+                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4 text-sm mb-8 md:pl-16 lg:mb-10 bg-[#F2F0EF]">
                 <div>
                 <p>Order Placed</p>
                 <p><strong>{formattedDate}</strong></p>
@@ -69,7 +76,7 @@ return (
                 <p>Shipped to </p>
                 <p><strong>Mr. </strong></p>    
                  </div> 
-                <div className="md:pl-20">
+                <div className="md:pl-24">
                 <p>Order Id</p>
                 <p><strong># {orderId}</strong></p>
                 </div>

@@ -5,6 +5,7 @@ import logo from '../../assets/images/Logo.png';
 import heart from '../../assets/images/heart.svg';
 import profile from '../../assets/images/profile.svg';
 import cart from '../../assets/images/cart.svg';
+import toast from 'react-hot-toast';
 
 export default function Navbar({ NumCartItems }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,11 +58,20 @@ export default function Navbar({ NumCartItems }) {
   //   document.body.style.overflow = profileOpen ? 'hidden' : 'auto';
   // }, [profileOpen]);
 
-
-
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const toggleSearch = () => setSearchOpen(!searchOpen);
   const toggleProfile = () => setProfileOpen(!profileOpen);
+  
+  const Logout=()=>{
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    setProfileOpen(false);
+    toast.success("Logged out Successfully")
+    setTimeout(()=>{
+      window.location.href = "/";
+    }, 1500)
+    
+  };
 
   return (
     <header className="fixed top-0 w-full z-50 bg-[#F2F0EF] shadow-sm">
@@ -131,10 +141,10 @@ export default function Navbar({ NumCartItems }) {
               <Link to="/profile" onClick={()=>setProfileOpen(false)} className="block px-4 py-2 hover:bg-gray-100">Profile</Link>
             </li>
             <li>
-              <Link to ="/my-orders" onClick={() => setMenuOpen(false)} className="block px-4 py-2 hover:bg-gray-100">Order Details</Link>
+              <Link to ="/my-orders" onClick={() => setProfileOpen(false)} className="block px-4 py-2 hover:bg-gray-100">Order Details</Link>
             </li>
             <li>
-              <button className="block px-4 py-2 hover:bg-gray-100">Logout</button>
+              <button onClick={Logout} className="block px-4 py-2 hover:bg-gray-100" >Logout</button>
             </li>
           </ul>
                   </div>
