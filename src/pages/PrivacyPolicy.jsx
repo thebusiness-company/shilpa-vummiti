@@ -5,11 +5,11 @@ const PrivacyPolicy = () => {
   return (
     <div className="flex justify-center min-h-screen">
       <div className="bg-white w-full px-4 md:px-16 lg:px-20 mt-8 lg:mt-12">
-        <div className="bg-[#2C3E50] text-white text-center py-4 ">
+        <div className="bg-[#183028] text-white text-center py-4 ">
           <h1 className="text-xl md:text-2xl font-semibold">Privacy Policy</h1>
         </div>
 
-        <div className="flex flex-col items-center py-6 px-4 md:px-10 space-y-6 text-gray-700 text-sm md:text-base leading-relaxed">
+        <div className="flex flex-col items-center py-6 px-4 md:px-10 space-y-6 text-sm md:text-base leading-relaxed">
             <img src={Lock} alt="Privacy icon" className="w-8 h-8"/>
 
           <p className="text-center ">

@@ -5,10 +5,10 @@ const ShippingPolicySection = () => {
     <section className="bg-white py-10 px-4 md:px-16 lg:px-20">
       <div className=" mx-auto">
         <div className="bg-pink-100 py-4 ">
-          <h2 className="text-center text-xl md:text-2xl font-semibold text-gray-800">Shipping Policy</h2>
+          <h2 className="text-center text-xl md:text-2xl font-semibold text-[#183028]">Shipping Policy</h2>
         </div>
 
-        <div className="bg-white text-gray-700  p-6  text-sm md:text-base leading-relaxed space-y-4">
+        <div className="bg-white p-6  text-sm md:text-base text-center lg:text-left leading-relaxed space-y-4">
           <p>
             We generally ship the ordered products within 48 working hours and customized products will be directly reported to the customer the same shall be delivered to your doorsteps within 5-7 working days via courier from the shipping date. Delivery time can be extended depending upon your delivery location.
           </p>

@@ -91,8 +91,8 @@ export default function CategoryProductView() {
                   alt={prod.name}
                   className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <p className="mt-2 font-medium text-sm sm:text-base">{prod.name}</p>
-                <p className="text-sm text-gray-700">₹ {prod.price}</p>
+                <p className="mt-2 font-medium text-sm sm:text-base text-left text-[#183028]">{prod.name}</p>
+                <p className="text-sm text-left text-[#183028]">₹ {prod.price}</p>
                 </Link>
               </div>
             ))}

@@ -58,6 +58,7 @@ export default function Navbar({ NumCartItems }) {
   //   document.body.style.overflow = profileOpen ? 'hidden' : 'auto';
   // }, [profileOpen]);
 
+  
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const toggleSearch = () => setSearchOpen(!searchOpen);
   const toggleProfile = () => setProfileOpen(!profileOpen);

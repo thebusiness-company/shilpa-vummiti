@@ -3,7 +3,7 @@ import shilpa from '../assets/images/shilpa2.png';
 const ChennaiFav = () => {
   return (
     <div className=" max-w-7xl py-5 mx-auto">
-      <div className="flex flex-col lg:flex-row items-start gap-2 lg:gap-20">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 lg:gap-20 justify-center">
         {/* Image */}
         <div className="w-full lg:w-1/2">
           <img
@@ -14,9 +14,9 @@ const ChennaiFav = () => {
         </div>
 
         {/* About Me Text */}
-        <div className="w-full px-4 lg:px-0 lg:w-1/2">
-        <h2 className="text-3xl font-semibold text-center mb-4">CHENNAI</h2>
-        <p className="text-gray-700 lg:mb-6">
+        <div className="w-full px-4 lg:px-0 lg:w-1/2 lg:grid lg:grid-rows-2">
+        <h2 className="text-3xl font-semibold text-center mb-2 lg:text-left lg:mt-10 tracking-wider">CHENNAI</h2>
+        <p className="text-gray-700 lg:mb-6 ">
             <strong>CHENNAI:</strong> The demand for constant newness is reshaping the fashion
             industry, pushing brands to roll out fresh collections more frequently to keep up with
             changing tastes. To stay ahead of trends, designers are using social media, following

@@ -221,7 +221,7 @@ export default function ProductDetail({setNumCartItems}) {
             <select
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
-              className="border-b border-gray-400 px-4 py-2 lg:my-3 w-full cursor-pointer text-xs font-semibold lg:text-sm text-black"
+              className="border-gray-400 px-4 py-2 lg:my-3 w-full cursor-pointer text-xs font-semibold lg:text-sm text-black hover:bg-[#F2F0EF]"
             >
               <option value="">Select your size</option>
               <option value="Small">Small</option>

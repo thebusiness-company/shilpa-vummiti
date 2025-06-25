@@ -89,8 +89,13 @@ const CartPage = ({setNumCartItems}) => {
     (sum, item) => sum + parseFloat(item.product.price) * item.quantity,
     0
   );
+  const shippingCharge = 300;
   const tax = subtotal * 0.18;
-  const total = subtotal + tax;
+
+  const isShippingFree = subtotal > 10000;
+  const shipping = isShippingFree? 0 : shippingCharge; 
+
+  const total = subtotal + tax + shipping;
 
   const handleProcessPayment =()=>{
     if(!access){
@@ -178,8 +183,18 @@ const CartPage = ({setNumCartItems}) => {
     }
   };
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <p><Loader/></p>;
   if (error) return <Loader text="Error Loading Cart"/>;
+  if (cartItems.length === 0){
+    return(
+      <div className="min-h-screen flex flex-col p-10 mx-auto justify-center items-center text-center space-y-8">
+        <h1 className="text-2xl text-[#183028]"><strong>Your Cart is Empty!</strong></h1>
+        <p className="text-sm">Looks like you haven't added anything to your cart yet</p>
+        <button onClick={()=>navigate("/")} className="bg-[#DB296133] text-[#DB2961] p-2 pl-6 pr-6 font-semibold transition-all duration-300 transform hover:scale-105 active:scale-90">Start Shopping</button>
+      </div>
+    );
+  }
+
   return (
     <div className="font-sans bg-white min-h-screen">
       {/* Address Form Modal */}
@@ -291,7 +306,7 @@ const CartPage = ({setNumCartItems}) => {
       {/* Desktop View */}
       <div className="hidden lg:flex flex-col lg:flex-row justify-between px-4 md:px-10 py-8">
         <div className="w-full lg:w-2/3 space-y-8">
-          <h2 className="text-lg font-semibold">YOUR SELECTIONS</h2>
+          <h2 className="text-lg font-semibold border-b pb-4">YOUR SELECTIONS</h2>
           {cartItems.map(({ id, product, quantity, product_size }) => (
             <motion.div
               key={id}
@@ -306,14 +321,14 @@ const CartPage = ({setNumCartItems}) => {
                 className="w-32 h-40 object-cover mb-4 md:mb-0 md:mr-6"
               />
               <div className="flex-2 space-y-4">
-                <h3 className="text-md font-medium">{product.name}</h3>
-                <p className="text-sm text-gray-500">
+                <h3 className="text-md font-medium text-[#183028]">{product.name}</h3>
+                <p className="text-sm">
                   Product Code: {product.product_code || "N/A"}
                 </p>
-                <p className="text-xs text-green-600">AVAILABLE</p>
+                <p className="text-xs">AVAILABLE</p>
                 <div className="flex items-center space-x-2 text-xs">
                 <select
-                className="border-b text-sm px-2 py-1 "
+                className="border-b text-sm px-2 py-1"
                 value={product_size}
                 onChange={(e) =>
                   updateItemMutation.mutate({
@@ -331,14 +346,14 @@ const CartPage = ({setNumCartItems}) => {
               </select>
                   <span>|</span>
                   <button
-                    className="text-red-500 hover:underline"
+                    className="hover:underline cursor-pointer"
                     onClick={() => removeItemMutation.mutate(id)}
                   >
                     REMOVE
                   </button>
                   <span>|</span>
                   <button
-                    className="hover:underline"
+                    className="hover:underline cursor-pointer"
                     onClick={() => addToWishlistMutation.mutate(product.id)}
                     disabled={addToWishlistMutation.isLoading}
                   >
@@ -366,7 +381,7 @@ const CartPage = ({setNumCartItems}) => {
                 </select>
               </div>
               <div className="flex-1">
-                <p className="text-lg text-center font-semibold mt-2">
+                <p className="text-lg text-center font-semibold mt-2 text-emerald-950">
                   ₹ {(product.price * quantity).toLocaleString()}
                 </p>
               </div>
@@ -376,31 +391,36 @@ const CartPage = ({setNumCartItems}) => {
 
         {/* Right Section */}
         <div className="w-full lg:w-1/3 mt-10 lg:mt-0 lg:pl-10">
-          <h3 className="text-sm font-medium text-gray-700 mb-2">ORDER SUMMARY</h3>
-          <p className="text-xs text-gray-500">DUWMPNPKVB25</p>
-          <div className="text-sm text-gray-700 space-y-6 mb-4">
+          <h3 className="text-sm font-medium mb-2 text-[#DB2961] underline mt-6">ORDER SUMMARY</h3>
+          <p className="text-xs mb-6">DUWMPNPKVB25</p>
+          <div className="text-sm space-y-6 mb-2">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span>₹ {subtotal.toFixed(2)}</span>
+              <span className="text-emerald-950">₹ {subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
-              <span>No Shipping</span>
+              <span className="text-emerald-950">
+                {isShippingFree? "Free":`₹ ${shippingCharge}`}
+              </span>
             </div>
             <div className="flex justify-between">
               <span>Taxable Amount</span>
-              <span>₹ {tax.toFixed(2)}</span>
+              <span className="text-emerald-950">₹ {tax.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between font-semibold pt-2 border-t">
+            <div className="flex justify-between font-semibold pt-2">
               <span>Total</span>
-              <span>₹ {total.toFixed(2)}</span>
+              <span className="text-emerald-950">₹ {total.toFixed(2)}</span>
+            </div>
+            <div>
+              <span>Enjoy free shipping on all orders above ₹10,000.</span>
             </div>
           </div>
 
-          <div className="border-t py-8 cursor-pointer" onClick={() => toggle("view")}>
+          <div className="py-6 cursor-pointer" onClick={() => toggle("view")}>
             <div className="flex justify-between items-center">
-              <span className="text-sm font-medium">View Details</span>
-              {expanded.view ? <FiMinus /> : <HiMiniPlus />}
+              <span className="text-sm font-medium text-[#DB2961]">View Details</span>
+              {expanded.view ? <FiMinus className="text-[#DB2961]" /> : <HiMiniPlus className="text-[#DB2961]"/>}
             </div>
             <AnimatePresence>
               {expanded.view && (
@@ -411,8 +431,7 @@ const CartPage = ({setNumCartItems}) => {
                   transition={{ duration: 0.3 }}
                   className="text-sm text-gray-600 mt-6"
                 >
-                  You will be charged at the time of shipment. For made-to-order
-                  products, you will be charged at purchase.
+                 You will be charged at the time of shipment. If this is a personalized or made-to-order purchase, you will be charged at the time of purchase.
                 </motion.div>
               )}
             </AnimatePresence>
@@ -420,7 +439,7 @@ const CartPage = ({setNumCartItems}) => {
 
           <button 
             onClick={() => handleProcessPayment()}
-            className="w-full bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] hover:text-white font-medium py-3 transition-all duration-300 flex items-center justify-center"
+            className="w-full bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] hover:text-white font-medium py-3 transition-all duration-300 flex items-center justify-center mb-4"
             disabled={cartItems.length === 0 || isProcessingPayment}
           >
             {isProcessingPayment ? (
@@ -434,7 +453,7 @@ const CartPage = ({setNumCartItems}) => {
             ) : cartItems.length === 0 ? (
               "Cart is Empty"
             ) : (
-              "Proceed to Payment"
+              "Checkout"
             )}
           </button>
           {paymentError && (
@@ -442,25 +461,29 @@ const CartPage = ({setNumCartItems}) => {
               {paymentError}
             </div>
           )}
+          <div className="text-sm space-y-6 mb-4 text-left tracking-wider">
+            <span>All our orders are processed and shipped within 2-3 business days. <br/>
+             Once your order is shipped, the tracking details will be sent exclusively to your registered email address.</span>
+          </div>
         </div>
       </div>
 
       {/* Mobile View */}
       <div className="lg:hidden px-8 py-6 text-center space-y-6">
-        <h2 className="text-lg font-semibold mb-4">YOUR SELECTIONS</h2>
+        <h2 className="text-lg font-semibold mb-4 pb-6 border-b  ">YOUR SELECTIONS</h2>
         {cartItems.map(({ id, product, quantity, product_size }) => (
-          <div key={id} className="pb-6 space-y-3">
+          <div key={id} className="pb-6 space-y-3 ">
             <img
               src={`${API_URL}${product.image}`}
               alt={product.name}
-              className="w-full object-cover mb-4"
+              className="w-full object-cover mb-4 mt-4"
             />
-            <h3 className="text-md font-medium">{product.name}</h3>
-            <p className="text-sm text-gray-500">
+            <h3 className="text-md font-medium text-[#183028]">{product.name}</h3>
+            <p className="text-sm ">
               Product Code: {product.product_code || "N/A"}
             </p>
-            <p className="text-xs text-green-600">AVAILABLE</p>
-            <p className="text-lg font-semibold">
+            <p className="text-xs">AVAILABLE</p>
+            <p className="text-lg font-semibold text-[#183028]">
               ₹ {(product.price * quantity).toLocaleString()}
             </p>
             <select
@@ -480,9 +503,9 @@ const CartPage = ({setNumCartItems}) => {
                 </option>
               ))}
             </select>
-            <div className="flex justify-center items-center space-x-6 text-xs">
+            <div className="flex justify-center items-center space-x-4 text-xs pb-2">
             <select
-                className="border-b text-sm px-2 py-1 "
+                className="border-b text-sm px-2 py-1"
                 value={product_size}
                 onChange={(e) =>
                   updateItemMutation.mutate({
@@ -498,43 +521,72 @@ const CartPage = ({setNumCartItems}) => {
                 <option value="Large">Large</option>
                 <option value="Extra Large">Extra Large</option>
               </select>
+              <div>|</div>
               <button
-                className="text-red-500 hover:underline"
+                className="underline"
                 onClick={() => removeItemMutation.mutate(id)}
               >
                 REMOVE
               </button>
+              <div>|</div>
               <button
-                className="hover:underline"
+                className="underline"
                 onClick={() => addToWishlistMutation.mutate(product.id)}
                 disabled={addToWishlistMutation.isLoading}
               >
                 🤍 MOVE TO WISHLIST
               </button>
+             
             </div>
+            <hr className="w-2/3 mx-auto border-t" />
           </div>
         ))}
 
         <div className="border-t pt-6 space-y-4">
-          <p className="text-sm font-semibold text-gray-700">ORDER SUMMARY</p>
-          <p className="text-xs text-gray-500">DUWMPNPKVB25</p>
-          <div className="text-sm text-gray-700 space-y-2 mb-4">
-            <div className="flex justify-between">
+          <p className="text-sm font-semibold  text-left text-[#DB2961]">ORDER SUMMARY</p>
+          <p className="text-xs text-left">DUWMPNPKVB25</p>
+          <div className="text-sm space-y-2 mb-4">
+            <div className="flex justify-between border-t pt-4">
               <span>Subtotal</span>
-              <span>₹ {subtotal.toFixed(2)}</span>
+              <span className="text-[#183028]">₹ {subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
-              <span>No Shipping</span>
+              <span className="text-[#183028]">
+                {isShippingFree? "Free":`₹ ${shippingCharge}`}
+              </span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between pb-2">
               <span>Taxable Amount</span>
-              <span>₹ {tax.toFixed(2)}</span>
+              <span className="text-[#183028]">₹ {tax.toFixed(2)}</span>
             </div>
-            <div className="flex justify-between font-semibold pt-2 border-t">
+            <div className="flex justify-between font-semibold pt-4">
               <span>Total</span>
-              <span>₹ {total.toFixed(2)}</span>
+              <span className="text-[#183028]">₹ {total.toFixed(2)}</span>
             </div>
+            <div className="text-sm text-left pt-4">
+              <span>Enjoy free shipping on all orders above ₹10,000.</span>
+            </div>
+          </div>
+
+           <div className=" py-8 cursor-pointer" onClick={() => toggle("view")}>
+            <div className="flex justify-between items-center">
+              <span className="text-sm font-medium text-[#DB2961]">View Details</span>
+              {expanded.view ? <FiMinus className="text-[#DB2961]"/> : <HiMiniPlus className="text-[#DB2961]"/>}
+            </div>
+            <AnimatePresence>
+              {expanded.view && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-sm text-gray-600 mt-4 text-left"
+                >
+                 You will be charged at the time of shipment. If this is a personalized or made-to-order purchase, you will be charged at the time of purchase.
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           <button 
@@ -553,7 +605,7 @@ const CartPage = ({setNumCartItems}) => {
             ) : cartItems.length === 0 ? (
               "Cart is Empty"
             ) : (
-              "Proceed to Payment"
+              "Checkout"
             )}
           </button>
           {paymentError && (
@@ -561,6 +613,10 @@ const CartPage = ({setNumCartItems}) => {
               {paymentError}
             </div>
           )}
+          <div className="text-sm space-y-6 mb-4 text-left tracking-wider">
+            <span >All our orders are processed and shipped within 2-3 business days. <br/>
+             Once your order is shipped, the tracking details will be sent exclusively to your registered email address.</span>
+          </div>
         </div>
       </div>
     </div>

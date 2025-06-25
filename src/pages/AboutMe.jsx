@@ -3,7 +3,7 @@ import shilpa from '../assets/images/shilpa.png';
 const AboutMe = () => {
   return (
     <div className=" max-w-7xl py-5 mx-auto">
-      <div className="flex flex-col lg:flex-row items-start gap-2 lg:gap-20">
+      <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 lg:gap-20">
         {/* Image */}
         <div className="w-full lg:w-1/2">
           <img
@@ -15,7 +15,7 @@ const AboutMe = () => {
 
         {/* About Me Text */}
         <div className="w-full px-4 lg:px-0 lg:w-1/2">
-          <h2 className="text-3xl font-medium my-4">About me</h2>
+          <h2 className="text-3xl font-medium my-4 lg:mb-10">About me</h2>
           <p className="text-gray-700 leading-relaxed">
             As a fashion designer specializing in women's wear, creating vibrant and versatile pieces that celebrate individuality and style. My collections focus on tops, customized dresses, Indian and fusion wear, co-ords, and bottoms, blending traditional craftsmanship with contemporary flair.
           </p>
