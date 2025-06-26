@@ -36,8 +36,12 @@ const OrderDetails = () => {
         <Loader />
     );
 
-    if (!order || order.length === 0)  return <p>No order found.</p>;
-    console.log("order",order);
+    if (!order || order.length === 0)
+        return (
+            <div className="flex justify-center items-center h-[60vh]">
+                <p>Your order page is Empty</p>
+            </div>
+        );
     
   
 return (
