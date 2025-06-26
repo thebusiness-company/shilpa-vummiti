@@ -61,7 +61,7 @@ return (
             <p className="text-lg tracking-wider uppercase font-medium text-center lg:text-right mb-6 lg:mt-14">MY ORDER DETAILS</p>
         </div>
        
-      {/* <pre>{JSON.stringify(order, null, 2)}</pre> */}
+      <pre>{JSON.stringify(order, null, 2)}</pre>
 
         {/* Looping through all orders & formatting ord.created_at into date */}
         {deliveredOrders.map((ord,idx)=>{
@@ -98,7 +98,7 @@ return (
                         </div>
                         <div>   
                         <p>Shipped to </p>
-                        <p className="font-semibold">Mr. </p>    
+                        <p className="font-semibold">{ord.address?.orderedname || "N/A"} </p>    
                         </div> 
                         <div className="md:pl-24">
                         <p>Order Id</p>
@@ -154,7 +154,7 @@ return (
                     </div>
                     <div className="grid grid-cols-1 mb-4 text-base py-4 space-y-2 justify-center items-start">   
                         <p>Shipped to </p>
-                        <p><strong>Mr. </strong></p>    
+                        <p><strong>{ord.address?.orderedname || "N/A"}  </strong></p>    
                     </div> 
 
                     {/* Product Loop for this order */}
