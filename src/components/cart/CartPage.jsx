@@ -190,7 +190,7 @@ const CartPage = ({setNumCartItems}) => {
       <div className="min-h-screen flex flex-col p-10 mx-auto justify-center items-center text-center space-y-8">
         <h1 className="text-2xl text-[#183028]"><strong>Your Cart is Empty!</strong></h1>
         <p className="text-sm">Looks like you haven't added anything to your cart yet</p>
-        <button onClick={()=>navigate("/")} className="bg-[#DB296133] text-[#DB2961] p-2 pl-6 pr-6 font-semibold transition-all duration-300 transform hover:scale-105 active:scale-90">Start Shopping</button>
+        <button onClick={()=>navigate("/")} className="bg-[#DB296133] text-[#DB2961] hover:text-white hover:bg-[#183028]/40 p-2 pl-6 pr-6 font-semibold transition-all duration-300 transform hover:scale-105 active:scale-90">Start Shopping</button>
       </div>
     );
   }
@@ -205,7 +205,7 @@ const CartPage = ({setNumCartItems}) => {
                 <X size={24} />
               </button>
           {/* Left Form */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-center">
+          <div className="w-full md:w-1/2 md-space-x-6 lg:space-x-6 lg:w-1/2 flex flex-col justify-center">
         <img src={logo} alt="Logo" className="h-40 w-60 mb-5" />
 
         <h2 className="text-lg mb-6">YOUR ORDER UPDATE</h2>
@@ -242,6 +242,7 @@ const CartPage = ({setNumCartItems}) => {
                className="w-full border-b border-black focus:outline-none pb-1"
                 required
               />
+              <div className="flex flex-row gap-x-10 lg:gap-x-12">
               <input
                 type="text"
                 placeholder="City"
@@ -258,9 +259,11 @@ const CartPage = ({setNumCartItems}) => {
                className="w-1/2 border-b border-black focus:outline-none pb-1"
                 required
               />
+              </div>
+              <div className="flex flex-row gap-x-10 lg:gap-x-12 mb-8">
               <input
                 type="text"
-                placeholder="country"
+                placeholder="Country"
                 value={address.country}
                 onChange={(e) => setAddress({...address, country: e.target.value})}
                className="w-1/2 border-b border-black focus:outline-none pb-1"
@@ -274,8 +277,10 @@ const CartPage = ({setNumCartItems}) => {
                className="w-1/2 border-b border-black focus:outline-none pb-1"
                 required
               />
+              </div>
             </div>
-            <div className="flex justify-center space-x-2 mt-4">
+            <div className="mt-4 max-w-md w-full ">
+            <div className="flex justify-end ">
               
               <button 
                 onClick={handleCheckout}
@@ -284,6 +289,7 @@ const CartPage = ({setNumCartItems}) => {
               >
                 {isProcessingPayment ? "Processing..." : "PAYMENT MODE"}
               </button>
+            </div>
             </div>
             {paymentError && (
               <div className="text-red-500 text-sm mt-2">
@@ -396,21 +402,21 @@ const CartPage = ({setNumCartItems}) => {
           <div className="text-sm space-y-6 mb-2">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span className="text-emerald-950">₹ {subtotal.toFixed(2)}</span>
+              <span className="text-[#183028]">₹ {subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
-              <span className="text-emerald-950">
+              <span className="text-[#183028]">
                 {isShippingFree? "Free":`₹ ${shippingCharge}`}
               </span>
             </div>
             <div className="flex justify-between">
               <span>Taxable Amount</span>
-              <span className="text-emerald-950">₹ {tax.toFixed(2)}</span>
+              <span className="text-[#183028]">₹ {tax.toFixed(2)}</span>
             </div>
             <div className="flex justify-between font-semibold pt-2">
               <span>Total</span>
-              <span className="text-emerald-950">₹ {total.toFixed(2)}</span>
+              <span className="text-[#183028]">₹ {total.toFixed(2)}</span>
             </div>
             <div>
               <span>Enjoy free shipping on all orders above ₹10,000.</span>
@@ -469,14 +475,14 @@ const CartPage = ({setNumCartItems}) => {
       </div>
 
       {/* Mobile View */}
-      <div className="lg:hidden px-8 py-6 text-center space-y-6">
+      <div className="lg:hidden px-4 py-6 text-center space-y-6 overflow-y-auto overflow-x-hidden max-w-full max-h-screen">
         <h2 className="text-lg font-semibold mb-4 pb-6 border-b  ">YOUR SELECTIONS</h2>
         {cartItems.map(({ id, product, quantity, product_size }) => (
           <div key={id} className="pb-6 space-y-3 ">
             <img
               src={`${API_URL}${product.image}`}
               alt={product.name}
-              className="w-full object-cover mb-4 mt-4"
+              className="w-full max-w-48 md:max-w-56 h-auto object-cover mb-4 mt-4 mx-auto"
             />
             <h3 className="text-md font-medium text-[#183028]">{product.name}</h3>
             <p className="text-sm ">

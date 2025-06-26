@@ -32,14 +32,26 @@ const OrderDetails = () => {
         })
     },[navigate])
 
+    const deliveredOrders = order?.filter(ord => ord.status?.toLowerCase()==="delivered");
+
     if(loading) return (
         <Loader />
     );
 
-    if (!order || order.length === 0)  return <p>No order found.</p>;
+    if (!deliveredOrders || deliveredOrders.length === 0)  return (
+        <div className="min-h-screen flex flex-col p-10 mx-auto justify-center items-center text-center space-y-4">
+        <h1 className="text-2xl text-[#183028]"><strong>No orders found!</strong></h1>
+        <div className="flex flex-col justify-start items-start text-left mb-8 space-y-4">
+            <p className="text-base">Looks like you haven't added anything to your cart yet</p>
+            <p className="text-base">Browse our products and place your first order!</p>
+        </div>
+        
+        <button onClick={()=>navigate("/")} className="bg-[#DB296133] text-[#DB2961] p-2 pl-6 pr-6 font-semibold transition-all duration-300 transform hover:scale-105 hover:text-white hover:bg-[#183028]/40 active:scale-90">Start Shopping</button>
+      </div>
+    );
     console.log("order",order);
+
     
-  
 return (
 <>
     <div className="max-w-6xl mx-auto px-4 py-6 bg-white">
@@ -52,14 +64,21 @@ return (
       {/* <pre>{JSON.stringify(order, null, 2)}</pre> */}
 
         {/* Looping through all orders & formatting ord.created_at into date */}
-        {order.map((ord,idx)=>{
+        {deliveredOrders.map((ord,idx)=>{
             const formattedDate = new Date(ord.created_at).toLocaleDateString("en-GB",{
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
             });
+
+            const deliveryDate = ord.delivered_at ? new Date(ord.delivered_at).toLocaleDateString("en-GB",{
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+            }) 
+            : "dd-mm-yyyy";
              const totalValue = parseFloat(ord.total_amount).toFixed(2);
-             const orderId = ord.id || "N/A"; // Fallback to "N/A" if id is not available
+             const orderId = ord.order_id || "N/A"; // Fallback to "N/A" if id is not available
             
              return (
                 <React.Fragment key={ord.id || idx}>
@@ -83,7 +102,7 @@ return (
                         </div> 
                         <div className="md:pl-24">
                         <p>Order Id</p>
-                        <p className="font-semibold"># {orderId}</p>
+                        <p className="font-semibold"> {orderId}</p>
                         </div>
                     </div>
 
@@ -101,7 +120,7 @@ return (
                         </div>
                         
                         <div className="text-sm md:text-right lg:text-left space-y-1 lg:pr-16 lg:border-l border-gray-700 lg:pl-20">
-                            <p>Delivered 27 March 2025</p>
+                            <p>Delivered {deliveryDate}</p>
                             <p>{ord.status}</p>
                             <div className="flex md:justify-end items-center gap-3 space-y-1 lg:text-left mt-6 md:mt-12">
                                 <p>Payment Methods  </p>
@@ -130,7 +149,7 @@ return (
                         </div>
                         <div className="justify-center items-start ">
                             <p className=" ">Order Id</p>
-                            <p># {orderId}</p>
+                            <p> {orderId}</p>
                         </div>
                     </div>
                     <div className="grid grid-cols-1 mb-4 text-base py-4 space-y-2 justify-center items-start">   
@@ -149,7 +168,7 @@ return (
                             <div className="">
                                 <p className="text-base font-semibold">{item.product.name}</p>
                                 <p className="text-sm mt-1">Size {item.product_size} | Qty {item.quantity}</p>
-                                <p className="text-sm mt-4">Delivered 27 March 2025</p>
+                                <p className="text-sm mt-4">Delivered {deliveryDate}</p>
                                 <p className="text-sm mb-2">{ord.status}</p>
                             </div>
                         </div>
