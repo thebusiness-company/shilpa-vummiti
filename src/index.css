@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Palanquin&family=Tenor+Sans&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-palanquin {
+  font-family: 'Palanquin', sans-serif;
+}
+.font-tenor {
+  font-family: 'Tenor Sans', sans-serif;
+}
+body {
+  font-family: 'Palanquin','Tenor Sans', sans-serif;
+}
+
+ :root{
+     font-family: 'Palanquin','Tenor Sans',sans-serif ;
+  /* system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  line-height: 1.5;
+  font-weight: 400;
+} 

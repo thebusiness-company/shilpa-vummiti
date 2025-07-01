@@ -62,7 +62,7 @@ const Wishlist = () => {
 
   return (
     <div className="w-full min-h-screen flex flex-col items-center px-4 py-8 bg-white max-w-6xl mx-auto">
-      <h2 className="text-lg md:text-xl font-medium mb-8 text-center">
+      <h2 className="text-lg md:text-xl lg:text-2xl font-medium mb-8 text-center">
         Don’t lose your favorites anymore
       </h2>
 
@@ -108,8 +108,8 @@ const Wishlist = () => {
               />
 
               <div className="py-3">
-                <h3 className="text-xs font-medium pr-10">{product.name}</h3>
-                <p className="text-sm text-gray-700">₹{product.price}</p>
+                <h3 className="text-sm md:text-lg font-medium pr-10 text-[#183028]">{product.name}</h3>
+                <p className="text-base md:text-xl md:mt-2 text-[#183028]">₹{product.price}</p>
               </div>
             </motion.div>
           ))}

@@ -4,9 +4,11 @@ const TermsAndConditions = () => {
   return (
     <div className="flex justify-center min-h-screen px-4 py-10 bg-white">
       <div className="max-w-3xl w-full text-center">
-        <h1 className="text-xl font-semibold mb-4">Terms & Conditions</h1>
-        <h2 className="text-lg font-medium mb-6">Lorem ipsum dolor sit amet</h2>
-        <ol className="list-decimal text-center space-y-3 px-4 sm:px-8 md:px-16 text-sm sm:text-base">
+        <strong>
+        <h1 className="text-2xl md:text-3xl lg:text-4xl mb-4">Terms & Conditions</h1>
+        <h2 className="text-lg md:text-2xl lg:text-3xl mb-6">Lorem ipsum dolor sit amet</h2>
+        </strong>
+        <ol className="list-decimal text-center space-y-3 px-4 sm:px-8 md:px-16 text-sm sm:text-base md:text-lg ">
           <li>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod magna non arcu vestibulum.
           </li>

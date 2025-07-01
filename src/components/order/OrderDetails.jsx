@@ -40,7 +40,7 @@ const OrderDetails = () => {
 
     if (!deliveredOrders || deliveredOrders.length === 0)  return (
         <div className="min-h-screen flex flex-col p-10 mx-auto justify-center items-center text-center space-y-4">
-        <h1 className="text-2xl text-[#183028]"><strong>No orders found!</strong></h1>
+        <h1 className="text-2xl text-[#183028] font-tenor"><strong>No orders found!</strong></h1>
         <div className="flex flex-col justify-start items-start text-left mb-8 space-y-4">
             <p className="text-base">Looks like you haven't added anything to your cart yet</p>
             <p className="text-base">Browse our products and place your first order!</p>
@@ -61,7 +61,7 @@ return (
             <p className="text-lg tracking-wider uppercase font-medium text-center lg:text-right mb-6 lg:mt-14">MY ORDER DETAILS</p>
         </div>
        
-      <pre>{JSON.stringify(order, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(order, null, 2)}</pre> */}
 
         {/* Looping through all orders & formatting ord.created_at into date */}
         {deliveredOrders.map((ord,idx)=>{
@@ -89,20 +89,20 @@ return (
                      {/* Order Summary For Each order */}
                     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 p-4 text-sm mb-8 md:pl-16 lg:mb-10 bg-[#F2F0EF]">
                         <div>
-                        <p>Order Placed</p>
-                        <p className="font-semibold">{formattedDate}</p>
+                        <p className="font-tenor text-base">Order Placed</p>
+                        <p className="font-semibold text-lg">{formattedDate}</p>
                         </div>
                         <div>
-                        <p>Total Value</p>
-                        <p className="font-semibold">₹ {totalValue}</p>
+                        <p className="font-tenor text-base">Total Value</p>
+                        <p className="font-semibold text-lg">₹ {totalValue}</p>
                         </div>
                         <div>   
-                        <p>Shipped to </p>
-                        <p className="font-semibold">{ord.address?.orderedname || "N/A"} </p>    
+                        <p className="font-tenor text-base">Shipped to </p>
+                        <p className="font-semibold text-lg">{ord.address?.orderedname || "N/A"} </p>    
                         </div> 
                         <div className="md:pl-24">
-                        <p>Order Id</p>
-                        <p className="font-semibold"> {orderId}</p>
+                        <p className="font-tenor text-base">Order Id</p>
+                        <p className="font-semibold text-lg"> {orderId}</p>
                         </div>
                     </div>
 
@@ -116,18 +116,18 @@ return (
                         {/* Product Details */}
                         <div className="flex-1 md:text-left gap-4 md:pl-16 lg:pl-16">
                             <h1 className="font-semibold">{item.product.name}</h1>
-                            <p className="text-sm mt-1">Size {item.product_size} | Qty purchased {item.quantity}</p>
+                            <p className="text-sm mt-1 font-tenor">Size {item.product_size} | Qty purchased {item.quantity}</p>
                         </div>
                         
                         <div className="text-sm md:text-right lg:text-left space-y-1 lg:pr-16 lg:border-l border-gray-700 lg:pl-20">
-                            <p>Delivered {deliveryDate}</p>
-                            <p>{ord.status}</p>
+                            <p className="font-tenor">Delivered {deliveryDate}</p>
+                            <p className="font-tenor">{ord.status}</p>
                             <div className="flex md:justify-end items-center gap-3 space-y-1 lg:text-left mt-6 md:mt-12">
-                                <p>Payment Methods  </p>
+                                <p className="font-tenor">Payment Methods  </p>
                                 <img src={RazorPayLogo} alt="RazorPay" className="h-4 md:h-4 lg:h-6 mb-1 lg:mb-2" />
                             </div>
                             <div className="md:justify-end items-center gap-2 space-y-1 lg:text-left">
-                            <p>Card ending with xxxx</p>
+                            <p className="font-tenor">Card ending with xxxx</p>
                             </div>
                         </div>
                     </div>

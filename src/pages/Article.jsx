@@ -37,11 +37,11 @@ const Article = () => {
 
       {/* Article */}
       <div className="max-w-7xl text-center ">
-        <h2 className="text-[15px] lg:text-[55px] font-medium mb-4">ARTICLES</h2>
-        <p className="mb-4 text-gray-800 text-start">
+        <h2 className="text-[15px] lg:text-3xl mb-4 font-medium font-tenor">ARTICLES</h2>
+        <p className="mb-4 text-start">
           Birds chirp in the background, occasionally drowned by the roar of a waterfall. There’s the fragrance of lemon grass. Up ahead is green grass with pink, orange and red flowers strewn about. It’s a garden. Vibrant paper boats and jars with candles add to the visual appeal. A large branch sits dramatically in the centre.
         </p>
-        <p className="text-gray-800 text-start">
+        <p className="text-start">
           This doesn’t quite seem like the setting for the launch of a fashion collection. But, it is. At Kahloscope, a line launched by designer and stylist Shilpa Vummiti, clothes aren’t displayed on hangers or showcased in a fashion show. Instead, they are projected on a screen. It creates an illusion of the on-screen models being part of the artificial garden that’s been set up at Humming Room, an exhibition space on <span className="font-semibold">NEELANKARAI</span>.
         </p>
       </div>

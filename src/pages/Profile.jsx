@@ -192,7 +192,7 @@ const ProfileUpdate = () => {
       </div>
 
       {/* Right Image */}
-      <div className="w-full md:w-1/2 flex items-center justify-center px-5 lg:px-20 py-10">
+      <div className="w-full md:w-1/2 flex md:hidden lg:flex items-center justify-center px-5 lg:px-20 py-10">
         <img
           src={img}
           alt="Fashion Model"

@@ -5,23 +5,23 @@ import heart from "../assets/images/heart1.svg"; // blue fabric
 
 const ProductCare = () => {
   return (
-    <section className="bg-white px-4 py-8 md:px-12 lg:px-24 text-gray-800">
+    <section className="bg-white px-4 py-8 md:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-            <div className="bg-pink-100 py-3 px-6 text-center">
-              <h2 className="text-xl md:text-2xl font-semibold text-gray-800">Product Care</h2>
+            <div className="bg-pink-100 py-4 px-6 text-center">
+              <h2 className="text-2xl md:text-2xl lg:text-4xl font-tenor text-[#DB2961]">Product Care</h2>
             </div>
             <div className="flex justify-center mt-4">
               <img src={heart} alt="heart icon" className="w-10 h-10" />
             </div>
 
             {/* Title */}
-        <h3 className="text-lg md:text-xl font-semibold mt-6 mb-2">
+        <h3 className="text-xl md:text-xl lg:text-3xl font-semibold mt-6 mb-2">
           How do I take care of my clothing pieces?
         </h3>
 
         {/* Introduction */}
-        <p className="mb-6 text-sm md:text-base leading-relaxed">
+        <p className="mb-6 text-base md:text-lg leading-relaxed">
           Shilpa Vummiti’s bespoke designs, known for their Indo-Western flair, vibrant colors, and premium fabrics like silk, georgette, chiffon,
           and sustainable materials, require careful maintenance to preserve their elegance and longevity. Follow these care tips to keep your garments
           looking pristine, honoring the brand’s commitment to quality craftsmanship and sustainable fashion.
@@ -35,7 +35,7 @@ const ProductCare = () => {
         />
 
         {/* Tips */}
-        <ol className="list-decimal list-inside space-y-4 text-sm lg:text-base md:text-base leading-relaxed">
+        <ol className="list-decimal list-inside space-y-4 text-base md:text-lg  leading-relaxed">
           <li>
             <strong>Read Care Labels First</strong>
             <ul className="list-disc list-inside ml-5 mt-1 space-y-1">
@@ -117,8 +117,8 @@ const ProductCare = () => {
         />
         {/* Why These Tips Matter Section */}
         <div className="mt-6">
-          <h4 className="text-lg md:text-xl lg:text-2xl font-semibold mb-3">Why These Tips Matter:</h4>
-          <ul className="list-disc list-inside text-sm md:text-base lg:text-base leading-relaxed space-y-2">
+          <h4 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-3">Why These Tips Matter:</h4>
+          <ul className="list-disc list-inside text-base md:text-lg leading-relaxed space-y-2">
             <li>
               <strong>Preserve Quality:</strong> Shilpa Vummiti’s designs, from floral-printed co-ord sets to silk gowns, are crafted with precision,
               and proper care ensures they remain stunning for years, reflecting the brand’s “no shortcuts” commitment.

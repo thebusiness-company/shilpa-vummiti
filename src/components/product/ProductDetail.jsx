@@ -146,7 +146,7 @@ export default function ProductDetail({setNumCartItems}) {
       transition={{ duration: 0.6 }}
       className="w-full min-h-screen bg-white lg:px-10 lg:py-20"
     >
-      <div className="flex flex-col lg:flex-row gap-6 lg:gap-20">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-20 overflow-x-hidden">
         {/* Left - Image */}
         <div className="w-full lg:w-1/2">
           <motion.img
@@ -185,7 +185,7 @@ export default function ProductDetail({setNumCartItems}) {
           <div className="flex justify-between items-start">
             <div>
               <h1 className="text-xl lg:text-2xl font-semibold capitalize">{product.name}</h1>
-              <p className="text-lg mt-1">₹ {product.price}</p>
+              <p className="text-lg mt-1 font-tenor">₹ {product.price}</p>
             </div>
             <button onClick={handleWishlistToggle}>
               <Heart
@@ -198,7 +198,7 @@ export default function ProductDetail({setNumCartItems}) {
 
           <div className="flex items-center justify-between mt-2">
             <p className="text-xs">(MRP incl. of all taxes)</p>
-            <p className="text-sm">Product Code: {product.product_code}</p>
+            <p className="text-sm font-palanquin">Product Code: {product.product_code}</p>
           </div>
 
           {/* Desktop Thumbnails */}
@@ -221,7 +221,7 @@ export default function ProductDetail({setNumCartItems}) {
             <select
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
-              className="border px-4 py-2 lg:my-3 w-full cursor-pointer text-base font-semibold lg:text-sm text-black hover:bg-[#F2F0EF]"
+              className="border px-4 py-2 lg:my-3 w-full cursor-pointer text-base font-semibold lg:text-base text-black hover:bg-[#F2F0EF]"
             >
               <option value="">Select your size</option>
               <option value="Small">Small</option>
@@ -249,6 +249,7 @@ export default function ProductDetail({setNumCartItems}) {
           </Accordion>
 
           {/* Add to Bag */}
+          <div className="flex justify-center items-center">
           <motion.button
             onClick={handleAddToBag}
             disabled={inCart || mutation.isLoading}
@@ -259,6 +260,7 @@ export default function ProductDetail({setNumCartItems}) {
           >
             {inCart ? "Added to bag" : mutation.isLoading ? "Adding..." : "Add to bag"}
           </motion.button>
+          </div>
         </motion.div>
       </div>
     </motion.div>

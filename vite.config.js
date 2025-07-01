@@ -3,19 +3,20 @@ import react from '@vitejs/plugin-react'
 import path from "path";
 import { fileURLToPath } from 'url';
 import compression from 'vite-plugin-compression';
-import tailwindcss from '@tailwindcss/vite'
+// import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   base: '/',
-  theme: {
-    extend: {
-      fontFamily: {
-        tenor: ['"Tenor Sans"', 'sans-serif'],
-        palanquin: ['Palanquin', 'sans-serif'],
-      },
-    },
-  },
-  plugins: [react(),compression(),tailwindcss(),
+  // theme: {
+  //   extend: {
+  //     fontFamily: {
+  //       tenor: ['"Tenor Sans"', 'sans-serif'],
+  //       palanquin: ['Palanquin', 'sans-serif'],
+  //     },
+  //   },
+  // },
+  plugins: [react(),compression(),
+    // tailwindcss(),
   ],
 
   resolve: {

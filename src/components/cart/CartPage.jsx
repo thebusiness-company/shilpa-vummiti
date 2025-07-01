@@ -327,8 +327,8 @@ const CartPage = ({setNumCartItems}) => {
                 className="w-32 h-40 object-cover mb-4 md:mb-0 md:mr-6"
               />
               <div className="flex-2 space-y-4">
-                <h3 className="text-md font-medium text-[#183028]">{product.name}</h3>
-                <p className="text-sm">
+                <h3 className="text-xl lg:text-2xl font-medium text-[#183028] font-tenor">{product.name}</h3>
+                <p className="text-sm lg:text-base">
                   Product Code: {product.product_code || "N/A"}
                 </p>
                 <p className="text-xs">AVAILABLE</p>
@@ -387,7 +387,7 @@ const CartPage = ({setNumCartItems}) => {
                 </select>
               </div>
               <div className="flex-1">
-                <p className="text-lg text-center font-semibold mt-2 text-emerald-950">
+                <p className="text-lg text-center font-semibold mt-2 text-emerald-950 ">
                   ₹ {(product.price * quantity).toLocaleString()}
                 </p>
               </div>
@@ -489,7 +489,7 @@ const CartPage = ({setNumCartItems}) => {
               Product Code: {product.product_code || "N/A"}
             </p>
             <p className="text-xs">AVAILABLE</p>
-            <p className="text-lg font-semibold text-[#183028]">
+            <p className="text-lg font-semibold text-[#183028] my-6">
               ₹ {(product.price * quantity).toLocaleString()}
             </p>
             <select
@@ -550,7 +550,7 @@ const CartPage = ({setNumCartItems}) => {
 
         <div className="border-t pt-6 space-y-4">
           <p className="text-sm font-semibold  text-left text-[#DB2961]">ORDER SUMMARY</p>
-          <p className="text-xs text-left">DUWMPNPKVB25</p>
+          <p className="text-sm text-left">DUWMPNPKVB25</p>
           <div className="text-sm space-y-2 mb-4">
             <div className="flex justify-between border-t pt-4">
               <span>Subtotal</span>

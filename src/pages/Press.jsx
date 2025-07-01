@@ -26,12 +26,12 @@ const ThePress = () => {
 
   return (
     <>
-    <div className="px-4 py-10 sm:px-6 lg:px-20 bg-white text-black max-w-6xl mx-auto">
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif text-center mb-10 underline">
+    <div className="px-4 py-10 sm:px-6 lg:px-20 bg-white text-black max-w-6xl mx-2 md:mx-6 md:flex md:flex-col md:justify-center md:items-center lg:justify-center lg:items-center lg:mx-20">
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl text-center mb-10 lg:underline font-tenor">
         THE PRESS
       </h2>
 
-      <div className="grid grid-cols-6 gap-2 lg:gap-6 ">
+      <div className="grid grid-cols-6 gap-2 md:gap-6 lg:gap-8 ">
         {/* Top Row - 2 items, each spans 3 columns on large screens */}
         <div className="col-span-3">
           <img
@@ -125,13 +125,13 @@ const ThePress = () => {
 
     </div>
     <div className="max-w-7xl text-center sm:px-6  bg-white text-black mx-auto">
-         <p className="text-gray-700 mt-2 mb-4">
+         <p className="mt-2 mb-4 px-4">
             While this fast pace encourages creativity and innovation, it also raises concerns
             about sustainability, burnout, and the loss of timeless design. City-based designers
             talk to DT Next about whether this trend marks progress or signals a warning.
           </p>
 
-          <p className="text-gray-700 mb-4">
+          <p className="mb-4 px-4">
             While this fast pace encourages creativity and innovation, it also raises concerns
             about sustainability, burnout, and the loss of timeless design. City-based designers
             talk to DT Next about whether this trend marks progress or signals a warning.

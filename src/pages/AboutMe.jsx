@@ -5,7 +5,7 @@ const AboutMe = () => {
     <div className=" max-w-7xl py-5 mx-auto">
       <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 lg:gap-20">
         {/* Image */}
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:w-2/3">
           <img
             src={shilpa} // Replace with actual image path
             alt="Fashion Designer"
@@ -14,16 +14,16 @@ const AboutMe = () => {
         </div>
 
         {/* About Me Text */}
-        <div className="w-full px-4 lg:px-0 lg:w-1/2">
-          <h2 className="text-3xl font-medium my-4 lg:mb-10">About me</h2>
-          <p className="text-gray-700 leading-relaxed">
+        <div className="w-full px-4 lg:px-0 lg:w-1/3">
+          <h2 className="text-3xl lg:text-6xl font-medium my-4 lg:mb-10 font-tenor">About me</h2>
+          <p className=" leading-relaxed">
             As a fashion designer specializing in women's wear, creating vibrant and versatile pieces that celebrate individuality and style. My collections focus on tops, customized dresses, Indian and fusion wear, co-ords, and bottoms, blending traditional craftsmanship with contemporary flair.
           </p>
         </div>
       </div>
 
       {/* Description Below */}
-      <div className="mt-8 px-4 lg:px-0 text-gray-700 space-y-2 text-base leading-relaxed">
+      <div className="mt-8 px-4 lg:px-0 space-y-2 text-base leading-relaxed">
         <p>
           Inspired by [insert influence, e.g., Indian textiles, modern silhouettes, or cultural motifs], I design for the modern woman who values uniqueness and confidence.
         </p>
