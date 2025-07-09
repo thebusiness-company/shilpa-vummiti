@@ -8,9 +8,14 @@ const Footer = () => {
         {/* ABOUT SHILPA VUMMITI */}
         <div className="space-y-6">
           
-          <ul className="space-y-6">
+          
             <div><Link to={'/about'}><h3 className="font-bold uppercase text-xs tracking-widest">About Shilpa Vummiti</h3></Link></div>
+            <ul className="space-y-2">
             <div><Link to={'/about'}><li className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">Press</li></Link></div>
+            <div><Link to={'/authenticity'}><li className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">Authenticity</li></Link></div>
+            <div><a href="https://www.instagram.com/shilpavummiti/?hl=en" className="hover:opacity-70 transition-opacity duration-300">
+            <span className='flex items-center gap-2'>Follow us <FaInstagram size={16} /></span>
+            </a></div>
           </ul>
         </div>
 
@@ -20,7 +25,6 @@ const Footer = () => {
           <ul className="space-y-2">
           <div><Link to={'/personalization'}><li className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">Customization</li></Link></div>
           <div><Link to={'/shipping-policy'}><li className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">Shipping & Return Policy</li></Link></div>
-            <div><Link to={'/authenticity'}><li className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">Authenticity</li></Link></div>
           </ul>
         </div>
 
@@ -54,12 +58,10 @@ const Footer = () => {
             </a>
 
           <div className="flex items-center space-x-3 mt-2">
-            <a href="https://www.instagram.com/shilpavummiti/?hl=en" className="hover:opacity-70 transition-opacity duration-300">
-              <FaInstagram size={16} />
-            </a>
-            <a href="https://www.facebook.com/shilpathestylist/" className="hover:opacity-70 transition-opacity duration-300">
+            
+            {/* <a href="https://www.facebook.com/shilpathestylist/" className="hover:opacity-70 transition-opacity duration-300">
               <FaFacebookF size={16} />
-            </a>
+            </a> */}
             {/* <a href="#" className="hover:opacity-70 transition-opacity duration-300">
               <FaYoutube size={16} />
             </a> */}

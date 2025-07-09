@@ -12,6 +12,9 @@
 .font-tenor {
   font-family: 'Tenor Sans', sans-serif;
 }
+.custom-text-shadow {
+  text-shadow: 2px 3px 2.5px rgba(0, 0, 0, 0.3);
+}
 body {
   font-family: 'Palanquin','Tenor Sans', sans-serif;
 }

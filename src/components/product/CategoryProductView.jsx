@@ -71,7 +71,7 @@ export default function CategoryProductView() {
               />
               <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-40 z-0" />
                 <div className="absolute bottom-0 left-0 w-full h-full bg-opacity-50 flex items-end text-center justify-center">
-                  <h2 className="filter drop-shadow-md text-xs md:text-xl lg:text-2xl font-tenor text-white tracking-wide mb-4 z-10">
+                  <h2 className="custom-text-shadow text-xs md:text-xl lg:text-2xl font-tenor text-white tracking-wide mb-4 z-10">
                     {cat.name}
                   </h2>
                 </div>
