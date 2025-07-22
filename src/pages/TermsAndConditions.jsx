@@ -1,6 +1,13 @@
 import React from 'react';
+import { useEffect } from 'react';
 
 const TermsAndConditions = () => {
+
+  // Scroll to top when component mounts
+      useEffect(() => {
+        window.scrollTo({top:0, behavior: "smooth"});
+      },[]);
+
   return (
     <div className="flex justify-center min-h-screen px-4 py-10 bg-white">
       <div className="max-w-3xl w-full text-center">

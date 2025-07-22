@@ -9,9 +9,9 @@ const Footer = () => {
         <div className="space-y-6">
           
           
-            <div><Link to={'/about'}><h3 className="font-bold uppercase text-xs tracking-widest">About Shilpa Vummiti</h3></Link></div>
+            <div><Link to={'/about#About'}><h3 className="font-bold uppercase text-xs tracking-widest">About Shilpa Vummiti</h3></Link></div>
             <ul className="space-y-2">
-            <div><Link to={'/about'}><li className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">Press</li></Link></div>
+            <div><Link to={'/about#Press'}><li className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">Press</li></Link></div>
             <div><Link to={'/authenticity'}><li className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">Authenticity</li></Link></div>
             <div><a href="https://www.instagram.com/shilpavummiti/?hl=en" className="hover:opacity-70 transition-opacity duration-300">
             <span className='flex items-center gap-2'>Follow us <FaInstagram size={16} /></span>

@@ -1,7 +1,13 @@
 import React from "react";
 import  Lock  from "../assets/images/lock.svg";
+import { useEffect } from "react";
 
 const PrivacyPolicy = () => {
+  // Scroll to top when component mounts
+    useEffect(() => {
+      window.scrollTo({top:0, behavior: "smooth"});
+    },[]);
+
   return (
     <div className="flex justify-center min-h-screen">
       <div className="bg-white w-full px-4 md:px-16 lg:px-20 mt-8 lg:mt-12">

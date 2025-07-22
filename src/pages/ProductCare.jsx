@@ -2,8 +2,15 @@ import React from "react";
 import careImage1 from "../assets/images/fabric1.png"; // rainbow fabric
 import careImage2 from "../assets/images/fabric2.png"; // blue fabric
 import heart from "../assets/images/heart1.svg"; // blue fabric
+import { useEffect } from "react";
 
 const ProductCare = () => {
+
+  // Scroll to top when component mounts
+      useEffect(() => {
+        window.scrollTo({top:0, behavior: "smooth"});
+      },[]);
+
   return (
     <section className="bg-white px-4 py-8 md:px-12 lg:px-24">
       <div className="max-w-6xl mx-auto">

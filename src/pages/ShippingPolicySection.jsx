@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const ShippingPolicySection = () => {
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo({top:0, behavior: "smooth"});
+  },[]);
+
   return (
     <section className="bg-white py-10 px-4 md:px-16 lg:px-20">
       <div className=" mx-auto">

@@ -1,7 +1,15 @@
 import React from 'react';
 import a1 from '../assets/images/a1.png'
 import a2 from '../assets/images/a2.png'
+import { useEffect } from 'react';
+
 const Authenticity = () => {
+
+  // Scroll to top when component mounts
+      useEffect(() => {
+        window.scrollTo({top:0, behavior: "smooth"});
+      },[]);
+
   return (
     <section className="px-4 md:px-12 lg:px-24 py-10 space-y-10 text-gray-800">
       {/* Section 1 */}

@@ -1,8 +1,15 @@
 import React from "react";
 import p1 from "../assets/images/p1.png";
 import p2 from "../assets/images/p2.png";
+import { useEffect } from "react";
 
 const PersonalizationSection = () => {
+
+  // Scroll to top when component mounts
+      useEffect(() => {
+        window.scrollTo({top:0, behavior: "smooth"});
+      },[]);
+
   return (
     <section className="px-4 py-8 md:px-12 lg:px-24 bg-white text-center">
       <h2 className="text-2xl lg:text-3xl mb-10 font-tenor">Personalization</h2>
