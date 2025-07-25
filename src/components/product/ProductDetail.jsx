@@ -165,7 +165,7 @@ export default function ProductDetail({setNumCartItems}) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="w-full lg:w-1/2 space-x-12 mx-5 lg:mt-8 space-y-6"
+          className="w-full lg:w-1/2 px-4 sm:px-6 max-w-md md:max-w-full mx-auto lg:mx-0 lg:mt-8 space-y-6"
         >
           {/* Mobile Thumbnails */}
           <div className="flex gap-2 overflow-x-auto pb-2 lg:hidden">
@@ -176,7 +176,9 @@ export default function ProductDetail({setNumCartItems}) {
                 onClick={() => setSelectedImage(img)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`w-16 h-20 border ${selectedImage === img ? "border-black" : "border-gray-300"} cursor-pointer`}
+                className={`w-16 h-20 border ${
+                  selectedImage === img ? "border-black" : "border-gray-300"
+                } cursor-pointer`}
                 alt={`${product.name}-thumbnail-${idx}`}
               />
             ))}
@@ -184,13 +186,17 @@ export default function ProductDetail({setNumCartItems}) {
 
           <div className="flex justify-between items-start">
             <div>
-              <h1 className="text-xl lg:text-2xl font-semibold capitalize">{product.name}</h1>
+              <h1 className="text-xl lg:text-2xl font-semibold capitalize">
+                {product.name}
+              </h1>
               <p className="text-lg mt-1 font-tenor">₹ {product.price}</p>
             </div>
             <button onClick={handleWishlistToggle}>
               <Heart
                 className={`w-6 h-6 mt-2 transition ${
-                  inWishlist ? "fill-[#DB2969] stroke-[#DB2969]" : "stroke-black"
+                  inWishlist
+                    ? "fill-[#DB2969] stroke-[#DB2969]"
+                    : "stroke-black"
                 }`}
               />
             </button>
@@ -198,7 +204,9 @@ export default function ProductDetail({setNumCartItems}) {
 
           <div className="flex items-center justify-between mt-2">
             <p className="text-xs">(MRP incl. of all taxes)</p>
-            <p className="text-sm font-palanquin">Product Code: {product.product_code}</p>
+            <p className="text-sm font-palanquin">
+              Product Code: {product.product_code}
+            </p>
           </div>
 
           {/* Desktop Thumbnails */}
@@ -210,7 +218,9 @@ export default function ProductDetail({setNumCartItems}) {
                 onClick={() => setSelectedImage(img)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`w-24 h-32 border ${selectedImage === img ? "border-black" : "border-gray-300"} cursor-pointer`}
+                className={`w-24 h-32 border ${
+                  selectedImage === img ? "border-black" : "border-gray-300"
+                } cursor-pointer`}
                 alt={`${product.name}-thumbnail-${idx}`}
               />
             ))}
@@ -233,33 +243,53 @@ export default function ProductDetail({setNumCartItems}) {
 
           {/* Description */}
           <div className="text-sm leading-relaxed mt-2">
-            <p>Our Digital Concierge is available for any questions about this product. Contact us.</p>
+            <p>
+              Our Digital Concierge is available for any questions about this
+              product. Contact us.
+            </p>
             <p className="mt-3">{product.description}</p>
           </div>
 
           {/* Accordions */}
-          <Accordion title="Product care" expanded={expanded.care} onToggle={() => toggle("care")}>
+          <Accordion
+            title="Product care"
+            expanded={expanded.care}
+            onToggle={() => toggle("care")}
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </Accordion>
-          <Accordion title="Size guide" expanded={expanded.size} onToggle={() => toggle("size")}>
+          <Accordion
+            title="Size guide"
+            expanded={expanded.size}
+            onToggle={() => toggle("size")}
+          >
             Size details and fitting suggestions.
           </Accordion>
-          <Accordion title="Gifting" expanded={expanded.gift} onToggle={() => toggle("gift")}>
+          <Accordion
+            title="Gifting"
+            expanded={expanded.gift}
+            onToggle={() => toggle("gift")}
+          >
             Gift wrapping options available at checkout.
           </Accordion>
 
           {/* Add to Bag */}
-          <div className="flex justify-center items-center">
-          <motion.button
-            onClick={handleAddToBag}
-            disabled={inCart || mutation.isLoading}
-            whileTap={{ scale: 0.95 }}
-            className={`bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] hover:text-white font-medium transition py-3 px-10 text-lg mx-18 lg:mx-40 my-4 ${
-              (inCart || mutation.isLoading) && "opacity-50 cursor-not-allowed"
-            }`}
-          >
-            {inCart ? "Added to bag" : mutation.isLoading ? "Adding..." : "Add to bag"}
-          </motion.button>
+          <div className="mt-8 flex justify-center">
+            <motion.button
+              onClick={handleAddToBag}
+              disabled={inCart || mutation.isLoading}
+              whileTap={{ scale: 0.95 }}
+              className={`bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] hover:text-white font-medium transition py-3 px-10 text-lg my-4 ${
+                (inCart || mutation.isLoading) &&
+                "opacity-50 cursor-not-allowed"
+              }`}
+            >
+              {inCart
+                ? "Added to bag"
+                : mutation.isLoading
+                ? "Adding..."
+                : "Add to bag"}
+            </motion.button>
           </div>
         </motion.div>
       </div>

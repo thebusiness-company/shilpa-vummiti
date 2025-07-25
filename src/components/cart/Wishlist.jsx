@@ -80,14 +80,14 @@ const Wishlist = () => {
             >
               <button
                 onClick={() => removeFromWishlist(product.id)}
-                className="absolute top-2 right-2 z-10 text-gray-500 group-hover:text-white cursor-pointer"
+                className="absolute top-2 right-2 z-10 text-gray-500 lg:text-white lg:group-hover:text-gray-500 cursor-pointer transition-colors ease-in-out duration-200"
               >
                 <X size={18} />
               </button>
 
               <div
                 onClick={() => handleAddToCart(product.id)}
-                className="absolute bottom-4 right-[-2px] z-10"
+                className="absolute bottom-2 right-[-2px] z-10"
               >
                 <div className="relative w-10 h-10 group-hover:w-[110px] transition-all duration-300 overflow-hidden group-hover:bg-white rounded-full flex items-center justify-center px-2 cursor-pointer">
                   <RiShoppingBag4Line
@@ -95,21 +95,27 @@ const Wishlist = () => {
                     size={22}
                   />
                   <div className="absolute right-2 opacity-0 group-hover:opacity-100 flex items-center gap-2 transition-all duration-300 translate-x-10 group-hover:translate-x-0">
-                    <span className="text-xs mb-0.5 text-gray-800">Add to Cart</span>
+                    <span className="text-xs mb-0.5 text-gray-800">
+                      Add to Cart
+                    </span>
                     <ArrowRight size={14} className="text-black" />
                   </div>
                 </div>
               </div>
-
-              <img
-                src={`${API_URL}${product.image}` || "/fallback-image.png"}
-                alt={product.name}
-                className="w-full h-[300px] object-cover"
-              />
-
+              <div className="relative w-full h-[300px] overflow-hidden">
+                <img
+                  src={`${API_URL}${product.image}` || "/fallback-image.png"}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div className="py-3">
-                <h3 className="text-sm md:text-lg font-medium pr-10 text-[#183028]">{product.name}</h3>
-                <p className="text-base md:text-xl md:mt-2 text-[#183028]">₹{product.price}</p>
+                <h3 className="text-sm md:text-lg font-medium pr-10 text-[#183028]">
+                  {product.name}
+                </h3>
+                <p className="text-base md:text-xl md:mt-2 text-[#183028]">
+                  ₹{product.price}
+                </p>
               </div>
             </motion.div>
           ))}

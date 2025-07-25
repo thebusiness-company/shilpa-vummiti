@@ -11,6 +11,7 @@ import Loader from "../ui/Loader";
 import img from '../../assets/images/product.png'
 import logo from '../../assets/images/Logo.png'
 import { X } from "lucide-react";
+import { Heart } from "lucide-react";
 
 // Fetch cart items from backend using stored cart code
 const fetchCartItems = async () => {
@@ -327,12 +328,12 @@ const CartPage = ({setNumCartItems}) => {
                 className="w-32 h-40 object-cover mb-4 md:mb-0 md:mr-6"
               />
               <div className="flex-2 space-y-4">
-                <h3 className="text-xl lg:text-2xl font-medium text-[#183028] font-tenor">{product.name}</h3>
+                <h3 className="text-xl lg:text-2xl font-medium text-[#183028] font-tenor px-2">{product.name}</h3>
                 <p className="text-sm lg:text-base">
                   Product Code: {product.product_code || "N/A"}
                 </p>
                 <p className="text-xs">AVAILABLE</p>
-                <div className="flex items-center space-x-2 text-xs">
+                <div className="flex items-center space-x-4 text-xs">
                 <select
                 className="border-b text-sm px-2 py-1"
                 value={product_size}
@@ -359,11 +360,11 @@ const CartPage = ({setNumCartItems}) => {
                   </button>
                   <span>|</span>
                   <button
-                    className="hover:underline cursor-pointer"
+                    className=" hover:underline cursor-pointer"
                     onClick={() => addToWishlistMutation.mutate(product.id)}
                     disabled={addToWishlistMutation.isLoading}
                   >
-                    🤍 MOVE TO WISHLIST
+                    <span className="flex items-center gap-1"><Heart className="w-4 h-4"/> MOVE TO WISHLIST</span>  
                   </button>
                 </div>
               </div>
@@ -509,9 +510,9 @@ const CartPage = ({setNumCartItems}) => {
                 </option>
               ))}
             </select>
-            <div className="flex justify-center items-center space-x-4 text-xs pb-2">
+            <div className="flex justify-center items-center space-x-2 text-xs pb-2">
             <select
-                className="border-b text-sm px-2 py-1"
+                className="border-b text-sm px-1 py-1"
                 value={product_size}
                 onChange={(e) =>
                   updateItemMutation.mutate({
@@ -540,7 +541,8 @@ const CartPage = ({setNumCartItems}) => {
                 onClick={() => addToWishlistMutation.mutate(product.id)}
                 disabled={addToWishlistMutation.isLoading}
               >
-                🤍 MOVE TO WISHLIST
+                 <span className="flex items-center gap-[3px] uppercase">
+                  <Heart className="w-4 h-4"/>Move To Wishlist</span>
               </button>
              
             </div>

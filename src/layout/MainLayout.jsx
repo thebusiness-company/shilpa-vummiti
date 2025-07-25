@@ -9,7 +9,7 @@ const MainLayout = ({NumCartItems}) => {
         <Navbar NumCartItems={NumCartItems}/>
         <Toaster position="top-right" reverseOrder={false} />
 
-        <div className='flex-grow mt-18'>
+        <div className='flex-grow mt-16'>
             <Outlet/>
 
         </div>
