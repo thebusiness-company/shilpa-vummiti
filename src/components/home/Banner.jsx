@@ -15,7 +15,7 @@ const FashionBanner = ({ scrollToCategory }) => {
           <div className="p-1 sm:p-3 md:p-4">
             <button
               onClick={scrollToCategory}
-              className="inline-block text-teal-300 text-xs sm:text-sm md:text-base border-b border-transparent hover:border-teal-300 transition duration-300"
+              className="inline-block text-teal-300 text-xs sm:text-sm md:text-base border border-teal-300 hover:text-black hover:bg-teal-300 hover:scale-105 transition-all duration-300 px-6"
             >
               Shop Now
             </button>
