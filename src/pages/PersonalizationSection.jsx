@@ -1,11 +1,18 @@
 import React from "react";
 import p1 from "../assets/images/p1.png";
 import p2 from "../assets/images/p2.png";
+import { useEffect } from "react";
 
 const PersonalizationSection = () => {
+
+  // Scroll to top when component mounts
+      useEffect(() => {
+        window.scrollTo({top:0, behavior: "smooth"});
+      },[]);
+
   return (
     <section className="px-4 py-8 md:px-12 lg:px-24 bg-white text-center">
-      <h2 className="text-lg font-semibold mb-10">Personalization</h2>
+      <h2 className="text-2xl lg:text-3xl mb-10 font-tenor">Personalization</h2>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
         <img src={p1} alt="Look 1" className="w-full h-auto" />
@@ -14,17 +21,17 @@ const PersonalizationSection = () => {
         <img src={p2} alt="Look 4" className="w-full h-auto" />
       </div>
 
-      <p className="text-base font-medium mb-6">
+      <p className="text-sm lg:text-xl font-medium mb-6">
         Looking For A One-Of-A-Kind Dress That Perfectly Fits Your Style And Body?
       </p>
 
-      <p className="max-w-7xl mx-auto text-md lg:text-xl mb-6 text-gray-700">
+      <p className="max-w-7xl mx-auto text-sm md:text-base lg:text-lg mb-6">
         Our customized dress stitching services are just what you need! Our skilled tailors work with you to design a dress
         that matches your vision, using a standard process and the latest techniques. From casual to formal, our customized
         dresses will make you stand out. Order online and get your dream dress custom-made for you!
       </p>
 
-      <div className="text-md lg:text-xl text-gray-600 mb-4">
+      <div className=" text-sm md:text-base lg:text-lg mb-4">
         <p><strong>Note:</strong></p>
         <ol className="list-decimal list-inside text-center max-w-7xl mx-auto mt-8 space-y-1">
           <li>If you are in Chennai, we offer free fabric pickup & delivery.</li>

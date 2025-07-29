@@ -11,6 +11,7 @@ import Loader from "../ui/Loader";
 import img from '../../assets/images/product.png'
 import logo from '../../assets/images/Logo.png'
 import { X } from "lucide-react";
+import { Heart } from "lucide-react";
 
 // Fetch cart items from backend using stored cart code
 const fetchCartItems = async () => {
@@ -190,7 +191,7 @@ const CartPage = ({setNumCartItems}) => {
       <div className="min-h-screen flex flex-col p-10 mx-auto justify-center items-center text-center space-y-8">
         <h1 className="text-2xl text-[#183028]"><strong>Your Cart is Empty!</strong></h1>
         <p className="text-sm">Looks like you haven't added anything to your cart yet</p>
-        <button onClick={()=>navigate("/")} className="bg-[#DB296133] text-[#DB2961] p-2 pl-6 pr-6 font-semibold transition-all duration-300 transform hover:scale-105 active:scale-90">Start Shopping</button>
+        <button onClick={()=>navigate("/")} className="bg-[#DB296133] text-[#DB2961] hover:text-white hover:bg-[#183028]/40 p-2 pl-6 pr-6 font-semibold transition-all duration-300 transform hover:scale-105 active:scale-90">Start Shopping</button>
       </div>
     );
   }
@@ -205,7 +206,7 @@ const CartPage = ({setNumCartItems}) => {
                 <X size={24} />
               </button>
           {/* Left Form */}
-          <div className="w-full lg:w-1/2 flex flex-col justify-center">
+          <div className="w-full md:w-1/2 md-space-x-6 lg:space-x-6 lg:w-1/2 flex flex-col justify-center">
         <img src={logo} alt="Logo" className="h-40 w-60 mb-5" />
 
         <h2 className="text-lg mb-6">YOUR ORDER UPDATE</h2>
@@ -242,6 +243,7 @@ const CartPage = ({setNumCartItems}) => {
                className="w-full border-b border-black focus:outline-none pb-1"
                 required
               />
+              <div className="flex flex-row gap-x-10 lg:gap-x-12">
               <input
                 type="text"
                 placeholder="City"
@@ -258,9 +260,11 @@ const CartPage = ({setNumCartItems}) => {
                className="w-1/2 border-b border-black focus:outline-none pb-1"
                 required
               />
+              </div>
+              <div className="flex flex-row gap-x-10 lg:gap-x-12 mb-8">
               <input
                 type="text"
-                placeholder="country"
+                placeholder="Country"
                 value={address.country}
                 onChange={(e) => setAddress({...address, country: e.target.value})}
                className="w-1/2 border-b border-black focus:outline-none pb-1"
@@ -274,8 +278,10 @@ const CartPage = ({setNumCartItems}) => {
                className="w-1/2 border-b border-black focus:outline-none pb-1"
                 required
               />
+              </div>
             </div>
-            <div className="flex justify-center space-x-2 mt-4">
+            <div className="mt-4 max-w-md w-full ">
+            <div className="flex justify-end ">
               
               <button 
                 onClick={handleCheckout}
@@ -284,6 +290,7 @@ const CartPage = ({setNumCartItems}) => {
               >
                 {isProcessingPayment ? "Processing..." : "PAYMENT MODE"}
               </button>
+            </div>
             </div>
             {paymentError && (
               <div className="text-red-500 text-sm mt-2">
@@ -321,12 +328,12 @@ const CartPage = ({setNumCartItems}) => {
                 className="w-32 h-40 object-cover mb-4 md:mb-0 md:mr-6"
               />
               <div className="flex-2 space-y-4">
-                <h3 className="text-md font-medium text-[#183028]">{product.name}</h3>
-                <p className="text-sm">
+                <h3 className="text-xl lg:text-2xl font-medium text-[#183028] font-tenor px-2">{product.name}</h3>
+                <p className="text-sm lg:text-base">
                   Product Code: {product.product_code || "N/A"}
                 </p>
                 <p className="text-xs">AVAILABLE</p>
-                <div className="flex items-center space-x-2 text-xs">
+                <div className="flex items-center space-x-4 text-xs">
                 <select
                 className="border-b text-sm px-2 py-1"
                 value={product_size}
@@ -353,11 +360,11 @@ const CartPage = ({setNumCartItems}) => {
                   </button>
                   <span>|</span>
                   <button
-                    className="hover:underline cursor-pointer"
+                    className=" hover:underline cursor-pointer"
                     onClick={() => addToWishlistMutation.mutate(product.id)}
                     disabled={addToWishlistMutation.isLoading}
                   >
-                    🤍 MOVE TO WISHLIST
+                    <span className="flex items-center gap-1"><Heart className="w-4 h-4"/> MOVE TO WISHLIST</span>  
                   </button>
                 </div>
               </div>
@@ -381,7 +388,7 @@ const CartPage = ({setNumCartItems}) => {
                 </select>
               </div>
               <div className="flex-1">
-                <p className="text-lg text-center font-semibold mt-2 text-emerald-950">
+                <p className="text-lg text-center font-semibold mt-2 text-emerald-950 ">
                   ₹ {(product.price * quantity).toLocaleString()}
                 </p>
               </div>
@@ -396,21 +403,21 @@ const CartPage = ({setNumCartItems}) => {
           <div className="text-sm space-y-6 mb-2">
             <div className="flex justify-between">
               <span>Subtotal</span>
-              <span className="text-emerald-950">₹ {subtotal.toFixed(2)}</span>
+              <span className="text-[#183028]">₹ {subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
               <span>Shipping</span>
-              <span className="text-emerald-950">
+              <span className="text-[#183028]">
                 {isShippingFree? "Free":`₹ ${shippingCharge}`}
               </span>
             </div>
             <div className="flex justify-between">
               <span>Taxable Amount</span>
-              <span className="text-emerald-950">₹ {tax.toFixed(2)}</span>
+              <span className="text-[#183028]">₹ {tax.toFixed(2)}</span>
             </div>
             <div className="flex justify-between font-semibold pt-2">
               <span>Total</span>
-              <span className="text-emerald-950">₹ {total.toFixed(2)}</span>
+              <span className="text-[#183028]">₹ {total.toFixed(2)}</span>
             </div>
             <div>
               <span>Enjoy free shipping on all orders above ₹10,000.</span>
@@ -469,21 +476,21 @@ const CartPage = ({setNumCartItems}) => {
       </div>
 
       {/* Mobile View */}
-      <div className="lg:hidden px-8 py-6 text-center space-y-6">
+      <div className="lg:hidden px-4 py-6 text-center space-y-6 overflow-y-auto overflow-x-hidden max-w-full max-h-screen">
         <h2 className="text-lg font-semibold mb-4 pb-6 border-b  ">YOUR SELECTIONS</h2>
         {cartItems.map(({ id, product, quantity, product_size }) => (
           <div key={id} className="pb-6 space-y-3 ">
             <img
               src={`${API_URL}${product.image}`}
               alt={product.name}
-              className="w-full object-cover mb-4 mt-4"
+              className="w-full max-w-48 md:max-w-56 h-auto object-cover mb-4 mt-4 mx-auto"
             />
             <h3 className="text-md font-medium text-[#183028]">{product.name}</h3>
             <p className="text-sm ">
               Product Code: {product.product_code || "N/A"}
             </p>
             <p className="text-xs">AVAILABLE</p>
-            <p className="text-lg font-semibold text-[#183028]">
+            <p className="text-lg font-semibold text-[#183028] my-6">
               ₹ {(product.price * quantity).toLocaleString()}
             </p>
             <select
@@ -503,9 +510,9 @@ const CartPage = ({setNumCartItems}) => {
                 </option>
               ))}
             </select>
-            <div className="flex justify-center items-center space-x-4 text-xs pb-2">
+            <div className="flex justify-center items-center space-x-2 text-xs pb-2">
             <select
-                className="border-b text-sm px-2 py-1"
+                className="border-b text-sm px-1 py-1"
                 value={product_size}
                 onChange={(e) =>
                   updateItemMutation.mutate({
@@ -534,7 +541,8 @@ const CartPage = ({setNumCartItems}) => {
                 onClick={() => addToWishlistMutation.mutate(product.id)}
                 disabled={addToWishlistMutation.isLoading}
               >
-                🤍 MOVE TO WISHLIST
+                 <span className="flex items-center gap-[3px] uppercase">
+                  <Heart className="w-4 h-4"/>Move To Wishlist</span>
               </button>
              
             </div>
@@ -544,7 +552,7 @@ const CartPage = ({setNumCartItems}) => {
 
         <div className="border-t pt-6 space-y-4">
           <p className="text-sm font-semibold  text-left text-[#DB2961]">ORDER SUMMARY</p>
-          <p className="text-xs text-left">DUWMPNPKVB25</p>
+          <p className="text-sm text-left">DUWMPNPKVB25</p>
           <div className="text-sm space-y-2 mb-4">
             <div className="flex justify-between border-t pt-4">
               <span>Subtotal</span>

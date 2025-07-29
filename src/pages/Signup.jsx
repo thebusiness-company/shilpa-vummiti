@@ -3,6 +3,11 @@ import { useNavigate } from "react-router-dom";
 import img from "../assets/images/login.png";
 import logo from "../assets/images/Logo.png";
 import API from "../api";
+import axios from "axios";
+import { useGoogleLogin } from "@react-oauth/google";
+import { API_URL } from "../api";
+import { AuthContext } from "../components/context/AuthContext";
+import { useContext } from "react";
 
 // Password validation function
 const validatePassword = (password) => {
@@ -33,6 +38,33 @@ const Signup = () => {
   const [error, setError] = useState("");
   const [passwordErrors, setPasswordErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const { setIsAuthenticated, getuser } = useContext(AuthContext);
+
+    const googleSignup = useGoogleLogin({
+      onSuccess: async (tokenResponse) => {
+        console.log("googleAccessToken", tokenResponse.access_token);
+
+        try {
+          const res = await axios.post(`${API_URL}/rest-auth/google/`, {
+            access_token: tokenResponse.access_token,
+          });
+          console.log("google Login response:", res.data);
+          localStorage.setItem("access", res.data.access);
+          localStorage.setItem("refresh", res.data.refresh);
+
+          setIsAuthenticated(true);
+          getuser();
+          setError("");
+
+          const from = location.state?.from?.pathname || "/";
+          navigate(from, { replace: true });
+        } catch (err) {
+          console.error("Google Signup error:", err);
+          setError("Google Signup failed");
+        }
+      },
+      onError: () => setError("Google Signup was cancelled or failed"),
+    });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -79,6 +111,7 @@ const Signup = () => {
      finally {
       setIsLoading(false);
     }
+
   };
 
   return (
@@ -87,16 +120,23 @@ const Signup = () => {
       <div className="w-full md:w-1/2 px-6 lg:py-12 py-6 flex flex-col items-start max-w-md mx-auto">
         <img src={logo} alt="Logo" className="w-40" />
 
-        <div className="text-xs text-gray-700 mt-10 mb-6">
-          <a href="/login" className="underline mr-2">LOG IN</a> /
-          <a href="/signup" className="ml-2 underline font-bold text-black">SIGN UP</a>
+        <div className="text-base mt-10 mb-6">
+          <a href="/login" className="mr-2">
+            LOG IN
+          </a>{" "}
+          /
+          <a href="/signup" className="ml-2 underline font-bold text-black">
+            SIGN UP
+          </a>
         </div>
 
         {/* Errors */}
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
         {passwordErrors.length > 0 && (
           <ul className="text-red-600 text-xs list-disc list-inside mb-4">
-            {passwordErrors.map((err, i) => <li key={i}>{err}</li>)}
+            {passwordErrors.map((err, i) => (
+              <li key={i}>{err}</li>
+            ))}
           </ul>
         )}
 
@@ -153,17 +193,17 @@ const Signup = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="border border-black px-12 py-2 text-sm hover:bg-black hover:text-white transition duration-200"
+              className="border border-black px-8 md:px-12 py-2 text-xs md:text-sm hover:bg-black hover:text-white transition duration-200 cursor-pointer"
             >
               {isLoading ? "Signing up..." : "SIGN UP"}
             </button>
-            <div className="text-xs text-gray-400">/</div>
+            <div className="text-xs">OR</div>
             <button
               type="button"
-              className="border border-gray-400 px-6 py-2 text-sm flex items-center gap-2"
-              onClick={() => alert("Google signup not implemented")}
+              className="border px-8 py-2 text-xs md:text-sm flex items-center gap-2 hover:bg-black hover:text-white transition duration-200 cursor-pointer"
+              onClick={() => googleSignup()}
             >
-              <span className="text-xs text-[#4285F4]">GOOGLE</span>
+              <span>GOOGLE</span>
             </button>
           </div>
         </form>
@@ -171,7 +211,11 @@ const Signup = () => {
 
       {/* Right Section with Image */}
       <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 py-1 lg:py-40">
-        <img src={img} alt="Signup" className="object-cover w-full max-h-[600px]" />
+        <img
+          src={img}
+          alt="Signup"
+          className="object-cover w-full max-h-[600px]"
+        />
       </div>
     </div>
   );

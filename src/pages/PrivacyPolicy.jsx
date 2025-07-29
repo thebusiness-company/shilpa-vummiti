@@ -1,12 +1,18 @@
 import React from "react";
 import  Lock  from "../assets/images/lock.svg";
+import { useEffect } from "react";
 
 const PrivacyPolicy = () => {
+  // Scroll to top when component mounts
+    useEffect(() => {
+      window.scrollTo({top:0, behavior: "smooth"});
+    },[]);
+
   return (
     <div className="flex justify-center min-h-screen">
       <div className="bg-white w-full px-4 md:px-16 lg:px-20 mt-8 lg:mt-12">
         <div className="bg-[#183028] text-white text-center py-4 ">
-          <h1 className="text-xl md:text-2xl font-semibold">Privacy Policy</h1>
+          <h1 className="text-xl md:text-2xl lg:text-4xl font-tenor">Privacy Policy</h1>
         </div>
 
         <div className="flex flex-col items-center py-6 px-4 md:px-10 space-y-6 text-sm md:text-base leading-relaxed">

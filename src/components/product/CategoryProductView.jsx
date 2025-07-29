@@ -4,6 +4,13 @@ import { useQuery } from '@tanstack/react-query';
 import { getCategories, getProductsByCategory } from '../../hooks/useProducts';
 import { useNavigate,Link } from 'react-router-dom';
 import { API_URL } from '../../api';
+import {
+  getWishlist,
+  deleteWishlistItem,
+  addToWishlist,
+} from "../../hooks/wishlistApi";
+import { Heart } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 // Custom hook to get product limit based on screen size
 const useProductLimit = () => {
@@ -27,6 +34,7 @@ export default function CategoryProductView() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [showProducts, setShowProducts] = useState(false);
   const limit = useProductLimit();
+  const [wishlist, setWishlist] = useState([]);
 
   const { data: categories } = useQuery({
     queryKey: ['categories'],
@@ -40,6 +48,21 @@ export default function CategoryProductView() {
   });
   console.log(products);
 
+  useEffect(() => {
+    const fetchWishlist = async () => {
+      try {
+        const data = await getWishlist();
+        setWishlist(data);
+        
+      } catch (error) {
+        console.error("Error fetching wishlist:", error);
+      }
+    };
+    if (activeCategory) {
+      fetchWishlist();
+    }
+  }, [activeCategory]);
+
   const handleCategoryClick = (id) => {
     setActiveCategory(id);
     setShowProducts(true);
@@ -52,6 +75,22 @@ export default function CategoryProductView() {
   const handleViewLess = () => {
     setActiveCategory(null);
     setShowProducts(false);
+  };
+
+  const handleWishlistToggle = async (product) => {
+    const iswishlisted = wishlist.some((item) => item.product?.id === product.id);
+
+    if (iswishlisted) {
+      await deleteWishlistItem(product.id);
+      const updatedAfterRemoval = await getWishlist();
+      setWishlist(updatedAfterRemoval);
+      toast.success("Removed from wishlist!");
+    } else {
+      await addToWishlist(product.id);
+      const updatedAfterAddition = await getWishlist(); 
+      setWishlist(updatedAfterAddition);
+      toast.success("Added to wishlist!");
+    }  
   };
 
   return (
@@ -70,13 +109,11 @@ export default function CategoryProductView() {
                 className="w-full h-full object-cover transform group-hover:scale-105 transition duration-500 ease-in-out"
               />
               <div className="absolute inset-0 bg-black opacity-20 group-hover:opacity-40 z-0" />
-                <div className="absolute bottom-0 left-0 w-full h-full bg-opacity-50 flex items-end text-center justify-center">
-                  <h2 className="text-xs md:text-xl lg:text-2xl font-semibold text-white tracking-wide mb-4 z-10">
-                    {cat.name}
-                  </h2>
-                </div>
-
-
+              <div className="absolute bottom-0 left-0 w-full h-full bg-opacity-50 flex items-end text-center justify-center">
+                <h2 className="custom-text-shadow text-xs md:text-xl lg:text-2xl font-tenor text-white tracking-wide mb-4 z-10">
+                  {cat.name}
+                </h2>
+              </div>
             </div>
           ))}
         </div>
@@ -84,26 +121,64 @@ export default function CategoryProductView() {
         <div>
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-all duration-500 mt-4">
             {products?.data.map((prod) => (
-              <div key={prod.id} className="text-center group">
+              <div key={prod.id} className="text-center group relative">
                 <Link to={`/productDetail/${prod.slug}`}>
-                <img
-                  src={`${API_URL}${prod.image}`}
-                  alt={prod.name}
-                  className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <p className="mt-2 font-medium text-sm sm:text-base text-left text-[#183028]">{prod.name}</p>
-                <p className="text-sm text-left text-[#183028]">₹ {prod.price}</p>
+                  <img
+                    src={`${API_URL}${prod.image}`}
+                    alt={prod.name}
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <p className="mt-2 font-medium text-sm sm:text-base text-left text-[#183028] font-tenor lg:font-medium">
+                    {prod.name}
+                  </p>
+                  <p className="text-sm text-left text-[#183028] font-tenor">
+                    ₹ {prod.price}
+                  </p>
                 </Link>
+                {/* wishlist button */}
+                <button
+                  onClick={() => handleWishlistToggle(prod)}
+                  className="absolute top-2 right-2 z-10"
+                >
+                  {wishlist.some((item) => item.product?.id === prod.id) ? (
+                    <Heart className="w-5 h-5 fill-[#DB2961] stroke-[#DB2961] z-10" />
+                  ) : (
+                    <Heart className="w-5 h-5 stroke-black z-10" />
+                  )}
+                </button>
               </div>
             ))}
           </div>
-
-          <div className="flex justify-between mt-6 font-tenor text-[#183028]">
-            <button onClick={handleViewLess} className="underline text-xl font-tenor hover:text-blue-800">
+            {/* mobile view less and more buttons */}
+          <div className="flex justify-between mt-6 font-palanquin text-[#183028] lg:hidden">
+            <button
+              onClick={handleViewLess}
+              className="underline text-xl"
+            >
               View Less
             </button>
-            <button onClick={handleViewMore} className="underline text-xl hover:text-blue-800">
+            <button
+              onClick={handleViewMore}
+              className="underline text-xl"
+            >
               View More
+            </button>
+          </div>
+          {/* desktop view less and more buttons */}
+          <div className="hidden lg:flex flex-row gap-4 mt-6 font-palanquin text-[#183028]">
+            <div className="flex-1 flex justify-center">
+              <button
+                onClick={handleViewMore}
+                className="underline text-xl hover:text-blue-800 transition-all duration-300 ease-in-out hover:scale-105"
+              >
+                View More
+              </button>
+            </div>
+            <button
+              onClick={handleViewLess}
+              className="underline text-xl hover:text-blue-800 transition-all duration-300 ease-in-out hover:scale-105"
+            >
+              View Less
             </button>
           </div>
         </div>
