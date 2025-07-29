@@ -108,9 +108,15 @@ const Login = () => {
       <div className="w-full md:w-1/2 px-6 lg:py-12 py-6 flex flex-col items-start max-w-md mx-auto">
         <img src={logo} alt="Logo" className="lg:mb- w-40" />
 
-        <div className="text-xs text-gray-700 mt-10 mb-6">
-          <a href="/login" className="underline mr-2">LOG IN</a> /
-          <a href="/signup" className="ml-2 mr-2">SIGN UP</a> /
+        <div className="text-base mt-10 mb-6">
+          <a href="/login" className="underline mr-2 font-bold">
+            LOG IN
+          </a>{" "}
+          /
+          <a href="/signup" className="ml-2 mr-2">
+            SIGN UP
+          </a>{" "}
+          /
           <span
             className="ml-2 cursor-pointer underline hover:text-gray-900"
             onClick={handleGuestLogin}
@@ -140,7 +146,10 @@ const Login = () => {
             required
             className="w-full border-b border-gray-400 mb-2 pb-2 outline-none bg-transparent text-sm"
           />
-          <a href="/forgot-password" className="text-xs text-gray-600 underline mb-8 inline-block">
+          <a
+            href="/forgot-password"
+            className="text-sm underline mb-8 inline-block"
+          >
             Have you forgotten your password?
           </a>
 
@@ -148,26 +157,26 @@ const Login = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="border border-black px-12 cursor-pointer py-2 text-sm hover:bg-black hover:text-white transition duration-200"
+              className="border border-black px-8 md:px-12 cursor-pointer py-2 text-xs md:text-sm hover:bg-black hover:text-white transition duration-200"
             >
               {isLoading ? "Signing in..." : "LOG IN"}
             </button>
 
-            <div className="text-xs text-gray-400">/</div>
+            <div className="text-xs">OR</div>
 
             <button
               type="button"
-              className="border border-gray-400 px-12 py-2 text-sm flex cursor-pointer items-center gap-2"
+              className="border px-8 md:px-12 py-2 text-sm flex cursor-pointer items-center gap-2 hover:bg-black hover:text-white transition duration-200"
               onClick={() => googleLogin()}
             >
-              <span className="text-xs text-[#4285F4]">GOOGLE</span>
+              <span className="text-xs md:text-sm">GOOGLE</span>
             </button>
           </div>
         </form>
       </div>
 
       {/* Right Image */}
-      <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 lg:mt-30 py-1 lg:py-12">
+      <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 md:mt-30 py-1 md:py-12">
         <img
           src={img}
           alt="Fashion"

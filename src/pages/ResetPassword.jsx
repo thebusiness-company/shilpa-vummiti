@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { API } from "../api";
 import logo from "../assets/images/Logo.png";
+import { motion } from "framer-motion";
 
 const ResetPassword = () => {
   const { uid, token } = useParams();
@@ -45,7 +46,7 @@ const ResetPassword = () => {
         onSubmit={handleSubmit}
         className="w-full max-w-md flex flex-col"
       >
-        <h2 className="text-sm font-semibold mb-8">ENTER YOUR PASSWORD</h2>
+        <h2 className="text-lg mb-8">ENTER YOUR PASSWORD</h2>
 
         {/* New Password */}
         <div className="mb-6 w-full">
@@ -73,12 +74,13 @@ const ResetPassword = () => {
 
         {/* Right-Aligned Save Button */}
         <div className="w-full flex justify-end">
-          <button
+          <motion.button
             type="submit"
             className="bg-black text-white px-6 py-2 text-xs tracking-widest hover:opacity-90 transition"
+            whileTap={ { scale: 1.1} }
           >
             SAVE CHANGES
-          </button>
+          </motion.button>
         </div>
 
         {/* Message */}

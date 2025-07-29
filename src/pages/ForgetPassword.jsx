@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { API } from "../api";
+import { motion } from "framer-motion";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ const ForgotPassword = () => {
 
   return (
     <div className="p-6">
-      <h2>Forgot Password</h2>
+      <h2 className="mb-4">Forgot Password</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="email"
@@ -27,9 +28,14 @@ const ForgotPassword = () => {
           onChange={(e) => setEmail(e.target.value)}
           className="border p-2 w-full"
         />
-        <button className="bg-black text-white px-4 py-2" type="submit">
+        <motion.button
+          className="bg-black text-white px-4 py-2 transition"
+          type="submit"
+          whileTap={{ scale: 1.1 }}
+          whileHover={{opacity: 0.8}}
+        >
           Send Reset Link
-        </button>
+        </motion.button>
       </form>
       {message && <p className="mt-4 text-green-600">{message}</p>}
     </div>

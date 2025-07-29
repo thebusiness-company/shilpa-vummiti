@@ -167,20 +167,13 @@ const ProfileUpdate = () => {
               required
             />
           </div>
-          <div className="flex justify-between items-center ">
+          <div className="flex justify-center md:justify-end items-center ">
             <button
             type="submit"
             disabled={loading}
             className="mt-6 px-6 py-2 bg-black text-white text-sm font-semibold w-fit hover:bg-white hover:text-black border border-black transition"
           >
             {loading ? "Updating..." : "UPDATE PROFILE"}
-          </button>
-          <button
-            onClick={() => {Logout()}}
-            disabled={loading}
-            className="mt-6 px-6 py-2 bg-black text-white text-sm font-semibold w-fit hover:bg-white hover:text-black border border-black transition"
-          >
-            Logout
           </button>
           </div>
           

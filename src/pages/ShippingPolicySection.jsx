@@ -10,7 +10,7 @@ const ShippingPolicySection = () => {
     <section className="bg-white py-10 px-4 md:px-16 lg:px-20">
       <div className=" mx-auto">
         <div className="bg-pink-100 py-4 ">
-          <h2 className="text-center text-2xl md:text-3xl lg:text-5xl text-[#183028] font-tenor">Shipping Policy</h2>
+          <h2 className="text-center text-2xl md:text-3xl lg:text-4xl text-[#183028] font-tenor">Shipping Policy</h2>
         </div>
 
         <div className="bg-white p-6  text-sm md:text-base lg:text-lg text-center lg:text-left leading-relaxed space-y-4">
