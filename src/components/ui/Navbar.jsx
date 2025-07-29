@@ -116,7 +116,7 @@ export default function Navbar({ NumCartItems }) {
               <button aria-label="cart" className="relative">
                 <img src={cart} alt="cart" className="h-6 cursor-pointer mx-auto" />
                 {NumCartItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[10px] leading-none font-semibold rounded-full px-1.5 py-0.5">
+                  <span className="absolute -top-3 -right-2 bg-red-500 text-white text-[10px] leading-none font-semibold rounded-full px-1.5 py-1">
                     {NumCartItems}
                   </span>
                 )}

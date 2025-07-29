@@ -1,9 +1,9 @@
 import React from 'react';
-import { FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
-    <footer className="bg-white text-black px-6 pt-10 pb-10 md:pb-4 md:px-16 border-t text-base">
+    <footer className="bg-white text-black px-6 pt-10 pb-10 md:pb-4 md:px-14 border-t text-base">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         {/* ABOUT SHILPA VUMMITI */}
         <div className="space-y-6">
@@ -32,6 +32,8 @@ const Footer = () => {
             <div className="hidden md:block">
               <a
                 href="https://www.instagram.com/shilpavummiti/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:opacity-70 transition-opacity duration-300"
               >
                 <span className="flex items-center gap-2">
@@ -139,19 +141,21 @@ const Footer = () => {
           </div>
         </div>
         {/* Mobile View of follow us and terms & conditions */}
-        <ul className="flex flex-col items-end ">
-          {/* Follow Us only visible in Mobile View */}
-          <div className="block md:hidden text-left">
-            <div>
+        <div className="flex flex-col items-end md:hidden text-left">
+          <ul className="text-left">
+            {/* Follow Us only visible in Mobile View */}
+            <li>
               <a
                 href="https://www.instagram.com/shilpavummiti/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:opacity-70 transition-opacity duration-300"
               >
-                <li className="flex items-center gap-2">
+                <span className="flex flex-row gap-1 items-center">
                   Follow Us <FaInstagram size={16} />
-                </li>
+                </span>
               </a>
-            </div>
+            </li>
             {/* Terms & Conditions visible in both devices at the end */}
             <div className="mt-2">
               <Link to={"/terms"}>
@@ -160,8 +164,8 @@ const Footer = () => {
                 </li>
               </Link>
             </div>
-          </div>
-        </ul>
+          </ul>
+        </div>
       </div>
     </footer>
   );
