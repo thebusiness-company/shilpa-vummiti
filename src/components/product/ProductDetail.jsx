@@ -16,7 +16,7 @@ function Accordion({ title, expanded, onToggle, children }) {
   return (
     <div className="border-t py-3 cursor-pointer" onClick={onToggle}>
       <div className="flex justify-between items-center">
-        <span className="text-sm font-medium">{title}</span>
+        <span className="text-sm md:text-base font-medium">{title}</span>
         {expanded ? <FiMinus /> : <HiMiniPlus />}
       </div>
       <AnimatePresence>

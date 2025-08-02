@@ -89,7 +89,9 @@ export default function Navbar({ NumCartItems }) {
               aria-expanded={menuOpen}
             >
               {menuOpen ? <X size={30} /> : <Menu size={30} />}
-              <span className="text-sm font-medium uppercase hidden sm:inline">Menu</span>
+              <span className="text-sm font-medium uppercase hidden sm:inline">
+                Menu
+              </span>
             </button>
 
             <button
@@ -98,7 +100,9 @@ export default function Navbar({ NumCartItems }) {
               aria-label="Search"
             >
               <Search size={22} />
-              <span className="text-sm font-medium hidden sm:inline">Search</span>
+              <span className="text-sm font-medium hidden sm:inline">
+                Search
+              </span>
             </button>
           </div>
 
@@ -111,10 +115,13 @@ export default function Navbar({ NumCartItems }) {
 
           {/* Right: User & Wishlist */}
           <div className="flex items-center gap-4 lg:gap-8 md:gap-8 lg:px-8">
-            
-          <a href="/cart" className="relative">
+            <a href="/cart" className="relative">
               <button aria-label="cart" className="relative">
-                <img src={cart} alt="cart" className="h-6 cursor-pointer mx-auto" />
+                <img
+                  src={cart}
+                  alt="cart"
+                  className="h-6 cursor-pointer mx-auto"
+                />
                 {NumCartItems > 0 && (
                   <span className="absolute -top-3 -right-2 bg-red-500 text-white text-[10px] leading-none font-semibold rounded-full px-1.5 py-1">
                     {NumCartItems}
@@ -122,34 +129,70 @@ export default function Navbar({ NumCartItems }) {
                 )}
               </button>
             </a>
-            <a href="/wishlist"><button aria-label="Wishlist">
-            <img src={heart} alt="Wishlist" className="h-6 cursor-pointer mx-auto"/>
-            </button></a>
+            <a href="/wishlist">
+              <button aria-label="Wishlist">
+                <img
+                  src={heart}
+                  alt="Wishlist"
+                  className="h-6 cursor-pointer mx-auto"
+                />
+              </button>
+            </a>
 
             {/* <a href="/profile"><button aria-label="User">
               <img src={profile} alt="profile" className="h-6 cursor-pointer  mx-auto"/>
             </button></a> */}
 
-        <div className='relative'>
-          <button ref={profileButtonRef} onClick={toggleProfile} aria-label='user'>
-              <img src={profile} alt="profile" className='h-6 cursor-pointer mx-auto' />
-          </button>
+            <div className="relative">
+              <button
+                ref={profileButtonRef}
+                onClick={toggleProfile}
+                aria-label="user"
+              >
+                <img
+                  src={profile}
+                  alt="profile"
+                  className="h-6 cursor-pointer mx-auto"
+                />
+              </button>
 
-         {/* Profile Dropdown */}
-          <div ref={profileRef} className={`bg-[#F2F0EF] absolute right-0 mt-6 w-36 shadow-md transition-all duration-300 ease-in-out z-10  ${profileOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
-          <ul className="flex flex-col text-sm font-medium items-center justify-center p-2">
-            <li className=''>
-              <Link to="/profile" onClick={()=>setProfileOpen(false)} className="block px-4 py-2 hover:bg-gray-100">Profile</Link>
-            </li>
-            <li>
-              <Link to ="/my-orders" onClick={() => setProfileOpen(false)} className="block px-4 py-2 hover:bg-gray-100">Order Details</Link>
-            </li>
-            <li>
-              <button onClick={Logout} className="block px-4 py-2 hover:bg-gray-100" >Logout</button>
-            </li>
-          </ul>
-                  </div>
-                </div>
+              {/* Profile Dropdown */}
+              <div
+                ref={profileRef}
+                className={`bg-[#F2F0EF] absolute right-0 mt-6 w-36 shadow-md transition-all duration-300 ease-in-out z-10  ${
+                  profileOpen ? "opacity-100 visible" : "opacity-0 invisible"
+                }`}
+              >
+                <ul className="flex flex-col text-sm font-medium items-center justify-center p-2">
+                  <li className="">
+                    <Link
+                      to="/profile"
+                      onClick={() => setProfileOpen(false)}
+                      className="block px-4 py-2 hover:bg-gray-100"
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/my-orders"
+                      onClick={() => setProfileOpen(false)}
+                      className="block px-4 py-2 hover:bg-gray-100"
+                    >
+                      Order Details
+                    </Link>
+                  </li>
+                  <li>
+                    <button
+                      onClick={Logout}
+                      className="block px-4 py-2 hover:bg-gray-100"
+                    >
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -157,7 +200,7 @@ export default function Navbar({ NumCartItems }) {
         <div
           ref={searchRef}
           className={`transition-all duration-300 ease-in-out px-6 bg-[#f5f3f1] ${
-            searchOpen ? 'max-h-24 py-3' : 'max-h-0 py-0 overflow-hidden'
+            searchOpen ? "max-h-24 py-3" : "max-h-0 py-0 overflow-hidden"
           }`}
         >
           <input
@@ -172,25 +215,39 @@ export default function Navbar({ NumCartItems }) {
           ref={menuRef}
           id="main-menu"
           className={`bg-[#F2F0EF] absolute mt-0 left-6 w-28 shadow-md  text-left transition-all duration-300 ease-in-out ${
-            menuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+            menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
           role="navigation"
         >
           <ul className="flex flex-col text-sm font-medium justify-center items-center text-left">
             <li>
-              <Link to="/" onClick={() => setMenuOpen(false)} className="block px-4 py-2 hover:bg-gray-100">
+              <Link
+                to="/"
+                onClick={() => setMenuOpen(false)}
+                className="block px-4 py-2 hover:bg-gray-100"
+              >
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" onClick={() => setMenuOpen(false)} className="block px-4 py-2 hover:bg-gray-100">
+              <Link
+                to="/about"
+                onClick={() => setMenuOpen(false)}
+                className="block px-4 py-2 hover:bg-gray-100"
+              >
                 About
               </Link>
             </li>
             <li>
-              <Link to="/contact" onClick={() => setMenuOpen(false)} className="block px-4 py-2 hover:bg-gray-100">
-                Contact
-              </Link>
+                <a
+                  href="https://wa.me/919876543210" // Replace with your number
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-4 py-2 hover:bg-gray-100"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Contact
+                </a>
             </li>
           </ul>
         </nav>
