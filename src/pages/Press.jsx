@@ -130,12 +130,6 @@ const ThePress = () => {
             about sustainability, burnout, and the loss of timeless design. City-based designers
             talk to DT Next about whether this trend marks progress or signals a warning.
           </p>
-
-          <p className="mb-4 px-4">
-            While this fast pace encourages creativity and innovation, it also raises concerns
-            about sustainability, burnout, and the loss of timeless design. City-based designers
-            talk to DT Next about whether this trend marks progress or signals a warning.
-          </p>
     </div>
     </>
   );
