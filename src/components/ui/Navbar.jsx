@@ -77,7 +77,7 @@ export default function Navbar({ NumCartItems }) {
   return (
     <header className="fixed top-0 w-full z-50 bg-[#F2F0EF] shadow-sm">
       <div className="relative">
-        <div className="flex justify-between items-center px-6 lg:px-12 py-6 max-w-8xl mx-auto">
+        <div className="flex justify-between items-center px-6 lg:px-10 py-6 mx-auto">
           {/* Left: Menu & Search */}
           <div className="flex items-center gap-6">
             <button
@@ -114,7 +114,7 @@ export default function Navbar({ NumCartItems }) {
           </div>
 
           {/* Right: User & Wishlist */}
-          <div className="flex items-center gap-4 lg:gap-8 md:gap-8 lg:px-8">
+          <div className="flex items-center gap-4 lg:gap-8 md:gap-8 lg:px-2">
             <a href="/cart" className="relative">
               <button aria-label="cart" className="relative">
                 <img
@@ -239,15 +239,15 @@ export default function Navbar({ NumCartItems }) {
               </Link>
             </li>
             <li>
-                <a
-                  href="https://wa.me/919876543210" // Replace with your number
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block px-4 py-2 hover:bg-gray-100"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Contact
-                </a>
+              <a
+                href="https://wa.me/+919600014187" // Replace with your number
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-2 hover:bg-gray-100"
+                onClick={() => setMenuOpen(false)}
+              >
+                Contact
+              </a>
             </li>
           </ul>
         </nav>

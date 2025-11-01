@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 const MeetShilpa = () => {
     return (
-        <div className="relative w-full max-w-[393px] sm:max-w-full mx-auto h-[203px] sm:h-[300px] md:h-[400px] lg:h-screen overflow-hidden lg:mt-10">
+        <div className="relative w-full max-w-[393px] sm:max-w-full mx-auto h-[203px] sm:h-[300px] md:h-[400px] lg:h-screen overflow-hidden mt-8 md:mt-12 lg:mt-14 md:mb-2">
           {/* Image */}
           <img
             src={shilpa}
             alt="Fashion Banner"
-            className="w-full h-full object-cover object-left transition-all duration-700 ease-in-out"
+            className="w-full h-full object-cover transition-all duration-700 ease-in-out"
           />
     
           {/* Overlay Content */}

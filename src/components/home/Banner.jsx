@@ -3,7 +3,7 @@ import bannerImage from "../../assets/images/banner.png";
 
 const FashionBanner = ({ scrollToCategory }) => {
   return (
-    <div className="relative w-full h-[185px] sm:h-[300px] md:h-[500px] lg:h-screen max-w-[393px] sm:max-w-full mx-auto">
+    <div className="bg-[#FFFFFF] relative w-full h-[200px] sm:h-[350px] md:h-[500px] lg:h-screen max-w-[393px] sm:max-w-full mx-auto mt-4 ">
       <img
         src={bannerImage}
         alt="Fashion Banner"
@@ -12,10 +12,10 @@ const FashionBanner = ({ scrollToCategory }) => {
 
       <div className="absolute inset-0 flex items-center justify-end px-3 sm:px-6 md:px-10">
         <div className="text-white text-center max-w-[180px] sm:max-w-xs md:max-w-sm lg:mr-20">
-          <div className="p-1 sm:p-3 md:p-4">
+          <div className="p-1 sm:p-3 md:p-4 md:mt-24">
             <button
               onClick={scrollToCategory}
-              className="inline-block text-teal-300 text-xs sm:text-sm md:text-base border border-teal-300 hover:text-black hover:bg-teal-300 hover:scale-105 transition-all duration-300 px-3 md:px-6"
+              className="inline-block text-white bg-black border border-white text-xs sm:text-sm md:text-lg lg:text-xl  hover:bg-gray-300 hover:scale-105 transition-all duration-300 py-0.5 px-3 md:px-6 cursor-pointer"
             >
               Shop Now
             </button>

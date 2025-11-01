@@ -2,7 +2,7 @@ import React from 'react';
 import shilpa from '../assets/images/shilpa.png';
 const AboutMe = () => {
   return (
-    <div className=" max-w-7xl py-5 mx-auto">
+    <div className="w-full max-w-[90%] py-5 mx-auto">
       <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 lg:gap-20">
         {/* Image */}
         <div className="w-full lg:w-2/3">
@@ -47,7 +47,7 @@ const AboutMe = () => {
           son during lockdown, where multi-hued speckles danced across
           lightweight georgettes and cottons.
         </p>
-        <p className='mt-4'>
+        <p className="mt-4">
           Her work has been featured in leading publications such as Ritz
           Magazine, JFW, Galatta Magazine, Cultureama, and Indulge Express,
           which spotlighted her innovative “Splatter” collection. She has styled

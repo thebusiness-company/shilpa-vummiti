@@ -61,15 +61,15 @@ const Wishlist = () => {
   if (isLoading) return <Loader text="Loading Wishlist" />;
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center px-4 py-8 bg-white max-w-6xl mx-auto">
-      <h2 className="text-lg md:text-xl lg:text-2xl font-medium mb-8 text-center">
+    <div className="w-full max-w-[96%] md:max-w-[94%] mx-auto min-h-screen flex flex-col items-center px-4 py-8 bg-white">
+      <h2 className="text-lg md:text-xl lg:text-2xl font-medium mb-8 text-center mt-6">
         Don’t lose your favorites anymore
       </h2>
 
       {wishlist.length === 0 ? (
         <p className="text-gray-500">Your wishlist is empty.</p>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-5 gap-4 w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
           {wishlist.map(({ id, product }) => (
             <motion.div
               key={id}
@@ -102,7 +102,7 @@ const Wishlist = () => {
                   </div>
                 </div>
               </div>
-              <div className="relative w-full h-[300px] overflow-hidden">
+              <div className="relative w-full h-[200px] md:h-[350px] lg:h-[480px] overflow-hidden">
                 <img
                   src={`${API_URL}${product.image}` || "/fallback-image.png"}
                   alt={product.name}
@@ -110,11 +110,11 @@ const Wishlist = () => {
                 />
               </div>
               <div className="py-3">
-                <h3 className="text-sm md:text-lg font-medium pr-10 text-[#183028]">
+                <h3 className="text-sm md:text-lg font-medium pr-10 text-[#183028] font-tenor">
                   {product.name}
                 </h3>
                 <p className="text-base md:text-xl md:mt-2 text-[#183028]">
-                  ₹{product.price}
+                  ₹ {product.price}
                 </p>
               </div>
             </motion.div>

@@ -94,9 +94,9 @@ export default function CategoryProductView() {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 mb-2">
       {!showProducts ? (
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-5 lg:mt-15 lg:gap-10 mx-5 sm:mx-10 lg:mx-38 transition-all duration-500">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-5 lg:mt-15 lg:mb-10 lg:gap-10 transition-all duration-500 w-full max-w-[90%] mx-auto">
           {categories?.data.map((cat) => (
             <div
               key={cat.id}
@@ -119,7 +119,7 @@ export default function CategoryProductView() {
         </div>
       ) : (
         <div>
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-all duration-500 mt-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-all duration-500 mt-4 w-full max-w-[90%] mx-auto">
             {products?.data.map((prod) => (
               <div key={prod.id} className="text-center group relative">
                 <Link to={`/productDetail/${prod.slug}`}>
@@ -165,7 +165,7 @@ export default function CategoryProductView() {
             </button>
           </div>
           {/* desktop view less and more buttons */}
-          <div className="hidden lg:flex flex-row gap-4 mt-6 font-palanquin text-[#183028]">
+          <div className="hidden lg:flex flex-row gap-4 mt-6 font-palanquin text-[#183028] w-full max-w-[90%] mx-auto">
             <div className="flex-1 flex justify-center">
               <button
                 onClick={handleViewMore}

@@ -103,7 +103,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-white flex flex-col md:flex-row">
+    <div className="min-h-screen w-full bg-white flex flex-col md:flex-row md:items-center lg:items-start max-w-[96%] lg:max-w-[90%] mx-auto lg:mt-6">
       {/* Left Section */}
       <div className="w-full md:w-1/2 px-6 lg:py-12 py-6 flex flex-col items-start max-w-md mx-auto">
         <img src={logo} alt="Logo" className="lg:mb- w-40" />
@@ -176,7 +176,7 @@ const Login = () => {
       </div>
 
       {/* Right Image */}
-      <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 md:mt-30 py-1 md:py-12">
+      <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 md:mt-20 lg:mt-14 py-1 md:py-12 mb-6">
         <img
           src={img}
           alt="Fashion"
