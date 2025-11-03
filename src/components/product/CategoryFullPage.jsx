@@ -62,7 +62,7 @@ export default function CategoryFullPage() {
 return (
     <div className="p-4 max-w-8xl mx-auto">
     <h2 className="text-2xl lg:ml-25 my-3 lg:my-6 mb-4 text-start font-tenor text-[#183028]">{categoryName}</h2>
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:gap-10 lg:mx-25 transition-all duration-500">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:gap-10 transition-all duration-500 w-full max-w-[90%] mx-auto">
       {products?.data.map((prod) => (
         <div key={prod.id} className="text-center group relative">
           <Link to={`/productDetail/${prod.slug}`}>

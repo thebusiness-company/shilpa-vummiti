@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import img from "../assets/images/login.png";
+import img from "../assets/images/signup.png";
 import logo from "../assets/images/Logo.png";
 import API from "../api";
 import axios from "axios";
@@ -115,9 +115,9 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-white flex flex-col md:flex-row">
+    <div className="min-h-screen w-full bg-white flex flex-col md:flex-row md:items-center lg:items-start max-w-[96%] lg:max-w-[90%] mx-auto lg:mt-6">
       {/* Left Section */}
-      <div className="w-full md:w-1/2 px-6 lg:py-12 py-6 flex flex-col items-start max-w-md mx-auto">
+      <div className="w-full md:w-1/2 px-6 lg:px-0 lg:py-12 py-6 flex flex-col items-start max-w-md mx-auto">
         <img src={logo} alt="Logo" className="w-40" />
 
         <div className="text-base mt-10 mb-6">
@@ -168,6 +168,9 @@ const Signup = () => {
             placeholder="MOBILE NUMBER"
             required
             className="w-full border-b border-gray-400 mb-4 pb-4 outline-none bg-transparent text-sm"
+            pattern="\d{10}"
+            maxLength={10}
+            minLength={10}
           />
           <input
             type="password"
@@ -210,7 +213,7 @@ const Signup = () => {
       </div>
 
       {/* Right Section with Image */}
-      <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 py-1 lg:py-40">
+      <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 py-1 lg:py-40 md:mt-20 lg:mt-5 mb-6">
         <img
           src={img}
           alt="Signup"

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart } from "lucide-react";
 import { useQuery, useMutation } from "@tanstack/react-query";
@@ -14,9 +14,12 @@ import Loader from '../ui/Loader';
 // Reusable Accordion
 function Accordion({ title, expanded, onToggle, children }) {
   return (
-    <div className="border-t py-3 cursor-pointer" onClick={onToggle}>
+    <div
+      className="border-b border-[#4C4C4C] py-3 cursor-pointer"
+      onClick={onToggle}
+    >
       <div className="flex justify-between items-center">
-        <span className="text-sm md:text-base font-medium">{title}</span>
+        <span className="text-sm md:text-base lg:text-lg font-medium">{title}</span>
         {expanded ? <FiMinus /> : <HiMiniPlus />}
       </div>
       <AnimatePresence>
@@ -26,7 +29,7 @@ function Accordion({ title, expanded, onToggle, children }) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="text-sm text-gray-600 mt-2"
+            className="text-sm  mt-4 mb-4"
           >
             {children}
           </motion.div>
@@ -51,6 +54,13 @@ export default function ProductDetail({setNumCartItems}) {
     enabled: !!slug,
   });
 
+  const sizeData = [
+    { size: "S", bust: 34, waist: 28, hip: 36 },
+    { size: "M", bust: 36, waist: 30, hip: 38 },
+    { size: "L", bust: 38, waist: 32, hip: 40 },
+    { size: "XL", bust: 40, waist: 34, hip: 42 },
+  ];
+
   useEffect(() => {
     if (product) {
       const imageList = product.images?.map((img) => img.images) || [];
@@ -67,7 +77,8 @@ export default function ProductDetail({setNumCartItems}) {
     mutationFn: ({ cart_code, product_id }) => API.post("cart-items/", { cart_code, product_id,selectedSize }),
     onSuccess: () => {
       toast.success("Item added to cart!");
-      setNumCartItems(curr=>curr+1)
+      setInCart(true);
+      setNumCartItems(curr=>curr+1);
     },
     onError: () => toast.error("Failed to add item to cart."),
   });
@@ -144,11 +155,11 @@ export default function ProductDetail({setNumCartItems}) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="w-full min-h-screen bg-white lg:px-10 lg:py-20"
+      className="w-full min-h-screen bg-white md:py-14 lg:py-20 lg:max-w-[90%] lg:mx-auto"
     >
-      <div className="flex flex-col lg:flex-row gap-6 lg:gap-20 overflow-x-hidden">
+      <div className="flex flex-col md:flex-row gap-6 lg:gap-20 overflow-x-hidden">
         {/* Left - Image */}
-        <div className="w-full lg:w-1/2">
+        <div className="w-full md:w-1/2 ">
           <motion.img
             key={selectedImage}
             src={`${API_URL}${selectedImage}`}
@@ -156,7 +167,7 @@ export default function ProductDetail({setNumCartItems}) {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="w-full object-cover"
+            className="w-full object-cover lg:object-contain h-[450px] lg:h-screen lg:max-h-[700px]"
           />
         </div>
 
@@ -165,7 +176,7 @@ export default function ProductDetail({setNumCartItems}) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          className="w-full lg:w-1/2 px-4 sm:px-6 max-w-md md:max-w-full mx-auto lg:mx-0 lg:mt-8 space-y-6"
+          className="w-full md:w-1/2 px-4 sm:px-6 max-w-[90%] md:max-w-full mx-auto lg:mx-0 lg:mt-8 space-y-6"
         >
           {/* Mobile Thumbnails */}
           <div className="flex gap-2 overflow-x-auto pb-2 lg:hidden">
@@ -231,7 +242,7 @@ export default function ProductDetail({setNumCartItems}) {
             <select
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
-              className="border px-4 py-2 lg:my-3 w-full cursor-pointer text-base font-semibold lg:text-base text-black hover:bg-[#F2F0EF]"
+              className="border px-4 py-1.5 lg:my-3 w-full cursor-pointer text-base font-semibold lg:text-base text-black hover:bg-[#F2F0EF] focus:outline-none"
             >
               <option value="">Select your size</option>
               <option value="Small">Small</option>
@@ -243,11 +254,22 @@ export default function ProductDetail({setNumCartItems}) {
 
           {/* Description */}
           <div className="text-sm leading-relaxed mt-2">
-            <p>
+            <p className="mb-4">
               Our Digital Concierge is available for any questions about this
               product. Contact us.
             </p>
-            <p className="mt-3">{product.description}</p>
+            {/* <p className="mt-3">{product.description}</p> */}
+            {product.description?.split(/\r?\n/).map(
+              (line, index) =>
+                line.trim() !== "" && (
+                  <p
+                    key={index}
+                    className={`leading-relaxed ${index !== 0 ? "mt-2.5" : ""}`}
+                  >
+                    {line}
+                  </p>
+                )
+            )}
           </div>
 
           {/* Accordions */}
@@ -256,22 +278,82 @@ export default function ProductDetail({setNumCartItems}) {
             expanded={expanded.care}
             onToggle={() => toggle("care")}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            <ul className="list-inside list-disc space-y-3 mt-2 small-bullet">
+              <li>Dry clean delicate fabrics like silk and georgette.</li>
+              <li>
+                Hand wash sustainable fabrics in cold water with mild detergent.
+              </li>
+              <li>Air dry away from direct sunlight; avoid machine drying.</li>
+              <li>Steam or iron on low heat using a protective cloth</li>
+              <li>Store in breathable bags; avoid plastic covers</li>
+            </ul>
+            <p className="mt-4 text-sm">
+              For detailed care tips, visit our{" "}
+              <Link
+                to={"/care"}
+                className="text-[#DB2961] underline lg:no-underline lg:hover:underline transition-colors"
+              >
+                Product Care
+              </Link>{" "}
+              page.
+            </p>
           </Accordion>
           <Accordion
             title="Size guide"
             expanded={expanded.size}
             onToggle={() => toggle("size")}
           >
-            Size details and fitting suggestions.
+            <p className="mb-4">
+              At Shilpa Vummiti, our garments are tailored for a refined and
+              comfortable fit.
+            </p>
+            <table className="w-full border border-gray-300 text-sm md:text-base mb-4 max-w-[90%] mx-auto">
+              <thead className="bg-[#183028] text-white">
+                <tr>
+                  <th className="border border-gray-300 px-2 py-1.5">Size</th>
+                  <th className="border border-gray-300 px-2 py-1.5">Bust</th>
+                  <th className="border border-gray-300 px-2 py-1.5">Waist</th>
+                  <th className="border border-gray-300 px-2 py-1.5">Hip</th>
+                </tr>
+              </thead>
+              <tbody>
+                {sizeData.map((row, index) => (
+                  <tr key={index} className="text-center">
+                    <td className="border border-gray-300 px-2 py-1.5">
+                      {row.size}
+                    </td>
+                    <td className="border border-gray-300 px-2 py-1.5">
+                      {row.bust}
+                    </td>
+                    <td className="border border-gray-300 px-2 py-1.5">
+                      {row.waist}
+                    </td>
+                    <td className="border border-gray-300 px-2 py-1.5">
+                      {row.hip}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <section className="space-y-4 mb-4">
+              <p>Fit Tips:</p>
+              <ul className="list-inside list-disc space-y-3 small-bullet">
+                <li>Sizes follow standard measurements.</li>
+                <li>For a relaxed fit, choose one size up.</li>
+                <li>Custom sizing available upon request.</li>
+              </ul>
+            </section>
+            <span>
+              Note: Fit may vary slightly by fabric, silhouette, or category.
+            </span>
           </Accordion>
-          <Accordion
+          {/* <Accordion
             title="Gifting"
             expanded={expanded.gift}
             onToggle={() => toggle("gift")}
           >
             Gift wrapping options available at checkout.
-          </Accordion>
+          </Accordion> */}
 
           {/* Add to Bag */}
           <div className="mt-8 flex justify-center">

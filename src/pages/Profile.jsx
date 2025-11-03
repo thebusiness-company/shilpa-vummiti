@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import img from "../assets/images/img.png";
+import img from "../assets/images/profile.png";
 import logo from "../assets/images/Logo.png";
 import API from "../api";
 
@@ -114,6 +114,9 @@ const ProfileUpdate = () => {
             value={formData.mobile}
             onChange={handleChange}
             className="border-b w-full outline-none pb-2 text-sm"
+            pattern="\d{10}"
+            maxLength={10}
+            minLength={10}
             required
           />
           <input
@@ -164,19 +167,21 @@ const ProfileUpdate = () => {
               value={formData.zip}
               onChange={handleChange}
               className="border-b w-full outline-none pb-2 text-sm"
+              pattern="\d{6}"
+              maxLength={6}
+              minLength={6}
               required
             />
           </div>
           <div className="flex justify-center md:justify-end items-center ">
             <button
-            type="submit"
-            disabled={loading}
-            className="mt-6 px-6 py-2 bg-black text-white text-sm font-semibold w-fit hover:bg-white hover:text-black border border-black transition"
-          >
-            {loading ? "Updating..." : "UPDATE PROFILE"}
-          </button>
+              type="submit"
+              disabled={loading}
+              className="mt-6 px-6 py-2 bg-black text-white text-sm font-semibold w-fit hover:bg-white hover:text-black border border-black transition"
+            >
+              {loading ? "Updating..." : "UPDATE PROFILE"}
+            </button>
           </div>
-          
 
           {successMessage && (
             <p className="text-green-600 text-sm mt-2">{successMessage}</p>

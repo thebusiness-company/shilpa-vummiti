@@ -1,8 +1,8 @@
 import React from 'react';
-import shilpa from '../assets/images/shilpa2.png';
+import shilpa from '../assets/images/shilpavummiti.png';
 const ChennaiFav = () => {
   return (
-    <div className=" max-w-7xl py-5 mx-auto">
+    <div className="w-full max-w-[90%] py-5 mx-auto">
       <div className="flex flex-col lg:flex-row items-start lg:items-center gap-2 lg:gap-20 justify-center">
         {/* Image */}
         <div className="w-full lg:w-1/2">

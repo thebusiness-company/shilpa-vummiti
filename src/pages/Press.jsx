@@ -124,14 +124,8 @@ const ThePress = () => {
       </AnimatePresence>
 
     </div>
-    <div className="max-w-7xl text-center sm:px-6  bg-white text-black mx-auto">
+    <div className="w-full max-w-[90%] text-center sm:px-6  bg-white text-black mx-auto">
          <p className="mt-2 mb-4 px-4">
-            While this fast pace encourages creativity and innovation, it also raises concerns
-            about sustainability, burnout, and the loss of timeless design. City-based designers
-            talk to DT Next about whether this trend marks progress or signals a warning.
-          </p>
-
-          <p className="mb-4 px-4">
             While this fast pace encourages creativity and innovation, it also raises concerns
             about sustainability, burnout, and the loss of timeless design. City-based designers
             talk to DT Next about whether this trend marks progress or signals a warning.

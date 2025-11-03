@@ -78,7 +78,7 @@ return (
             }) 
             : "dd-mm-yyyy";
              const totalValue = parseFloat(ord.total_amount).toFixed(2);
-             const orderId = ord.order_id || "N/A"; // Fallback to "N/A" if id is not available
+             const orderId = ord.order_id || "-"; // Fallback to "-" if id is not available
             
              return (
                 <React.Fragment key={ord.id || idx}>
@@ -98,7 +98,7 @@ return (
                         </div>
                         <div>   
                         <p className="font-tenor text-base">Shipped to </p>
-                        <p className="font-semibold text-lg">{ord.address?.orderedname || "N/A"} </p>    
+                        <p className="font-semibold text-lg">{ord.address?.orderedname || "-"} </p>    
                         </div> 
                         <div className="md:pl-24">
                         <p className="font-tenor text-base">Order Id</p>
@@ -154,7 +154,7 @@ return (
                     </div>
                     <div className="grid grid-cols-1 mb-4 text-base py-4 space-y-2 justify-center items-start">   
                         <p>Shipped to </p>
-                        <p><strong>{ord.address?.orderedname || "N/A"}  </strong></p>    
+                        <p><strong>{ord.address?.orderedname || "-"}  </strong></p>    
                     </div> 
 
                     {/* Product Loop for this order */}

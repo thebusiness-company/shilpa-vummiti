@@ -73,7 +73,7 @@ const Footer = () => {
           <ul className="space-y-2">
             <div>
               <a
-                href="https://wa.me/919876543210" // Replace with your number
+                href="https://wa.me/+919600014187" // Replace with your number
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block"
@@ -125,14 +125,14 @@ const Footer = () => {
             className="leading-relaxed hover:opacity-70 block cursor-pointer"
           >
             <span className="block underline">
-              206 & 201, Ground Floor, 1st Cross Rd,
+              4/200, Ground Floor, 1st Cross Rd,
             </span>
             <span className="block underline">
               Sri Kapaleeswarar Nagar, Neelankarai,
             </span>
             <span className="block underline">Chennai, Tamil Nadu 600041</span>
           </a>
-          <div className="pt-14">
+          <div className="pt-10">
             <Link to={"/terms"}>
               <p className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
                 Terms & Conditions

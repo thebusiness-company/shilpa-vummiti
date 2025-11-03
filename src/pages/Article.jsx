@@ -6,7 +6,7 @@ import ChennaiFav from './ChennaiFas';
 const Article = () => {
   return (
     <>
-    <div className="flex flex-col items-center px-4 py-2 lg:px-20 lg:py-12">
+    <div className="flex flex-col items-center px-4 py-2 w-full max-w-[90%] mx-auto lg: lg:py-12">
       
 
       {/* Logo */}
@@ -36,7 +36,7 @@ const Article = () => {
       
 
       {/* Article */}
-      <div className="max-w-7xl text-center ">
+      <div className="w-full text-center ">
         <h2 className="text-[15px] lg:text-3xl mb-4 font-medium font-tenor">ARTICLES</h2>
         <p className="mb-4 text-start">
           Birds chirp in the background, occasionally drowned by the roar of a waterfall. There’s the fragrance of lemon grass. Up ahead is green grass with pink, orange and red flowers strewn about. It’s a garden. Vibrant paper boats and jars with candles add to the visual appeal. A large branch sits dramatically in the centre.

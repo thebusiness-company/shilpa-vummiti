@@ -1,10 +1,13 @@
-@import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Palanquin&family=Tenor+Sans&display=swap');
+@import "tailwindcss";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+ body {
+   font-family: 'Palanquin', 'Tenor Sans', sans-serif !important;
+ }
 
 .font-palanquin {
   font-family: 'Palanquin', sans-serif;
@@ -15,13 +18,7 @@
 .custom-text-shadow {
   text-shadow: 2px 3px 2.5px rgba(0, 0, 0, 0.3);
 }
-body {
-  font-family: 'Palanquin','Tenor Sans', sans-serif;
+.small-bullet li::marker {
+  font-size: 10px;
+  /* smaller bullet */
 }
-
- :root{
-     font-family: 'Palanquin','Tenor Sans',sans-serif ;
-  /* system-ui, Avenir, Helvetica, Arial, sans-serif; */
-  line-height: 1.5;
-  font-weight: 400;
-} 
