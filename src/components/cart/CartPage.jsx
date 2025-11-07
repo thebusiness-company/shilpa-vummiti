@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { HiMiniPlus } from "react-icons/hi2";
 import { FiMinus } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
@@ -55,6 +55,8 @@ const CartPage = ({setNumCartItems}) => {
     queryKey: ["cartItems"],
     queryFn: fetchCartItems,
   });
+  console.log("Cart Items:", cartItems);
+  
 
   // Remove item mutation
   const removeItemMutation = useMutation({
@@ -408,10 +410,11 @@ const CartPage = ({setNumCartItems}) => {
                     }
                     disabled={updateItemMutation.isLoading}
                   >
-                    <option value="Small">Small</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Large">Large</option>
-                    <option value="Extra Large">Extra Large</option>
+                    {product.sizes?.map((size) => (
+                      <option key={size.id} value={size.size}>
+                        {size.size}
+                      </option>
+                    ))}
                   </select>
                   <span>|</span>
                   <button
@@ -624,10 +627,11 @@ const CartPage = ({setNumCartItems}) => {
                 }
                 disabled={updateItemMutation.isLoading}
               >
-                <option value="Small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
-                <option value="Extra Large">Extra Large</option>
+                {product.sizes?.map((size) => (
+                  <option key={size.id} value={size.size}>
+                    {size.size}
+                  </option>
+                ))}
               </select>
               <div>|</div>
               <button
