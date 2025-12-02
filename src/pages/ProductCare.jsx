@@ -1,6 +1,7 @@
 import React from "react";
-import careImage1 from "../assets/images/fabric1.png"; // rainbow fabric
-import careImage2 from "../assets/images/fabric2.png"; // blue fabric
+import careImage1 from "../assets/images/care1.png"; 
+import careImage2 from "../assets/images/care2.png"; 
+import careImage3 from "../assets/images/fabric2.png"; // blue fabric
 import heart from "../assets/images/heart1.svg"; // blue fabric
 import { useEffect } from "react";
 
@@ -12,203 +13,67 @@ const ProductCare = () => {
       },[]);
 
   return (
-    <section className="bg-white px-4 py-8 md:px-12">
-      <div className="w-full max-w-[90%] mx-auto">
+    <section className="bg-white py-8">
+      <div className="w-full mx-auto">
         {/* Header */}
         <div className="bg-pink-100 py-4 px-6 text-center">
           <h2 className="text-2xl md:text-2xl lg:text-4xl font-tenor text-[#DB2961]">
             Product Care
           </h2>
         </div>
-        <div className="flex justify-center mt-4">
+        {/* <div className="flex justify-center mt-4 mb-8">
           <img src={heart} alt="heart icon" className="w-10 h-10" />
-        </div>
-
-        {/* Title */}
-        <h3 className="text-xl md:text-xl lg:text-3xl font-medium mt-6 mb-4">
-          How do I take care of my clothing pieces?
-        </h3>
-
-        {/* Introduction */}
-        <p className="mb-6 text-base md:text-lg leading-relaxed">
-          Shilpa Vummiti’s bespoke designs, known for their Indo-Western flair,
-          vibrant colors, and premium fabrics like silk, georgette, chiffon, and
-          sustainable materials, require careful maintenance to preserve their
-          elegance and longevity. Follow these care tips to keep your garments
-          looking pristine, honoring the brand’s commitment to quality
-          craftsmanship and sustainable fashion.
-        </p>
+        </div> */}
 
         {/* First Image */}
-        <img
-          src={careImage1}
-          alt="Fabric Care"
-          className="w-full h-auto mb-6"
-        />
+        <div className="flex flex-row w-full max-w-[90%] md:w-2/3 lg:w-1/2 h-[250px] md:h-[350px] xl:h-[400px] 2xl:h-[550px] mt-6 lg:mt-10 mb-6 lg:mb-10 mx-auto gap-4 lg:gap-6 2xl:gap-8">
+          <div className="w-1/2 h-full">
+            <img
+              src={careImage1}
+              alt="Fabric Care"
+              className="w-full max-w-[96%] h-full object-cover mx-auto"
+            />
+          </div>
+          <div className="w-1/2 h-full">
+            <img
+              src={careImage2}
+              alt="Fabric Care"
+              className="w-full max-w-[96%] h-full object-cover mx-auto"
+            />
+          </div>
+        </div>
 
-        {/* Tips */}
-        <ol className="list-decimal list-inside space-y-4 text-base md:text-lg  leading-relaxed">
-          <li>
-            <strong>Read Care Labels First</strong>
-            <ul className="list-disc list-inside ml-5 mt-1 space-y-1 small-bullet">
-              <li>
-                Always check the care label on your Shilpa Vummiti garment for
-                specific instructions.
-              </li>
-              <li>
-                Bespoke pieces may use delicate or blended fabrics like pure
-                silk or organic cotton.
-              </li>
-              <li>
-                The brand’s “no shortcuts” approach ensures high-quality
-                materials, so following label guidance preserves their
-                integrity.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Dry Clean for Delicate Fabrics</strong>
-            <ul className="list-disc list-inside ml-5 mt-1 space-y-1 small-bullet">
-              <li>
-                For silk, art silk, georgette, and chiffon garments (e.g.,
-                cocktail dresses, gowns, or drape dresses), opt for professional
-                dry cleaning.
-              </li>
-              <li>
-                Choose an eco-friendly dry cleaner to align with the brand’s
-                sustainable ethos.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Hand Wash Sustainable Fabrics</strong>
-            <ul className="list-disc list-inside ml-5 mt-1 space-y-1 small-bullet">
-              <li>
-                For organic cotton or other sustainable fabrics, hand wash in
-                cold water with a mild, eco-friendly detergent.
-              </li>
-              <li>Gently agitate, avoid wringing, and rinse thoroughly.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Avoid Machine Washing for Bespoke Designs</strong>
-            <ul className="list-disc list-inside ml-5 mt-1 space-y-1 small-bullet">
-              <li>
-                Machine washing can stress delicate fabrics or tailored fits,
-                especially structured pieces like three-piece ensembles.
-              </li>
-              <li>
-                Stick to hand washing or dry cleaning to preserve craftsmanship
-                and silhouette.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Dry Naturally, Away from Direct Sunlight</strong>
-            <ul className="list-disc list-inside ml-5 mt-1 space-y-1 small-bullet">
-              <li>
-                Air dry garments flat or on padded hangers to retain shape,
-                especially for flowy skirts, crop tops, or ponchos.
-              </li>
-              <li>
-                Keep away from direct sunlight to avoid fading of vibrant
-                colors.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Iron with Care</strong>
-            <ul className="list-disc list-inside ml-5 mt-1 space-y-1 small-bullet">
-              <li>
-                Use low heat or steam iron for silks, georgettes, and chiffons.
-                Place a cotton cloth between fabric and iron.
-              </li>
-              <li>
-                For organic cotton, iron on medium heat while slightly damp.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Store Properly to Maintain Exclusivity</strong>
-            <ul className="list-disc list-inside ml-5 mt-1 space-y-1 small-bullet">
-              <li>
-                Use breathable cotton garment bags. Avoid plastic bags which can
-                trap humidity and damage fabric.
-              </li>
-              <li>Use cedar blocks or sachets for natural protection.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Handle Stains Promptly</strong>
-            <ul className="list-disc list-inside ml-5 mt-1 space-y-1 small-bullet">
-              <li>
-                Blot stains immediately with a clean damp cloth. Avoid rubbing
-                or using harsh detergents.
-              </li>
-              <li>
-                Consult a professional cleaner familiar with
-                delicate/sustainable fabrics.
-              </li>
-            </ul>
-          </li>
-          <li>
-            <strong>Minimize Washing for Sustainability</strong>
-            <ul className="list-disc list-inside ml-5 mt-1 space-y-1 small-bullet">
-              <li>
-                Wear garments only when necessary. Spot clean where possible.
-              </li>
-              <li>Air out garments to refresh them without washing.</li>
-            </ul>
-          </li>
-          <li>
-            <strong>Repair, Don’t Discard</strong>
-            <ul className="list-disc list-inside ml-5 mt-1 space-y-1 small-bullet">
-              <li>
-                If a garment requires repair, consult a skilled tailor to
-                restore it.
-              </li>
-              <li>
-                This supports sustainable fashion by extending a garment’s life.
-              </li>
-            </ul>
-          </li>
-        </ol>
-
-        {/* Final Image */}
-        <img
-          src={careImage2}
-          alt="Fabric Texture"
-          className="w-lg h-auto lg:ml-80 mt-10"
-        />
-        {/* Why These Tips Matter Section */}
-        <div className="mt-6">
-          <h4 className="text-xl md:text-2xl lg:text-3xl font-medium mb-3">
-            Why These Tips Matter:
-          </h4>
-          <ul className="list-disc list-inside text-base md:text-lg leading-relaxed space-y-2 small-bullet">
-            <li>
-              <strong>Preserve Quality:</strong> Shilpa Vummiti’s designs, from
-              floral-printed co-ord sets to silk gowns, are crafted with
-              precision, and proper care ensures they remain stunning for years,
-              reflecting the brand’s “no shortcuts” commitment.
-            </li>
-            <li>
-              <strong>Support Sustainability:</strong> Using eco-friendly
-              cleaning methods and minimizing washing aligns with the brand’s
-              use of sustainable fabrics, reducing environmental impact.
-            </li>
-            <li>
-              <strong>Enhance Longevity:</strong> Careful storage and handling
-              maintain the exclusivity of limited-edition pieces, ensuring your
-              investment in bespoke fashion lasts.
-            </li>
-            <li>
-              <strong>Customer Appeal:</strong> Clear care instructions build
-              trust, showing your brand’s dedication to authenticity and
-              customer satisfaction, which can drive sales (as per your fair
-              pricing goal).
-            </li>
-          </ul>
+        <div className="space-y-6 mt-8 mb-8 text-sm md:text-base lg:text-lg 2xl:text-2xl w-full max-w-[90%] md:max-w-[80%] lg:max-w-[75%] xl:max-w-[70%] 2xl:max-w-[65%] mx-auto">
+          <section>
+            <h2 className="text-[#DB2961] inline m-0">Dry Clean Only:</h2>
+            <p className="inline m-0 pl-2">
+              All garments are designed for professional dry cleaning to
+              maintain their original finish and quality.
+            </p>
+          </section>
+          <section>
+            <h2 className="text-[#DB2961] inline m-0">
+              Avoid Hand or Machine Wash:
+            </h2>
+            <p className="inline m-0 pl-2">
+              Washing at home may damage delicate fabrics, embroidery.
+            </p>
+          </section>
+          <section>
+            <h2 className="text-[#DB2961] inline m-0">Store with Care:</h2>
+            <p className="inline m-0 pl-2">
+              Keep your garments in a cool, dry place away from direct sunlight
+              to prevent fading.
+            </p>
+          </section>
+          <section>
+            <h2 className="text-[#DB2961] inline m-0">
+              Handle with Clean Hands:
+            </h2>
+            <p className="inline m-0 pl-2">
+              Oils or residues from skin may affect fine materials.
+            </p>
+          </section>
         </div>
       </div>
     </section>

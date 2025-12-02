@@ -101,7 +101,7 @@ const CartPage = ({setNumCartItems}) => {
     0
   );
   const shippingCharge = 300;
-  const tax = subtotal * 0.5;
+  const tax = subtotal * 0.05;
 
   const isShippingFree = subtotal > 10000;
   const shipping = isShippingFree? 0 : shippingCharge; 
@@ -210,7 +210,7 @@ const CartPage = ({setNumCartItems}) => {
     <div className="font-sans bg-white min-h-screen">
       {/* Address Form Modal */}
       {showAddressForm && (
-        <div className="fixed inset-0 z-50 bg-white flex flex-col lg:flex-row p-6 lg:p-16">
+        <div className="fixed inset-0 z-50 bg-white flex flex-col lg:flex-row">
           {/* Cancel Button */}
           <button
             onClick={() => setShowAddressForm(false)}
@@ -219,15 +219,22 @@ const CartPage = ({setNumCartItems}) => {
             <X size={24} />
           </button>
           {/* Left Form */}
-          <div className="w-full md:w-1/2 md-space-x-6 lg:space-x-6 lg:w-1/2 flex flex-col justify-center">
-            <img
-              src={logo}
-              alt="Logo"
-              className="h-24 w-32 md:h-28 md:w-36 lg:h-40 lg:w-60 mb-5"
-            />
-            <form ref={formRef}>
-              <h2 className="text-lg mb-6">YOUR ORDER UPDATE</h2>
-              <div className="space-y-4 max-w-md ">
+          <div className="w-full sm:w-[80%] md:w-2/3 sm:mx-auto lg:mx-0 md-space-x-6 md:mt-8 lg:mt-4 xl:mt-10 lg:space-x-6 lg:w-[50%] 2xl:w-[55%] flex flex-col p-8 lg:p-10 lg:px-12 2xl:p-16">
+            <button
+              onClick={() => navigate("/")}
+              className="w-fit cursor-pointer"
+            >
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-24 w-32 md:h-28 md:w-36 2xl:h-40 2xl:w-56 mb-5"
+              />
+            </button>
+            <form ref={formRef} className="mt-8 lg:mt-4 2xl:mt-10 2xl:mx-auto">
+              <h2 className="text-lg mb-6 text-center lg:text-left">
+                YOUR ORDER UPDATE
+              </h2>
+              <div className="space-y-4 max-w-lg">
                 <input
                   type="text"
                   placeholder="Full Name"
@@ -319,7 +326,7 @@ const CartPage = ({setNumCartItems}) => {
                   />
                 </div>
               </div>
-              <div className="mt-4 max-w-md w-full ">
+              <div className="mt-4 max-w-lg w-full ">
                 <div className="flex justify-end ">
                   <button
                     type="button"
@@ -358,11 +365,11 @@ const CartPage = ({setNumCartItems}) => {
             </form>
           </div>
           {/* Right Side - Image */}
-          <div className="w-full lg:w-1/2 hidden lg:block">
+          <div className="w-full lg:w-[50%] 2xl:w-[55%] hidden lg:block">
             <img
               src={img} // Replace with actual image path
               alt="Shilpa Vummiti Bag"
-              className="w-full h-full object-contain"
+              className="w-full h-full lg:max-h-[750px] xl:max-h-full object-cover object-top"
             />
           </div>
         </div>
@@ -426,7 +433,7 @@ const CartPage = ({setNumCartItems}) => {
                     onClick={() => addToWishlistMutation.mutate(product.id)}
                     disabled={addToWishlistMutation.isLoading}
                   >
-                    <span className="flex items-center gap-1">
+                    <span className="flex items-center gap-1 ">
                       <Heart className="w-4 h-4" /> MOVE TO WISHLIST
                     </span>
                   </button>
@@ -434,7 +441,7 @@ const CartPage = ({setNumCartItems}) => {
               </div>
               <div className="flex-1 mt-4 md:mt-0">
                 <select
-                  className="border text-sm px-2 py-1 max-h-[130px] overflow-y-auto"
+                  className="border text-sm px-2 py-1 max-h-[130px] overflow-y-auto cursor-pointer"
                   value={quantity}
                   onChange={(e) =>
                     updateItemMutation.mutate({
@@ -465,7 +472,7 @@ const CartPage = ({setNumCartItems}) => {
           <h3 className="text-sm font-medium text-[#DB2961] underline mt-6 mb-5">
             ORDER SUMMARY
           </h3>
-          <div className="text-sm space-y-6 mb-2">
+          <div className="text-sm lg:text-[15px] space-y-6 mb-2">
             <div className="flex justify-between">
               <span>Subtotal</span>
               <span className="text-[#183028] font-tenor">
@@ -484,9 +491,9 @@ const CartPage = ({setNumCartItems}) => {
                 ₹ {tax.toFixed(2)}
               </span>
             </div>
-            <div className="flex justify-between font-semibold pt-2">
+            <div className="flex justify-between font-semibold pt-2 ">
               <span>Total</span>
-              <span className="text-[#183028] font-tenor">
+              <span className="text-[#183028] font-tenor text-lg xl:text-xl">
                 ₹ {total.toFixed(2)}
               </span>
             </div>
@@ -525,7 +532,7 @@ const CartPage = ({setNumCartItems}) => {
 
           <button
             onClick={() => handleProcessPayment()}
-            className="w-full bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] hover:text-white font-medium py-3 transition-all duration-300 flex items-center justify-center mb-4"
+            className="w-full bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] hover:text-white text-xl xl:text-2xl 2xl:text-[26px] py-2 transition-all duration-300 flex items-center justify-center mb-4 cursor-pointer"
             disabled={cartItems.length === 0 || isProcessingPayment}
           >
             {isProcessingPayment ? (
@@ -716,7 +723,7 @@ const CartPage = ({setNumCartItems}) => {
 
           <button
             onClick={() => handleProcessPayment()}
-            className="w-full bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] hover:text-white font-medium py-3 transition-all duration-300 flex items-center justify-center"
+            className="w-full bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] text-xl hover:text-white font-medium tracking-wide py-3 transition-all duration-300 flex items-center justify-center"
             disabled={cartItems.length === 0 || isProcessingPayment}
           >
             {isProcessingPayment ? (

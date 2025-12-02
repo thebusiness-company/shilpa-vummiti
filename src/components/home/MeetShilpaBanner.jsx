@@ -9,7 +9,7 @@ const MeetShilpa = () => {
           <img
             src={shilpa}
             alt="Fashion Banner"
-            className="w-full h-full object-cover transition-all duration-700 ease-in-out"
+            className="w-full h-full object-cover lg:object-fill xl:object-cover transition-all duration-700 ease-in-out"
           />
     
           {/* Overlay Content */}
@@ -17,7 +17,7 @@ const MeetShilpa = () => {
               
                <div className="text-end">
                 <Link to={"about/"}>
-                 <button className="text-end bg-[#DB2961]/20 hover:bg-[#183028]/40 hover:text-[white] cursor-pointer px-2 py-1 lg:px-4 lg:py-2 text-xs sm:text-base transition mt-25 md:mt-36 lg:mt-70">
+                 <button className="text-end bg-[#DB2961]/20 hover:bg-[#183028]/40 hover:text-[white] cursor-pointer px-2 py-1 lg:px-4 lg:py-2 text-xs sm:text-base transition mt-25 md:mt-36 lg:mt-72">
                  Read More
                  </button>
                 </Link>

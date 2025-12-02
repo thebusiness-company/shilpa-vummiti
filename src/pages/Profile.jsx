@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import img from "../assets/images/profile.png";
 import logo from "../assets/images/Logo.png";
 import API from "../api";
+import { useNavigate } from "react-router-dom";
 
 const ProfileUpdate = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const ProfileUpdate = () => {
 
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const navigate = useNavigate();
 
   // Fetch profile on mount
   useEffect(() => {
@@ -79,123 +81,130 @@ const ProfileUpdate = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-white flex flex-col md:flex-row">
-      {/* Left Section */}
-      <div className="w-full md:w-1/2 px-6 lg:px-30 flex flex-col items-start mx-auto">
-        <img src={logo} alt="Logo" className="w-40 mt-10 mb-12" />
-
-        <h2 className="text-sm font-semibold tracking-widest mb-6">
-          PROFILE UPDATE
-        </h2>
-
-        <form onSubmit={handleSubmit} className="space-y-6 w-full max-w-md">
-          <input
-            type="text"
-            name="username"
-            placeholder="User Name"
-            value={formData.username}
-            onChange={handleChange}
-            className="border-b w-full outline-none pb-2 text-sm"
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            className="border-b w-full outline-none pb-2 text-sm"
-            required
-          />
-          <input
-            type="text"
-            name="mobile"
-            placeholder="Mobile Number"
-            value={formData.mobile}
-            onChange={handleChange}
-            className="border-b w-full outline-none pb-2 text-sm"
-            pattern="\d{10}"
-            maxLength={10}
-            minLength={10}
-            required
-          />
-          <input
-            type="text"
-            name="address"
-            placeholder="Address"
-            value={formData.address}
-            onChange={handleChange}
-            className="border-b w-full outline-none pb-2 text-sm"
-            required
-          />
-
-          <div className="flex flex-col sm:flex-row gap-4">
-            <input
-              type="text"
-              name="city"
-              placeholder="City"
-              value={formData.city}
-              onChange={handleChange}
-              className="border-b w-full outline-none pb-2 text-sm"
-              required
-            />
-            <input
-              type="text"
-              name="state"
-              placeholder="State"
-              value={formData.state}
-              onChange={handleChange}
-              className="border-b w-full outline-none pb-2 text-sm"
-              required
-            />
+    <div className="min-h-screen w-full bg-white ">
+      <div className="flex flex-col md:flex-row md:mt-4 w-full max-w-[90%] mx-auto lg:mb-12">
+        {/* Left Section */}
+        <div className="w-full md:w-2/3 lg:w-1/2 px-2 md:px-6 flex flex-col items-start mx-auto">
+          <div className="mt-6 mb-12 2xl:mb-20 cursor-pointer" onClick={() => navigate("/")} >
+            <img src={logo} alt="Logo" className="w-40 2xl:w-44" />
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <h2 className="text-xl text-center lg:text-left font-semibold tracking-widest mb-10 w-full">
+            PROFILE UPDATE
+          </h2>
+
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-6 w-full max-w-md 2xl:max-w-lg"
+          >
             <input
               type="text"
-              name="country"
-              placeholder="Country"
-              value={formData.country}
+              name="username"
+              placeholder="User Name"
+              value={formData.username}
               onChange={handleChange}
-              className="border-b w-full outline-none pb-2 text-sm"
+              className="border-b w-full outline-none pb-2 text-sm md:text-base xl:text-lg"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              className="border-b w-full outline-none pb-2 text-sm md:text-base xl:text-lg"
               required
             />
             <input
               type="text"
-              name="zip"
-              placeholder="Zip"
-              value={formData.zip}
+              name="mobile"
+              placeholder="Mobile Number"
+              value={formData.mobile}
               onChange={handleChange}
-              className="border-b w-full outline-none pb-2 text-sm"
-              pattern="\d{6}"
-              maxLength={6}
-              minLength={6}
+              className="border-b w-full outline-none pb-2 text-sm md:text-base xl:text-lg"
+              pattern="\d{10}"
+              maxLength={10}
+              minLength={10}
               required
             />
-          </div>
-          <div className="flex justify-center md:justify-end items-center ">
-            <button
-              type="submit"
-              disabled={loading}
-              className="mt-6 px-6 py-2 bg-black text-white text-sm font-semibold w-fit hover:bg-white hover:text-black border border-black transition"
-            >
-              {loading ? "Updating..." : "UPDATE PROFILE"}
-            </button>
-          </div>
+            <input
+              type="text"
+              name="address"
+              placeholder="Address"
+              value={formData.address}
+              onChange={handleChange}
+              className="border-b w-full outline-none pb-2 text-sm md:text-base xl:text-lg"
+              required
+            />
 
-          {successMessage && (
-            <p className="text-green-600 text-sm mt-2">{successMessage}</p>
-          )}
-        </form>
-      </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="text"
+                name="city"
+                placeholder="City"
+                value={formData.city}
+                onChange={handleChange}
+                className="border-b w-full outline-none pb-2 text-sm md:text-base xl:text-lg"
+                required
+              />
+              <input
+                type="text"
+                name="state"
+                placeholder="State"
+                value={formData.state}
+                onChange={handleChange}
+                className="border-b w-full outline-none pb-2 text-sm md:text-base xl:text-lg"
+                required
+              />
+            </div>
 
-      {/* Right Image */}
-      <div className="w-full md:w-1/2 flex md:hidden lg:flex items-center justify-center px-5 lg:px-20 py-10">
-        <img
-          src={img}
-          alt="Fashion Model"
-          className="w-full h-auto max-h-[600px] object-cover"
-        />
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="text"
+                name="country"
+                placeholder="Country"
+                value={formData.country}
+                onChange={handleChange}
+                className="border-b w-full outline-none pb-2 text-sm md:text-base xl:text-lg"
+                required
+              />
+              <input
+                type="text"
+                name="zip"
+                placeholder="Zip"
+                value={formData.zip}
+                onChange={handleChange}
+                className="border-b w-full outline-none pb-2 text-sm md:text-base xl:text-lg"
+                pattern="\d{6}"
+                maxLength={6}
+                minLength={6}
+                required
+              />
+            </div>
+            <div className="flex justify-center md:justify-end items-center ">
+              <button
+                type="submit"
+                disabled={loading}
+                className="mt-6 px-6 py-2 bg-black text-white text-sm xl:text-base 2xl:text-lg w-fit hover:bg-white hover:text-black border border-black transition cursor-pointer"
+              >
+                {loading ? "Updating..." : "UPDATE PROFILE"}
+              </button>
+            </div>
+
+            {successMessage && (
+              <p className="text-green-600 text-sm mt-2">{successMessage}</p>
+            )}
+          </form>
+        </div>
+
+        {/* Right Image */}
+        <div className="w-full md:w-1/2 flex md:hidden lg:flex justify-center py-8 px-2 lg:pl-10">
+          <img
+            src={img}
+            alt="Fashion Model"
+            className="w-full 2xl:max-w-[90%] h-auto max-h-[600px] 2xl:max-h-[900px] object-cover p-8"
+          />
+        </div>
       </div>
     </div>
   );

@@ -3,11 +3,11 @@ import bannerImage from "../../assets/images/banner.png";
 
 const FashionBanner = ({ scrollToCategory }) => {
   return (
-    <div className="bg-[#FFFFFF] relative w-full h-[200px] sm:h-[350px] md:h-[500px] lg:h-screen max-w-[393px] sm:max-w-full mx-auto mt-4 ">
+    <div className="bg-[#FFFFFF] relative w-full h-[200px] sm:h-[350px] md:h-[500px] lg:h-screen max-w-[393px] sm:max-w-full mx-auto mt-4">
       <img
         src={bannerImage}
         alt="Fashion Banner"
-        className="w-full h-full object-cover object-left"
+        className="w-full h-full object-cover"
       />
 
       <div className="absolute inset-0 flex items-center justify-end px-3 sm:px-6 md:px-10">

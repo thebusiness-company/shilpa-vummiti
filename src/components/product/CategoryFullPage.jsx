@@ -60,8 +60,10 @@ export default function CategoryFullPage() {
       };
 
 return (
-    <div className="p-4 max-w-8xl mx-auto">
-    <h2 className="text-2xl lg:ml-25 my-3 lg:my-6 mb-4 text-start font-tenor text-[#183028]">{categoryName}</h2>
+  <div className="p-4 max-w-8xl mx-auto">
+    <h2 className="text-lg lg:text-xl lg:ml-25 my-3 lg:my-6 mb-4 text-start font-tenor text-[#183028]">
+      {categoryName}
+    </h2>
     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:gap-10 transition-all duration-500 w-full max-w-[90%] mx-auto">
       {products?.data.map((prod) => (
         <div key={prod.id} className="text-center group relative">
@@ -71,20 +73,24 @@ return (
               alt={prod.name}
               className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
             />
-            <p className="mt-2 font-medium text-sm sm:text-base text-[#183028] font-tenor">{prod.name}</p>
-            <p className="text-sm text-[#183028] font-tenor">₹ {prod.price}</p>
+            <p className="mt-2 font-medium text-sm sm:text-base lg:text-lg 2xl:text-xl text-[#183028] font-tenor">
+              {prod.name}
+            </p>
+            <p className="text-sm sm:text-base lg:text-lg 2xl:text-xl text-[#183028] font-tenor">
+              ₹ {prod.price}
+            </p>
           </Link>
-              {/* wishlist button */}
-            <button
-              onClick={() => handleWishlistToggle(prod)}
-              className="absolute top-2 right-2 z-10"
-            >
-              {wishlist.some((item) => item.product?.id === prod.id) ? (
-                <Heart className="w-5 h-5 fill-[#DB2961] stroke-[#DB2961] z-10" />
-              ) : (
-                <Heart className="w-5 h-5 stroke-black z-10" />
-              )}
-            </button>          
+          {/* wishlist button */}
+          <button
+            onClick={() => handleWishlistToggle(prod)}
+            className="absolute top-2 right-2 z-10 cursor-pointer"
+          >
+            {wishlist.some((item) => item.product?.id === prod.id) ? (
+              <Heart className="w-5 h-5 fill-[#DB2961] stroke-[#DB2961] z-10" />
+            ) : (
+              <Heart className="w-5 h-5 stroke-black z-10" />
+            )}
+          </button>
         </div>
       ))}
     </div>

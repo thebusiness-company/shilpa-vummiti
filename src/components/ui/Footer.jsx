@@ -22,13 +22,13 @@ const Footer = () => {
                 </li>
               </Link>
             </div>
-            <div>
+            {/* <div>
               <Link to={"/authenticity"}>
                 <li className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
                   Authenticity
                 </li>
               </Link>
-            </div>
+            </div> */}
             <div className="hidden md:block">
               <a
                 href="https://www.instagram.com/shilpavummiti/?hl=en"
@@ -61,6 +61,13 @@ const Footer = () => {
               <Link to={"/shipping-policy"}>
                 <li className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
                   Shipping & Return Policy
+                </li>
+              </Link>
+            </div>
+            <div>
+              <Link to={"/returns-exchange"}>
+                <li className="hover:opacity-70 transition-opacity duration-300 cursor-pointer">
+                  Return & Exchange Policy
                 </li>
               </Link>
             </div>
