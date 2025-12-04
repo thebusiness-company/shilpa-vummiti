@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 import { Menu, X, Search } from 'lucide-react';
 import logo from '../../assets/images/Logo.png';
 import heart from '../../assets/images/heart.svg';
@@ -17,6 +17,7 @@ export default function Navbar({ NumCartItems }) {
   const [profileOpen, setProfileOpen] = useState();
   const profileRef = useRef(null);
   const profileButtonRef = useRef(null);
+  const navigate = useNavigate();
 
   console.log(NumCartItems)
   useEffect(() => {
@@ -77,9 +78,9 @@ export default function Navbar({ NumCartItems }) {
   return (
     <header className="fixed top-0 w-full z-50 bg-[#F2F0EF] shadow-sm">
       <div className="relative">
-        <div className="flex justify-between items-center px-6 lg:px-10 py-6 mx-auto">
+        <div className="flex justify-between items-center px-4 lg:px-10 py-6 mx-auto">
           {/* Left: Menu & Search */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 md:gap-6">
             <button
               ref={buttonRef}
               onClick={toggleMenu}
@@ -129,15 +130,19 @@ export default function Navbar({ NumCartItems }) {
                 )}
               </button>
             </a>
-            <a href="/wishlist">
-              <button aria-label="Wishlist">
-                <img
-                  src={heart}
-                  alt="Wishlist"
-                  className="h-6 cursor-pointer mx-auto"
-                />
-              </button>
-            </a>
+            {/* <Link to="/wishlist"> */}
+            <button
+              className="flex items-center justify-center w-9 h-9 overflow-visible"
+              aria-label="Wishlist"
+              onClick={() => navigate("/wishlist")}
+            >
+              <img
+                src={heart}
+                alt="Wishlist"
+                className="h-5 w-5 md:h-6 md:w-6 cursor-pointer mx-auto"
+              />
+            </button>
+            {/* </Link> */}
 
             {/* <a href="/profile"><button aria-label="User">
               <img src={profile} alt="profile" className="h-6 cursor-pointer  mx-auto"/>
@@ -152,7 +157,7 @@ export default function Navbar({ NumCartItems }) {
                 <img
                   src={profile}
                   alt="profile"
-                  className="h-6 cursor-pointer mx-auto"
+                  className="h-5 w-5 md:h-6 md:w-6 cursor-pointer mx-auto"
                 />
               </button>
 
