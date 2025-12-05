@@ -267,7 +267,7 @@ export default function ProductDetail({ setNumCartItems }) {
             </div>
             <button onClick={handleWishlistToggle}>
               <Heart
-                className={`w-6 h-6 mt-2 transition ${
+                className={`w-6 h-6 mt-2 transition cursor-pointer ${
                   inWishlist
                     ? "fill-[#DB2969] stroke-[#DB2969]"
                     : "stroke-black"
@@ -354,7 +354,6 @@ export default function ProductDetail({ setNumCartItems }) {
               </li>
               <li>Air dry away from direct sunlight; avoid machine drying.</li>
               <li>Steam or iron on low heat using a protective cloth</li>
-              <li>Store in breathable bags; avoid plastic covers</li>
             </ul>
             <p className="mt-4 text-sm">
               For detailed care tips, visit our{" "}
@@ -424,10 +423,12 @@ export default function ProductDetail({ setNumCartItems }) {
               onClick={handleAddToBag}
               disabled={inCart || mutation.isLoading}
               whileTap={{ scale: 0.95 }}
-              className={`bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] hover:text-white font-medium transition py-3 px-10 text-lg my-4 ${
-                (inCart || mutation.isLoading) &&
-                "opacity-50 cursor-not-allowed"
-              }`}
+              className={`bg-[#DB2961]/20 hover:bg-[#183028]/40 text-[#DB2961] hover:text-white font-medium transition py-3 px-10 text-lg lg:text-xl 2xl:text-2xl my-4 
+                ${
+                  inCart || mutation.isLoading
+                    ? "opacity-50 cursor-not-allowed"
+                    : "cursor-pointer"
+                }`}
             >
               {inCart
                 ? "Added to bag"

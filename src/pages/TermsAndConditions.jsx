@@ -11,7 +11,7 @@ const TermsAndConditions = () => {
 
   return (
     <div className="flex justify-center min-h-screen px-4 py-10 bg-white">
-      <div className="w-full text-center max-w-[90%] mx-auto">
+      <div className="w-full text-center text-sm md:text-base lg:text-lg 2xl:text-2xl max-w-[90%] mx-auto leading-relaxed">
         <strong>
           <h1 className="text-2xl md:text-3xl lg:text-4xl mb-4 md:mb-6 lg:mb-8 font-medium">
             Terms & Conditions
@@ -19,14 +19,15 @@ const TermsAndConditions = () => {
         </strong>
         <div className="w-full text-left space-y-6">
           <p className="mb-6">
-            Welcome to Shilpa Vummiti. These Terms and
-            Conditions govern your use of our website and services. By
-            accessing or using our website, you agree to comply with and be
-            bound by these Terms. Please read them carefully before using our
-            platform.
+            Welcome to Shilpa Vummiti. These Terms and Conditions govern your
+            use of our website and services. By accessing or using our website,
+            you agree to comply with and be bound by these Terms. Please read
+            them carefully before using our platform.
           </p>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">1. General Information</h2>
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
+              1. General Information
+            </h2>
             <p>
               The website{" "}
               <Link
@@ -41,7 +42,9 @@ const TermsAndConditions = () => {
             </p>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">2. Use of the Website</h2>
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
+              2. Use of the Website
+            </h2>
             <p>
               You agree to use this website only for lawful purposes and in
               accordance with these Terms.
@@ -66,7 +69,9 @@ const TermsAndConditions = () => {
             </ul>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">3. Products and Services</h2>
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
+              3. Products and Services
+            </h2>
             <ul className="list-inside space-y-4 small-bullet">
               <li>
                 <span>a. Product Descriptions</span>
@@ -93,7 +98,9 @@ const TermsAndConditions = () => {
             </ul>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">4. Pricing and Payment</h2>
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
+              4. Pricing and Payment
+            </h2>
             <p>
               All prices are displayed in Indian Rupees (INR) and include
               applicable taxes unless otherwise stated.
@@ -105,7 +112,9 @@ const TermsAndConditions = () => {
             </p>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">5. Shipping and Delivery</h2>
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
+              5. Shipping and Delivery
+            </h2>
             <p>
               We aim to dispatch ready-to-ship products within the timeline
               mentioned on the product page.
@@ -124,7 +133,7 @@ const TermsAndConditions = () => {
             </p>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
               6. Returns, Exchanges, and Cancellations
             </h2>
             <p>
@@ -145,7 +154,7 @@ const TermsAndConditions = () => {
             </p>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
               7. Intellectual Property Rights
             </h2>
             <p>
@@ -158,7 +167,9 @@ const TermsAndConditions = () => {
             </p>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">8. Limitation of Liability</h2>
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
+              8. Limitation of Liability
+            </h2>
             <p>
               While we strive to ensure a seamless user experience, we are not
               liable for:
@@ -181,7 +192,9 @@ const TermsAndConditions = () => {
             </ul>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">9. Third-Party Links</h2>
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
+              9. Third-Party Links
+            </h2>
             <p>
               Our website may contain links to third-party sites for your
               convenience.
@@ -192,7 +205,7 @@ const TermsAndConditions = () => {
             </p>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
               10. Privacy and Data Protection
             </h2>
             <p>
@@ -205,7 +218,7 @@ const TermsAndConditions = () => {
             </p>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
               11. Governing Law and Jurisdiction
             </h2>
             <p>These Terms are governed by the laws of India.</p>
@@ -216,7 +229,9 @@ const TermsAndConditions = () => {
             </p>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">12. Changes to These Terms</h2>
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
+              12. Changes to These Terms
+            </h2>
             <p>
               We reserve the right to update or modify these Terms at any time
               without prior notice.
@@ -228,7 +243,9 @@ const TermsAndConditions = () => {
             </p>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">13. Contact Information</h2>
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">
+              13. Contact Information
+            </h2>
             <p className="font-semibold">Shilpa Vummiti</p>
             {/* <p>Email: </p> */}
             <a
@@ -242,7 +259,7 @@ const TermsAndConditions = () => {
             </a>
           </section>
           <section className="space-y-4">
-            <h2 className="text-lg md:text-xl">14. Brand Ethos</h2>
+            <h2 className="text-lg md:text-xl 2xl:text-3xl">14. Brand Ethos</h2>
             <p>
               At Shilpa Vummiti, each creation embodies craftsmanship,
               sustainability, and individuality. Our brand philosophy extends

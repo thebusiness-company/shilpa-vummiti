@@ -58,7 +58,7 @@ return (
         {/* header */}
         <div  className="text-center mb-4 lg:flex lg:justify-between lg:items-center lg:mb-6">
                 <img src={Logo} alt="Logo" className="h-14 lg:h-20"/><br />
-            <p className="text-lg tracking-wider uppercase font-medium text-center lg:text-right mb-6 lg:mt-14">MY ORDER DETAILS</p>
+            <p className="text-lg tracking-wider uppercase font-medium text-center lg:text-right mb-6 lg:pt-18 2xl:pt-24">MY ORDER DETAILS</p>
         </div>
        
       {/* <pre>{JSON.stringify(order, null, 2)}</pre> */}

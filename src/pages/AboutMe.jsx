@@ -1,5 +1,5 @@
 import React from 'react';
-import shilpa from '../assets/images/shilpa.png';
+import shilpa from '../assets/images/aboutme.png';
 const AboutMe = () => {
   return (
     <div className="w-full max-w-[90%] py-5 mx-auto">
@@ -18,10 +18,7 @@ const AboutMe = () => {
           <h2 className="text-3xl lg:text-6xl font-medium my-4 lg:mb-10 font-tenor">
             About me
           </h2>
-          {/* <p className=" leading-relaxed">
-            As a fashion designer specializing in women's wear, creating vibrant and versatile pieces that celebrate individuality and style. My collections focus on tops, customized dresses, Indian and fusion wear, co-ords, and bottoms, blending traditional craftsmanship with contemporary flair.
-          </p> */}
-          <p>
+          <p className="text-sm md:text-base lg:text-lg 2xl:text-2xl leading leading-relaxed">
             Shilpa Vummiti is a Chennai-based fashion designer known for her
             bespoke, statement-making pieces that blend Indo-western silhouettes
             with clean, contemporary charm. A graduate of Istituto Marangoni,
@@ -32,13 +29,7 @@ const AboutMe = () => {
       </div>
 
       {/* Description Below */}
-      <div className="mt-8 px-4 lg:px-0 space-y-2 text-base leading-relaxed">
-        {/* <p>
-          Inspired by [insert influence, e.g., Indian textiles, modern silhouettes, or cultural motifs], I design for the modern woman who values uniqueness and confidence.
-        </p> */}
-        {/* <p>
-          Each piece is crafted with precision, offering personalized designs that fuse elegance with comfort. From intricately detailed Indian wear to chic fusion co-ords, my work empowers women to express their story through fashion. My mission is to create sustainable, statement-making clothing that resonates with bold, dynamic women everywhere.
-        </p> */}
+      <div className="mt-8 px-4 lg:px-0 space-y-2 text-sm md:text-base lg:text-lg 2xl:text-2xl leading-relaxed">
         <p>
           From structured cocktail dresses to draped gowns and fluid three-piece
           sets, her collections reflect a strong sense of individuality,

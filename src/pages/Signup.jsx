@@ -8,6 +8,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { API_URL } from "../api";
 import { AuthContext } from "../components/context/AuthContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 // Password validation function
 const validatePassword = (password) => {
@@ -117,17 +118,17 @@ const Signup = () => {
   return (
     <div className="min-h-screen w-full bg-white flex flex-col md:flex-row md:items-center lg:items-start max-w-[96%] lg:max-w-[90%] mx-auto lg:mt-6">
       {/* Left Section */}
-      <div className="w-full md:w-1/2 px-6 lg:px-0 lg:py-12 py-6 flex flex-col items-start max-w-md mx-auto">
+      <div className="w-full md:w-[50%] lg:w-[60%] px-6 lg:px-0 py-6 lg:py-8 flex flex-col items-start max-w-md md:mr-auto">
         <img src={logo} alt="Logo" className="w-40" />
 
-        <div className="text-base mt-10 mb-6">
-          <a href="/login" className="mr-2">
+        <div className="text-lg 2xl:text-xl mt-10 lg:mt-14 2xl:mt-20 mb-10 2xl:mb-10 lg:ml-3">
+          <Link to="/login" className="mr-2">
             LOG IN
-          </a>{" "}
+          </Link>{" "}
           /
-          <a href="/signup" className="ml-2 underline font-bold text-black">
+          <Link to="/signup" className="ml-2 underline font-bold text-black">
             SIGN UP
-          </a>
+          </Link>
         </div>
 
         {/* Errors */}
@@ -141,7 +142,7 @@ const Signup = () => {
         )}
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="w-full">
+        <form onSubmit={handleSubmit} className="w-full lg:ml-3">
           <input
             type="text"
             name="username"
@@ -213,11 +214,11 @@ const Signup = () => {
       </div>
 
       {/* Right Section with Image */}
-      <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 py-1 lg:py-40 md:mt-20 lg:mt-5 mb-6">
+      <div className="w-full md:w-[50%] lg:w-[40%] h-full flex items-center justify-center px-6 py-1 lg:py-6 md:mt-20 lg:mt-6 mb-6">
         <img
           src={img}
           alt="Signup"
-          className="object-cover w-full max-h-[600px]"
+          className="object-cover w-full h-full max-h-[600px] xl:max-h-[700px] 2xl:max-h-[800px]"
         />
       </div>
     </div>

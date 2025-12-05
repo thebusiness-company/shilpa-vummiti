@@ -6,6 +6,7 @@ import { API, API_URL } from '../api';
 import { AuthContext } from "../components/context/AuthContext";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const { setIsAuthenticated, getuser } = useContext(AuthContext);
@@ -105,17 +106,17 @@ const Login = () => {
   return (
     <div className="min-h-screen w-full bg-white flex flex-col md:flex-row md:items-center lg:items-start max-w-[96%] lg:max-w-[90%] mx-auto lg:mt-6">
       {/* Left Section */}
-      <div className="w-full md:w-1/2 px-6 lg:py-12 py-6 flex flex-col items-start max-w-md mx-auto">
+      <div className="w-full md:w-[50%] lg:w-[60%] px-6 py-6 lg:py-8  flex flex-col items-start max-w-md 2xl:max-w-lg md:mr-auto">
         <img src={logo} alt="Logo" className="lg:mb- w-40" />
 
-        <div className="text-base mt-10 mb-6">
-          <a href="/login" className="underline mr-2 font-bold">
+        <div className="text-lg 2xl:text-xl mt-10 lg:mt-14 2xl:mt-20 mb-10 2xl:mb-10 lg:ml-3">
+          <Link to="/login" className="underline mr-2 font-bold">
             LOG IN
-          </a>{" "}
+          </Link>{" "}
           /
-          <a href="/signup" className="ml-2 mr-2">
+          <Link to="/signup" className="ml-2 mr-2">
             SIGN UP
-          </a>{" "}
+          </Link>{" "}
           /
           <span
             className="ml-2 cursor-pointer underline hover:text-gray-900"
@@ -127,7 +128,11 @@ const Login = () => {
 
         {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
 
-        <form id="login-form" onSubmit={handleSubmit} className="w-full">
+        <form
+          id="login-form"
+          onSubmit={handleSubmit}
+          className="w-full lg:ml-3"
+        >
           <input
             type="email"
             name="email"
@@ -148,7 +153,7 @@ const Login = () => {
           />
           <a
             href="/forgot-password"
-            className="text-sm underline mb-8 inline-block"
+            className="text-sm xl:text-[15px] underline mb-8 inline-block mt-3"
           >
             Have you forgotten your password?
           </a>
@@ -176,11 +181,11 @@ const Login = () => {
       </div>
 
       {/* Right Image */}
-      <div className="w-full md:w-1/2 h-full flex items-center justify-center px-6 md:mt-20 lg:mt-14 py-1 md:py-12 mb-6">
+      <div className="w-full md:w-[50%] lg:w-[40%] h-full flex items-center justify-center px-6 py-1 lg:py-6 md:mt-20 lg:mt-6 mb-6">
         <img
           src={img}
           alt="Fashion"
-          className="object-cover w-full max-h-[600px]"
+          className="object-cover w-full h-full max-h-[600px] xl:max-h-[700px] 2xl:max-h-[800px]"
         />
       </div>
     </div>
