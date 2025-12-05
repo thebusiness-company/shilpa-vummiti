@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { AnimatePresence } from "framer-motion";
+import {motion, AnimatePresence } from "framer-motion";
 import { HiMiniPlus } from "react-icons/hi2";
 import { FiMinus } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Heart } from "lucide-react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { HiMiniPlus } from "react-icons/hi2";
