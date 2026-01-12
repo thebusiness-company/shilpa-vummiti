@@ -1,5 +1,5 @@
 import React from 'react';
-import shilpa from '../assets/images/aboutme.png';
+import shilpa from '../assets/images/aboutme.webp';
 const AboutMe = () => {
   return (
     <div className="w-full max-w-[90%] py-5 mx-auto">
@@ -8,7 +8,7 @@ const AboutMe = () => {
         <div className="w-full lg:w-2/3">
           <img
             src={shilpa} // Replace with actual image path
-            alt="Fashion Designer"
+            alt="Shilpa Vummiti, Chennai-based fashion designer"
             className="w-full h-auto object-cover"
           />
         </div>

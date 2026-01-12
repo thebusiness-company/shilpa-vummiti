@@ -110,7 +110,7 @@ export default function Navbar({ NumCartItems }) {
           {/* Center: Logo */}
           <div className="absolute left-1/2 transform -translate-x-1/2">
             <Link to="/" className="block" aria-label="Home">
-              <img src={logo} alt="Logo" className="h-10 sm:h-16 mx-auto" />
+              <img src={logo} alt="Shilpa Vummiti logo" className="h-10 sm:h-16 mx-auto" />
             </Link>
           </div>
 

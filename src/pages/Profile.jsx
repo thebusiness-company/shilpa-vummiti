@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import img from "../assets/images/profile.png";
+import img from "../assets/images/profile.webp";
 import logo from "../assets/images/Logo.png";
 import API from "../api";
 import { useNavigate } from "react-router-dom";
@@ -85,8 +85,11 @@ const ProfileUpdate = () => {
       <div className="flex flex-col md:flex-row md:mt-4 w-full max-w-[90%] mx-auto lg:mb-12">
         {/* Left Section */}
         <div className="w-full md:w-2/3 lg:w-1/2 px-2 md:px-6 flex flex-col items-start mx-auto">
-          <div className="mt-6 mb-12 2xl:mb-20 cursor-pointer" onClick={() => navigate("/")} >
-            <img src={logo} alt="Logo" className="w-40 2xl:w-44" />
+          <div
+            className="mt-6 mb-12 2xl:mb-20 cursor-pointer"
+            onClick={() => navigate("/")}
+          >
+            <img src={logo} alt="Shilpa Vummiti logo" className="w-40 2xl:w-44" />
           </div>
 
           <h2 className="text-xl text-center lg:text-left font-semibold tracking-widest mb-10 w-full">
@@ -201,7 +204,7 @@ const ProfileUpdate = () => {
         <div className="w-full md:w-1/2 flex md:hidden lg:flex justify-center py-8 px-2 lg:pl-10">
           <img
             src={img}
-            alt="Fashion Model"
+            alt="Fashion-inspired profile page banner"
             className="w-full 2xl:max-w-[90%] h-auto max-h-[600px] 2xl:max-h-[900px] object-cover p-8"
           />
         </div>

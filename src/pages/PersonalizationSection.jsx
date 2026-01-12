@@ -1,8 +1,8 @@
 import React from "react";
-import p1 from "../assets/images/p1.png";
-import p2 from "../assets/images/p2.png";
-import p3 from "../assets/images/p3.png";
-import p4 from "../assets/images/p4.png";
+import p1 from "../assets/images/p1.webp";
+import p2 from "../assets/images/p2.webp";
+import p3 from "../assets/images/p3.webp";
+import p4 from "../assets/images/p4.webp";
 import { useEffect } from "react";
 
 const PersonalizationSection = () => {
@@ -21,23 +21,23 @@ const PersonalizationSection = () => {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8">
         <img
           src={p1}
-          alt="Look 1"
+          alt="fabric highlighting fine texture and premium quality"
           className="w-full h-full max-h-[300px] md:max-h-[450px] lg:max-h-[500px] 2xl:max-h-[650px]"
         />
         <img
           src={p2}
-          alt="Look 2"
+          alt="precise fabric cutting by hand for custom tailoring"
           className="w-full h-full max-h-[300px] md:max-h-[450px] lg:max-h-[500px] 2xl:max-h-[650px]"
         />
 
         <img
           src={p3}
-          alt="Look 3"
+          alt="White designer dress with floral detailing"
           className="w-full h-full max-h-[300px] md:max-h-[450px] lg:max-h-[500px] 2xl:max-h-[650px]"
         />
         <img
           src={p4}
-          alt="Look 4"
+          alt="Stitching process of pink fabric showcasing skilled craftsmanship"
           className="w-full h-full max-h-[300px] md:max-h-[450px] lg:max-h-[500px] 2xl:max-h-[650px]"
         />
       </div>

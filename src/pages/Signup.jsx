@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import img from "../assets/images/signup.png";
+import img from "../assets/images/signup.webp";
 import logo from "../assets/images/Logo.png";
 import API from "../api";
 import axios from "axios";
@@ -217,7 +217,7 @@ const Signup = () => {
       <div className="w-full md:w-[50%] lg:w-[40%] h-full flex items-center justify-center px-6 py-1 lg:py-6 md:mt-20 lg:mt-6 mb-6">
         <img
           src={img}
-          alt="Signup"
+          alt="Mannequin displaying contemporary fashion clothing"
           className="object-cover w-full h-full max-h-[600px] xl:max-h-[700px] 2xl:max-h-[800px]"
         />
       </div>

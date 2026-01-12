@@ -4,21 +4,20 @@ import { X } from "lucide-react";
 import press1 from '../assets/images/press1.jpeg';
 import press2 from '../assets/images/press2.jpeg';
 import press3 from '../assets/images/press3.jpeg';
-import press4 from '../assets/images/press4.png';
+import press4 from '../assets/images/press4.webp';
 import press5 from '../assets/images/press5.jpg';
 import press6 from '../assets/images/press6.jpg';
 import press7 from '../assets/images/press7.jpg';
 
 
 const pressImages = [
-  press6,
-  press3,
-  press5,
-  press2,
-  press7,
-  press4,
-  press1,
-  
+  { src: press6, alt: "Shilpa Vummiti featured in DT Next" },
+  { src: press3, alt: "Shilpa Vummiti featured in press article" },
+  { src: press5, alt: "Shilpa Vummiti featured in press article" },
+  { src: press2, alt: "Shilpa Vummiti featured in press article" },
+  { src: press7, alt: "Shilpa Vummiti featured in press article" },
+  { src: press4, alt: "Shilpa Vummiti featured in Indulge lifestyle magazine" },
+  { src: press1, alt: "Shilpa Vummiti featured in Indulge lifestyle magazine" },
 ];
 
 const ThePress = () => {
@@ -35,62 +34,76 @@ const ThePress = () => {
           {/* Top Row - 2 items, each spans 3 columns on large screens */}
           <div className="col-span-3">
             <img
-              src={pressImages[0]}
-              alt="Press 1"
+              src={pressImages[0].src}
+              alt={pressImages[0].alt}
               className="w-41 h-28 lg:w-130 lg:h-87 object-cover border cursor-pointer"
-              onClick={() => setSelectedImage(pressImages[0])}
+              onClick={() => setSelectedImage(pressImages[0].src)}
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="col-span-3">
             <img
-              src={pressImages[1]}
-              alt="Press 2"
+              src={pressImages[1].src}
+              alt={pressImages[1].alt}
               className="w-41 h-28 lg:w-130 lg:h-87 object-cover border cursor-pointer"
-              onClick={() => setSelectedImage(pressImages[1])}
+              onClick={() => setSelectedImage(pressImages[1].src)}
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
           {/* Middle Row - 3 items, each spans 2 columns on large screens */}
           <div className="col-span-2">
             <img
-              src={pressImages[2]}
-              alt="Press 3"
+              src={pressImages[2].src}
+              alt={pressImages[2].alt}
               className="w-26 h-21 lg:w-88 lg:h-66 object-cover border cursor-pointer"
-              onClick={() => setSelectedImage(pressImages[2])}
+              onClick={() => setSelectedImage(pressImages[2].src)}
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="col-span-2">
             <img
-              src={pressImages[3]}
-              alt="Press 4"
+              src={pressImages[3].src}
+              alt={pressImages[3].alt}
               className="w-26 h-21 lg:w-88 lg:h-66 object-cover border cursor-pointer"
-              onClick={() => setSelectedImage(pressImages[3])}
+              onClick={() => setSelectedImage(pressImages[3].src)}
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="col-span-2">
             <img
-              src={pressImages[4]}
-              alt="Press 5"
+              src={pressImages[4].src}
+              alt={pressImages[4].alt}
               className="w-26 h-21 lg:w-88 lg:h-66 object-cover border cursor-pointer"
-              onClick={() => setSelectedImage(pressImages[4])}
+              onClick={() => setSelectedImage(pressImages[4].src)}
+              loading="lazy"
+              decoding="async"
             />
           </div>
 
           {/* Bottom Row - 2 items, each spans 3 columns */}
           <div className="col-span-3">
             <img
-              src={pressImages[5]}
-              alt="Press 6"
+              src={pressImages[5].src}
+              alt={pressImages[5].alt}
               className="w-41 h-53 lg:w-130 lg:h-165 object-cover border cursor-pointer"
-              onClick={() => setSelectedImage(pressImages[5])}
+              onClick={() => setSelectedImage(pressImages[5].src)}
+              loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="col-span-3">
             <img
-              src={pressImages[6]}
-              alt="Press 7"
+              src={pressImages[6].src}
+              alt={pressImages[6].alt}
               className="w-41 h-53 lg:w-130 lg:h-165 object-cover border cursor-pointer"
-              onClick={() => setSelectedImage(pressImages[6])}
+              onClick={() => setSelectedImage(pressImages[6].src)}
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>

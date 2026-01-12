@@ -10,6 +10,7 @@ import { getProductBySlug } from "../../hooks/useProducts";
 import { addToWishlist, deleteWishlistItem } from "../../hooks/wishlistApi";
 import toast from "react-hot-toast";
 import Loader from '../ui/Loader';
+import ProductDetailSkeleton from "../ui/ProductDetailSkeleton";
 
 // Reusable Accordion
 function Accordion({ title, expanded, onToggle, children }) {
@@ -64,7 +65,7 @@ export default function ProductDetail({setNumCartItems}) {
   useEffect(() => {
     if (product) {
       const imageList = product.images?.map((img) => img.images) || [];
-      setSelectedImage(imageList[0] || product.image);
+      setSelectedImage(product.image || imageList[0] );
     }
   }, [product]);
 
@@ -145,8 +146,8 @@ export default function ProductDetail({setNumCartItems}) {
 
   }, [product?.id, cart_code, selectedSize]);
 
-  if (isLoading) return <Loader/>
-  if (error) return <Loader text="Error Load To Products"/>
+  if (isLoading) return <ProductDetailSkeleton />;
+  if (error) return <Loader text="Error Load To Products"/>;
 
   const imageList = product.images?.map((img) => img.images) || [];
 
@@ -155,20 +156,22 @@ export default function ProductDetail({setNumCartItems}) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="w-full min-h-screen bg-white md:py-14 lg:py-20 lg:max-w-[90%] lg:mx-auto"
+      className="w-full bg-[#FFFFFF] py-5 md:py-16 lg:py-16 lg:max-w-[90%] lg:mx-auto"
     >
-      <div className="flex flex-col md:flex-row gap-6 lg:gap-20 overflow-x-hidden">
+      <div className="flex flex-col md:flex-row gap-6 lg:gap-32 2xl:gap-40 overflow-x-hidden md:h-full">
         {/* Left - Image */}
         <div className="w-full md:w-1/2 ">
-          <motion.img
-            key={selectedImage}
-            src={`${API_URL}${selectedImage}`}
-            alt={product.name}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="w-full object-cover lg:object-contain h-[450px] lg:h-screen lg:max-h-[700px]"
-          />
+          <div className="w-full md:w-[80%] md:mx-auto">
+            <motion.img
+              key={selectedImage}
+              src={`${API_URL}${selectedImage}`}
+              alt={product.name}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              className="w-full aspect-[393/480] md:h-full md:max-h-[90vh] object-cover"
+            />
+          </div>
         </div>
 
         {/* Right - Details */}

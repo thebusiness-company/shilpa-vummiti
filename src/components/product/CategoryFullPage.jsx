@@ -13,6 +13,7 @@ import {
 import { Heart } from "lucide-react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import SkeletonLoader from '../ui/SkeletonLoader';
 
 
 const containerVariants = {
@@ -52,7 +53,7 @@ export default function CategoryFullPage() {
     enabled: !!id,
   });
   console.log(products);
-  const categoryName = products?.data?.[0]?.category_name || "Category";
+  const categoryName = products?.data?.[0]?.category_name || "";
 
     useEffect(() => {
       const fetchWishlist = async () => {
@@ -75,7 +76,7 @@ export default function CategoryFullPage() {
      };
   
 
-  if (isLoading) return <Loader/>;
+  if (isLoading) return <SkeletonLoader/>;
   if (isError) return <Loader text="Failed to Load Products"/>;
   
       const handleWishlistToggle = async (product) => {
@@ -98,10 +99,12 @@ export default function CategoryFullPage() {
     
 
 return (
-  <div className="p-4 max-w-8xl mx-auto">
-    <h2 className="text-lg lg:text-xl lg:ml-25 my-3 lg:my-6 mb-4 text-start font-tenor text-[#183028]">
+  <div className="p-4 w-full mx-auto">
+    <div className="w-full max-w-[90%] mx-auto my-3 lg:my-6 mb-4">
+    <h2 className="text-lg lg:text-xl my-3 lg:my-6 mb-4 text-start font-tenor text-[#183028]">
       {categoryName}
     </h2>
+    </div>
     <motion.div
       className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 lg:gap-10 transition-all duration-500 w-full max-w-[90%] mx-auto"
       variants={containerVariants}
@@ -118,7 +121,8 @@ return (
             <img
               src={`${API_URL}${prod.image}`}
               alt={prod.name}
-              className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full aspect-[3/4] object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
             />
             <p className="mt-2 font-medium text-sm sm:text-base lg:text-lg 2xl:text-xl text-[#183028] font-tenor">
               {prod.name}

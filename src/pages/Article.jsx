@@ -1,7 +1,7 @@
 import React from 'react';
-import Article1 from '../assets/images/Article1.png';
-import Article2 from '../assets/images/summer.png';
-import mobile from '../assets/images/summer1.png';
+import Article1 from '../assets/images/Article1.webp';
+import Article2 from '../assets/images/summer.webp';
+import mobile from '../assets/images/summer1.webp';
 import ChennaiFav from './ChennaiFas';
 const Article = () => {
   return (
@@ -11,8 +11,9 @@ const Article = () => {
         <div className="mb-8 w-50 lg:w-md">
           <img
             src={Article1}
-            alt="Summer Fashion"
+            alt="The Hindu newspaper logo"
             className="w-full h-auto object-cover"
+            loading="lazy"
           />
         </div>
 
@@ -20,15 +21,17 @@ const Article = () => {
         <div className="hidden lg:block mb-6 w-full">
           <img
             src={Article2}
-            alt="Summer Fashion"
+            alt="Shilpa Vummiti Summer Collection Launch"
             className="w-full h-auto object-cover"
+            loading="lazy"
           />
         </div>
         <div className="lg:hidden mb-6 w-full">
           <img
             src={mobile}
-            alt="Summer Fashion"
+            alt="Shilpa Vummiti Summer Collection Launch"
             className="w-full h-auto object-cover"
+            loading="lazy"
           />
         </div>
 

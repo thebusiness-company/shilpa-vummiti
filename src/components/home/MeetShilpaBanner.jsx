@@ -1,5 +1,5 @@
 import React from "react";
-import shilpa from '../../assets/images/shilpa1.png';
+import shilpa from '../../assets/images/shilpa1.webp';
 import { Link } from "react-router-dom";
 
 const MeetShilpa = () => {
@@ -10,6 +10,7 @@ const MeetShilpa = () => {
             src={shilpa}
             alt="Fashion Banner"
             className="w-full h-full object-cover lg:object-fill xl:object-cover transition-all duration-700 ease-in-out"
+            loading="lazy"
           />
     
           {/* Overlay Content */}

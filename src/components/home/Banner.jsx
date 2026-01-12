@@ -1,5 +1,5 @@
 import React from "react";
-import bannerImage from "../../assets/images/banner.png";
+import bannerImage from "../../assets/images/banner-90.webp";
 
 const FashionBanner = ({ scrollToCategory }) => {
   return (
@@ -8,6 +8,7 @@ const FashionBanner = ({ scrollToCategory }) => {
         src={bannerImage}
         alt="Fashion Banner"
         className="w-full h-full object-cover"
+        fetchPriority="high"
       />
 
       <div className="absolute inset-0 flex items-center justify-end px-3 sm:px-6 md:px-10">

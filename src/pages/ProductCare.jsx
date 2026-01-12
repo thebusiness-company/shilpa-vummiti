@@ -1,8 +1,6 @@
 import React from "react";
-import careImage1 from "../assets/images/care1.png"; 
-import careImage2 from "../assets/images/care2.png"; 
-import careImage3 from "../assets/images/fabric2.png"; // blue fabric
-import heart from "../assets/images/heart1.svg"; // blue fabric
+import careImage1 from "../assets/images/care1.webp"; 
+import careImage2 from "../assets/images/care2.webp"; 
 import { useEffect } from "react";
 
 const ProductCare = () => {
@@ -30,14 +28,14 @@ const ProductCare = () => {
           <div className="w-1/2 h-full">
             <img
               src={careImage1}
-              alt="Fabric Care"
+              alt="Shilpa Vummiti fabric care guidelines"
               className="w-full max-w-[96%] h-full object-cover mx-auto"
             />
           </div>
           <div className="w-1/2 h-full">
             <img
               src={careImage2}
-              alt="Fabric Care"
+              alt="Shilpa Vummiti garment care instructions"
               className="w-full max-w-[96%] h-full object-cover mx-auto"
             />
           </div>

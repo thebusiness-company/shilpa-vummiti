@@ -8,11 +8,12 @@ import API, { API_URL } from "../../api";
 import { addToWishlist } from "../../hooks/wishlistApi";
 import toast from "react-hot-toast";
 import Loader from "../ui/Loader";
-import img from '../../assets/images/orderdetails.png'
+import img from '../../assets/images/orderdetails.webp'
 import logo from '../../assets/images/Logo.png'
 import { X } from "lucide-react";
 import { Heart } from "lucide-react";
 import { useRef } from "react";
+import CartpageSkeleton from "../ui/CartpageSkeleton";
 
 // Fetch cart items from backend using stored cart code
 const fetchCartItems = async () => {
@@ -194,7 +195,7 @@ const CartPage = ({setNumCartItems}) => {
     }
   };
 
-  if (isLoading) return <p><Loader/></p>;
+  if (isLoading) return <CartpageSkeleton />;
   if (error) return <Loader text="Error Loading Cart"/>;
   if (cartItems.length === 0){
     return(

@@ -8,6 +8,7 @@ import { API_URL } from "../../api";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import Loader from "../ui/Loader";
+import SkeletonLoader from "../ui/SkeletonLoader";
 
 const Wishlist = () => {
   const queryClient = useQueryClient();
@@ -58,7 +59,7 @@ const Wishlist = () => {
     addToCartMutation.mutate({ productId, cartCode });
   };
 
-  if (isLoading) return <Loader text="Loading Wishlist" />;
+  if (isLoading) return <SkeletonLoader titleAlign="center" />;
 
   return (
     <div className="w-full max-w-[96%] md:max-w-[94%] mx-auto min-h-screen flex flex-col items-center px-4 py-8 bg-white">
@@ -102,11 +103,13 @@ const Wishlist = () => {
                   </div>
                 </div>
               </div>
-              <div className="relative w-full h-[200px] md:h-[350px] lg:h-[480px] overflow-hidden">
+              <div className="relative w-full aspect-[3/4] overflow-hidden">
                 <img
                   src={`${API_URL}${product.image}` || "/fallback-image.png"}
                   alt={product.name}
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="py-3">
