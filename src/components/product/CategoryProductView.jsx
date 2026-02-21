@@ -1,7 +1,6 @@
 // CategoryProductView.jsx
-import React, { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { getCategories, getProductsByCategory } from '../../hooks/useProducts';
+import { getCategories} from '../../hooks/useProducts';
 import { useNavigate,Link } from 'react-router-dom';
 import { API_URL } from '../../api';
 
