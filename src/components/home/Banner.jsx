@@ -3,7 +3,7 @@ import bannerImage from "../../assets/images/banner-90.webp";
 
 const FashionBanner = ({ scrollToCategory }) => {
   return (
-    <div className="bg-[#FFFFFF] relative w-full h-[200px] sm:h-[350px] md:h-[500px] lg:h-screen max-w-[393px] sm:max-w-full mx-auto mt-4">
+    <div className="bg-[#FFFFFF] relative w-full h-[200px] sm:h-[350px] md:h-[500px] lg:h-screen max-w-[393px] sm:max-w-full mx-auto mt-2 md:mt-2.5 lg:mt-3 xl:mt-4">
       <img
         src={bannerImage}
         alt="Fashion Banner"

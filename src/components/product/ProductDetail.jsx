@@ -156,12 +156,12 @@ export default function ProductDetail({setNumCartItems}) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="w-full bg-[#FFFFFF] py-5 md:py-16 lg:py-16 lg:max-w-[90%] lg:mx-auto"
+      className="w-full bg-[#FFFFFF] py-2.5 md:py-16 lg:py-16 lg:max-w-[90%] lg:mx-auto"
     >
       <div className="flex flex-col md:flex-row gap-6 lg:gap-32 2xl:gap-40 overflow-x-hidden md:h-full">
         {/* Left - Image */}
         <div className="w-full md:w-1/2 ">
-          <div className="w-full md:w-[80%] md:mx-auto">
+          <div className="w-full md:w-[80%] lg:w-[90%] xl:w-[80%] md:mx-auto">
             <motion.img
               key={selectedImage}
               src={`${API_URL}${selectedImage}`}
@@ -169,7 +169,7 @@ export default function ProductDetail({setNumCartItems}) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ type: "spring", stiffness: 100, damping: 20 }}
-              className="w-full aspect-[393/480] md:h-full md:max-h-[90vh] object-cover"
+              className="w-full max-h-[75vh] md:max-h-[90vh] object-contain"
             />
           </div>
         </div>
@@ -224,7 +224,7 @@ export default function ProductDetail({setNumCartItems}) {
           </div>
 
           {/* Desktop Thumbnails */}
-          <div className="hidden lg:flex gap-2 justify-between overflow-x-auto pb-2">
+          <div className="hidden lg:flex gap-2 lg:gap-4 overflow-x-auto pb-2">
             {[product.image, ...imageList].map((img, idx) => (
               <motion.img
                 key={idx}
@@ -271,7 +271,7 @@ export default function ProductDetail({setNumCartItems}) {
                   >
                     {line}
                   </p>
-                )
+                ),
             )}
           </div>
 
@@ -373,8 +373,8 @@ export default function ProductDetail({setNumCartItems}) {
               {inCart
                 ? "Added to bag"
                 : mutation.isLoading
-                ? "Adding..."
-                : "Add to bag"}
+                  ? "Adding..."
+                  : "Add to bag"}
             </motion.button>
           </div>
         </motion.div>

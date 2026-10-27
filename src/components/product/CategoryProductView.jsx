@@ -28,7 +28,7 @@ export default function CategoryProductView() {
   return (
     <div className="relative mb-6 lg:mb-10 mt-2">
       <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-5 lg:mt-15 lg:mb-10 lg:gap-10 transition-all duration-500 w-full max-w-[90%] mx-auto">
-        {categories?.data.map((cat) => (
+        {categories?.data?.slice().sort((a, b) => a.id - b.id).map((cat) => (
           <div
             key={cat.id}
             onClick={() => handleCategoryClick(cat.id)}

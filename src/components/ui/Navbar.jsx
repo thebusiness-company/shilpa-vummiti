@@ -78,7 +78,7 @@ export default function Navbar({ NumCartItems }) {
   return (
     <header className="fixed top-0 w-full z-50 bg-[#F2F0EF] shadow-sm">
       <div className="relative">
-        <div className="flex justify-between items-center px-4 lg:px-10 py-6 mx-auto">
+        <div className="flex justify-between items-center px-4 lg:px-10 py-4.5 md:py-5 lg:py-6 mx-auto">
           {/* Left: Menu & Search */}
           <div className="flex items-center gap-4 md:gap-6">
             <button
