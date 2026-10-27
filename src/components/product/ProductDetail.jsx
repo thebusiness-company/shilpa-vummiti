@@ -20,7 +20,9 @@ function Accordion({ title, expanded, onToggle, children }) {
       onClick={onToggle}
     >
       <div className="flex justify-between items-center">
-        <span className="text-sm md:text-base lg:text-lg font-medium">{title}</span>
+        <span className="text-sm md:text-base lg:text-lg font-medium">
+          {title}
+        </span>
         {expanded ? <FiMinus /> : <HiMiniPlus />}
       </div>
       <AnimatePresence>
@@ -40,11 +42,15 @@ function Accordion({ title, expanded, onToggle, children }) {
   );
 }
 
-export default function ProductDetail({setNumCartItems}) {
+export default function ProductDetail({ setNumCartItems }) {
   const { slug } = useParams();
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
-  const [expanded, setExpanded] = useState({ care: false, size: false, gift: false });
+  const [expanded, setExpanded] = useState({
+    care: false,
+    size: false,
+    gift: false,
+  });
   const [inCart, setInCart] = useState(false);
   const [inWishlist, setInWishlist] = useState(false);
   const cart_code = localStorage.getItem("cart_code");
@@ -62,10 +68,16 @@ export default function ProductDetail({setNumCartItems}) {
     { size: "XL", bust: 40, waist: 34, hip: 42 },
   ];
 
+  const availableSizes = product?.sizes || [];
+
   useEffect(() => {
     if (product) {
-      const imageList = product.images?.map((img) => img.images) || [];
-      setSelectedImage(product.image || imageList[0] );
+      try {
+        const imageList = product.images?.map((img) => img.images) || [];
+        setSelectedImage(product.image || imageList[0]);
+      } catch (err) {
+        console.error("Error setting product image:", err);
+      }
     }
   }, [product]);
 
@@ -73,33 +85,63 @@ export default function ProductDetail({setNumCartItems}) {
     setExpanded((prev) => ({ ...prev, [section]: !prev[section] }));
   };
 
-  // Add to Cart Mutation
+  // --- Add to Cart Mutation ---
   const mutation = useMutation({
-    mutationFn: ({ cart_code, product_id }) => API.post("cart-items/", { cart_code, product_id,selectedSize }),
+    mutationFn: async ({ cart_code, product_id }) => {
+      try {
+        return await API.post("cart-items/", {
+          cart_code,
+          product_id,
+          selectedSize,
+        });
+      } catch (err) {
+        console.error("Error adding to cart:", err);
+        throw err;
+      }
+    },
     onSuccess: () => {
       toast.success("Item added to cart!");
       setInCart(true);
-      setNumCartItems(curr=>curr+1);
+      setNumCartItems((curr) => curr + 1);
     },
     onError: () => toast.error("Failed to add item to cart."),
   });
 
   const handleAddToBag = () => {
-    if (!product || !selectedSize) {
+  try {
+    if (!product) {
+      toast.error("Product details not available.");
+      return;
+    }
+
+    // ✅ Only require size if sizes exist
+    if (availableSizes.length > 0 && !selectedSize) {
       toast.error("Please select a size before adding to cart.");
       return;
     }
+
     if (!cart_code) {
       toast.error("Cart session not found. Please refresh or try again.");
       return;
     }
+
     mutation.mutate({ cart_code, product_id: product.id });
+  } catch (err) {
+    console.error("Error adding product to cart:", err);
+    toast.error("Something went wrong while adding to cart.");
+  }
+};
 
-  };
-
-  // Wishlist Mutations
+  // --- Wishlist Mutations ---
   const addWishlistMutation = useMutation({
-    mutationFn: addToWishlist,
+    mutationFn: async (productId) => {
+      try {
+        return await addToWishlist(productId);
+      } catch (err) {
+        console.error("Error adding to wishlist:", err);
+        throw err;
+      }
+    },
     onSuccess: () => {
       setInWishlist(true);
       toast.success("Added to wishlist!");
@@ -108,7 +150,14 @@ export default function ProductDetail({setNumCartItems}) {
   });
 
   const removeWishlistMutation = useMutation({
-    mutationFn: deleteWishlistItem,
+    mutationFn: async (productId) => {
+      try {
+        return await deleteWishlistItem(productId);
+      } catch (err) {
+        console.error("Error removing wishlist item:", err);
+        throw err;
+      }
+    },
     onSuccess: () => {
       setInWishlist(false);
       toast.success("Removed from wishlist.");
@@ -117,33 +166,47 @@ export default function ProductDetail({setNumCartItems}) {
   });
 
   const handleWishlistToggle = () => {
-    if (!product?.id) return;
-    if (inWishlist) {
-      removeWishlistMutation.mutate(product.id);
-    } else {
-      addWishlistMutation.mutate(product.id);
+    try {
+      if (!product?.id) return;
+      if (inWishlist) {
+        removeWishlistMutation.mutate(product.id);
+      } else {
+        addWishlistMutation.mutate(product.id);
+      }
+    } catch (err) {
+      console.error("Wishlist toggle failed:", err);
+      toast.error("Something went wrong while updating wishlist.");
     }
   };
 
-  // Check Cart + Wishlist Status
+  // --- Check Cart + Wishlist Status ---
   useEffect(() => {
-    if (product?.id && cart_code) {
-      API.get(`product_in_cart?cart_code=${cart_code}&product_id=${product.id}&product_size=${selectedSize}`)
-        .then((res) => {
+    const fetchCartAndWishlistStatus = async () => {
+      if (product?.id && cart_code) {
+        try {
+          const res = await API.get(
+            `product_in_cart?cart_code=${cart_code}&product_id=${product.id}&product_size=${selectedSize}`
+          );
           setInCart(res.data.product_in_cart);
-        })
-        .catch((err) => console.error(err.message));
-    }
+        } catch (err) {
+          console.error("Error checking product in cart:", err.message);
+        }
+      }
 
-    if (product?.id && cart_code) {
-  API.get(`/wishlist/?cart_code=${cart_code}`)
-    .then((res) => {
-      const isInWishlist = res.data.some((item) => item.product.id === product.id);
-      setInWishlist(isInWishlist);
-    })
-    .catch((err) => console.error(err.message));
-}
+      if (product?.id && cart_code) {
+        try {
+          const res = await API.get(`/wishlist/?cart_code=${cart_code}`);
+          const isInWishlist = res.data.some(
+            (item) => item.product.id === product.id
+          );
+          setInWishlist(isInWishlist);
+        } catch (err) {
+          console.error("Error fetching wishlist:", err.message);
+        }
+      }
+    };
 
+    fetchCartAndWishlistStatus();
   }, [product?.id, cart_code, selectedSize]);
 
   if (isLoading) return <ProductDetailSkeleton />;
@@ -242,17 +305,24 @@ export default function ProductDetail({setNumCartItems}) {
 
           {/* Size Selector */}
           <div>
-            <select
-              value={selectedSize}
-              onChange={(e) => setSelectedSize(e.target.value)}
-              className="border px-4 py-1.5 lg:my-3 w-full cursor-pointer text-base font-semibold lg:text-base text-black hover:bg-[#F2F0EF] focus:outline-none"
-            >
-              <option value="">Select your size</option>
-              <option value="Small">Small</option>
-              <option value="Medium">Medium</option>
-              <option value="Large">Large</option>
-              <option value="Extra Large">Extra Large</option>
-            </select>
+            {availableSizes.length > 0 ? (
+              <select
+                value={selectedSize}
+                onChange={(e) => setSelectedSize(e.target.value)}
+                className="border px-4 py-1.5 lg:my-3 w-full cursor-pointer text-base font-semibold lg:text-base text-black hover:bg-[#F2F0EF] focus:outline-none"
+              >
+                <option value="">Select size</option>
+                {availableSizes.map((s, idx) => (
+                  <option key={s.id || idx} value={s.size}>
+                    {s.size}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <div className="border px-4 py-1.5 lg:my-3 w-full bg-gray-50 text-center text-base font-medium text-gray-500 cursor-not-allowed">
+                No size available
+              </div>
+            )}
           </div>
 
           {/* Description */}
@@ -261,7 +331,6 @@ export default function ProductDetail({setNumCartItems}) {
               Our Digital Concierge is available for any questions about this
               product. Contact us.
             </p>
-            {/* <p className="mt-3">{product.description}</p> */}
             {product.description?.split(/\r?\n/).map(
               (line, index) =>
                 line.trim() !== "" && (
@@ -300,6 +369,7 @@ export default function ProductDetail({setNumCartItems}) {
               page.
             </p>
           </Accordion>
+
           <Accordion
             title="Size guide"
             expanded={expanded.size}
@@ -349,13 +419,6 @@ export default function ProductDetail({setNumCartItems}) {
               Note: Fit may vary slightly by fabric, silhouette, or category.
             </span>
           </Accordion>
-          {/* <Accordion
-            title="Gifting"
-            expanded={expanded.gift}
-            onToggle={() => toggle("gift")}
-          >
-            Gift wrapping options available at checkout.
-          </Accordion> */}
 
           {/* Add to Bag */}
           <div className="mt-8 flex justify-center">
